@@ -1,0 +1,21 @@
+{
+  "name": "login-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env node_env=develop nodemon ./bin/www.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "nodemon": "^1.18.11"
+  },
+  "dependencies": {
+    "mongoose": "^5.5.4",
+    "redis": "^2.8.0"
+  }
+}
