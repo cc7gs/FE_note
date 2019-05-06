@@ -237,7 +237,10 @@ sudo chmod 777 xxx
 https://www.twblogs.net/a/5c91b00dbd9eee35cd6b6dd7
 7. bash pm2:command not found
    已经全局安装，在ubuntu中自动部署仍然报错,原因如下: 因为本地执行 pm2 deploy 使用的 ssh 执行远程命令，非交互式环境.
-
+8. yarn错误The engine "node" is incompatible with this module
+```
+ yarn config set ignore-engines true
+```
 .bashrc
 ```
 export NVM_DIR="/root/.nvm"
