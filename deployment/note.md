@@ -258,7 +258,7 @@ export NVM_DIR="/root/.nvm"
   -root 特权用户目录(超级管理员)
   -opt  大型软件存放目录
   -mnt  文件挂载目录 
-  -boot
+  -boot 
   -sbin 
 
 
