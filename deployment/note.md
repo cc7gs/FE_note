@@ -233,6 +233,17 @@ security:
 //修改blogService文件权限
 sudo chmod 777 xxx 
 ```
+6.  Unexpected token { in cli.js #45699
+https://www.twblogs.net/a/5c91b00dbd9eee35cd6b6dd7
+7. bash pm2:command not found
+   已经全局安装，在ubuntu中自动部署仍然报错,原因如下: 因为本地执行 pm2 deploy 使用的 ssh 执行远程命令，非交互式环境.
+
+.bashrc
+```
+export NVM_DIR="/root/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+```cat
+[解决地址](https://github.com/Unitech/pm2-deploy/issues/41 )
 
 # Linux系统知识
 
