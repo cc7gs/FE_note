@@ -7,6 +7,7 @@
 - [部署篇](./deployment/note.md) 
 - [数据库篇](./sql/readme.md)
 - [案例分析篇](./case_demo/readme.md)
+- [数据结构篇](./lettcode/readme.md)
 - [其它库学习篇](./other_library/readme.md)
 - [学习书籍篇](./books/readme.md)
 
