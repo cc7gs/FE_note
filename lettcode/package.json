@@ -10,8 +10,8 @@
     "cleanup": "rimraf dist",
     "posttest": "npm run cleanup"
   },
-  "jest":{
-    "roots":[
+  "jest": {
+    "roots": [
       "./dist"
     ]
   },
@@ -22,7 +22,6 @@
     "@types/jest": "^24.0.12",
     "@types/node": "^12.0.0",
     "jest": "^24.8.0",
-    "tslint": "^5.16.0",
     "typescript": "^3.4.5"
   },
   "dependencies": {}
