@@ -15,7 +15,7 @@
     "noImplicitThis": false,
     "noImplicitReturns": true,
     "outDir": "dist",
-    "sourceMap": false,
+    "sourceMap": true,
     "strict": true,
     "target": "es2015"
   },
