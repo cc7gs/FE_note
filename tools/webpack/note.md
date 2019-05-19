@@ -1,6 +1,7 @@
 # webpack 是什么?
 本质上webpack是一个现代javascript应用程序的静态打包工具。
 其它基础概念,查看[官方文档](https://webpack.docschina.org/concepts/)
+# webpack 基础篇
 ## loader
 webpack 只能理解javascript和json文件。loader可以让它能够处理其他类型的文件，并将其转换有效模块。
 
@@ -82,16 +83,16 @@ file-loader 和 url-loader 可以接收并加载任何文件也包括字体.
 **sourceMap:**
 它是一个映射关系,可以找到打包后代码位置在打包前哪个位置.
 **配置**
-```
+```javascript
 devtool:'source-map' //production 环境默认配置
 ```
-**其它参数**
+### 其它参数
 - cheap-module-eval-source-map
   - 适合 dev环境
 - cheap-module-source-map
   - 适合开发环境
 
-记忆记忆技巧:
+ **记忆技巧**
 - *-source-map
   参数中带有 source-map的则都具有映射关系,打包后会生成.map文件
 - inline-*
@@ -102,3 +103,20 @@ devtool:'source-map' //production 环境默认配置
   - 带有modlue 的则会提示引入模块错误信息.
 - eval
   - 通过eval 生成source-map引入.
+    
+## webpackDevServer
+
+> npm i webpack-dev-server -D
+
+```javascript
+devServer:{
+  port:8080, //启动端口号
+  contentBase:'./dist',
+  open:true, //自动打开默认浏览器,并访问服务
+  proxy:{ //跨域代理
+    '/api':'http://localhost:3000'
+  }
+}
+```
+
+# webpack 提示篇

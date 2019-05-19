@@ -1,3 +1,4 @@
+const path=require('path');
 const  cleanWebpackPlugin=require('clean-webpack-plugin');
 const htmlWebpackPlugin=require('html-webpack-plugin')
 module.exports = {
@@ -47,6 +48,8 @@ module.exports = {
     })
   ],
   output:{
-    filename:'bundle.js'
+    publicPath:'/',
+    filename:'bundle.js',
+    path:path.resolve(__dirname,'dist')
   }
 }
