@@ -5,6 +5,5 @@
   - [个人解读](./async/async-base.md)
   - [关于事件循环](./async/async-loop.md)
 - jsx
-    在该目录下 jsxDemo
-- 一些常见面试题
-  在该文件夹面试题中
+   [jsxDemo](./jsxDemo)
+- 一些常见[面试题](./面试题)

@@ -1,2 +1,2 @@
   - [javascript 代码简洁之道](./clear_code_javascript/REAMDME.md)
-  - js秘籍
+  - [js秘籍](./js秘籍)

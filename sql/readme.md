@@ -1,3 +1,3 @@
-  - [mongoDB 增删改查](./demo1_CURD/readme.md)
-  - [课程表案例](./demo2_course/readme.md)
-  - [nodejs 操作redis](./demo3_redis/readme.md)
+  - [mongoDB 增删改查](./demo1_CURD/)
+  - [课程表案例](./demo2_course/)
+  - [nodejs 操作redis](./demo3_redis/)

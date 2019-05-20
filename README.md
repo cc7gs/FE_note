@@ -13,15 +13,15 @@
 关于案例和demo源码都在相关章节里,可自行加载。
 # 目录结构
 - [基础篇](./nodejs_base/)
-- [测试篇](./test/readme.md) 
-- [日志篇](./logs/readme.md) 
+- [测试篇](./test/) 
+- [日志篇](./logs/) 
 - [部署篇](./deployment/note.md) 
-- [数据库篇](./sql/readme.md)
-- [案例分析篇](./case_demo/readme.md)
-- [数据结构篇](./lettcode/readme.md)
-- [其它库学习篇](./other_library/readme.md)
-- [学习书籍篇](./books/readme.md)
-- [工具篇](./tools/readme.md)
+- [数据库篇](./sql/)
+- [案例分析篇](./case_demo/)
+- [数据结构篇](./lettcode/)
+- [其它库学习篇](./other_library/)
+- [学习书籍篇](./books/)
+- [工具篇](./tools/)
 <font color='#ff0000'>提示:</font> 项目中具体的内容都在相应章节的 xx.md中。
 
 # 联系
