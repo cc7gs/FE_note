@@ -12,7 +12,7 @@
   6. 对于书籍的总结 
 关于案例和demo源码都在相关章节里,可自行加载。
 # 目录结构
-- [基础篇](./nodejs_base/readme.md)
+- [基础篇](./nodejs_base/)
 - [测试篇](./test/readme.md) 
 - [日志篇](./logs/readme.md) 
 - [部署篇](./deployment/note.md) 
