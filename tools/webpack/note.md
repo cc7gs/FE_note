@@ -170,4 +170,69 @@ const webpack=require('webpack');
    new webpack.hotModlueReplacementPlugin()
  ]
  ```
-# webpack 提示篇
+
+# webpack 提升篇
+# 杂记
+## webpack 配置es6语法
+[官方指南戳这里](https://babeljs.io/setup#installation) 
+```javascript
+//安装loader 和babel 核心库
+npm install --save-dev babel-loader @babel/core
+//语法转换库
+npm install --save-dev @babel/preset-env 
+//添加webpack 配置
+module:{
+  rules:[
+    {
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use:{
+      loader: 'babel-loader',
+      options:{
+        presets:['@babel/preset-env']
+      }
+      }
+    }
+  ]
+}
+```
+到这里,es6语法基本可以转换，还是对于map、includes 等方法函数，没有转换，
+如果要进行转换则需要babel-profill 使用流程如下:
+1. **安装**
+> npm install --save @babel/polyfill
+2. **在代码入口引入**
+>import "@babel/polyfill";
+到这里,打包后的代码会被转化，但是babel-polyfill 里有所以规则导致打包后体积变很大，
+如果我们只是想转换我们写的代码，则需要修改如下配置
+
+```javascript
+options:{
+  presets:[
+    ['@babel/preset-env',{
+    useBuiltIns:'usage'
+    }]]
+}
+```
+### 解决babel-polyfil 污染全局环境问题
+使用 @babel/plugin-transform-runtime来进行转换
+1. 安装
+npm install --save-dev @babel/plugin-transform-runtime
+npm install --save @babel/runtime-corejs2
+2. .baberc
+  
+```javascript
+{
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "absoluteRuntime": false,
+        "corejs": 2, //默认false  
+        "helpers": true,
+        "regenerator": true,
+        "useESModules": false
+      }
+    ]
+  ]
+}
+```
