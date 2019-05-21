@@ -43,6 +43,5 @@ export default (arr: Array<number>) => {
       }
     }
   }
-  console.log(arr,'排序后的数组');
   return max;
 }

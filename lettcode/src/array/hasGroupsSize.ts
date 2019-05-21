@@ -19,7 +19,6 @@
  */
 export default (deck: number[]) => {
   deck.sort((a, b) => a - b);
-  console.log(deck);
   let min = Number.MAX_SAFE_INTEGER;
   let arr: any = [];
   let result = true;
