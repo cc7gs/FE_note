@@ -23,7 +23,7 @@ const bubbleSort = (arr: Array<number>) => {
  * 初始时在未排序序列中找最小(最大)元素,放到序列的起始位置作为已排序序列;
  * 然后再从剩余未排序元素中继续寻找最小(大)元素,放到已排序序列的末尾
  */
-const selectSort = (arr: Array<number>) => {
+const selectSort_2 = (arr: Array<number>) => {
   for (let i = 0, min, temp; i < arr.length; i++) {
     min = i;
     for (let j = i + 1; j <= arr.length - 1; j++) {
@@ -39,5 +39,18 @@ const selectSort = (arr: Array<number>) => {
   }
   return arr;
 }
-
+const selectSort=(arr:Array<number>)=>{
+  for(let i=0,min,len=arr.length;i<len;i++){
+    min=arr[i];
+    for(let j=i+1,temp;j<len;j++){
+        if(min>arr[j]){
+           temp=min;
+           min=arr[j];
+           arr[j]=temp;
+        }
+    }
+    arr[i]=min;
+  }
+  return arr;
+}
 export { bubbleSort, selectSort }
