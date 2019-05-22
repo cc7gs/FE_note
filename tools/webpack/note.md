@@ -171,7 +171,30 @@ const webpack=require('webpack');
  ]
  ```
 
-# webpack 提升篇
+# webpack 提升篇  
+
+## development 和 production 模块区分打包
+分别创建webpack.dev.js 和webpack.prod.js用于表示开发环境和生产环境配置。
+```javascript
+"script":{
+  "dev":"webpack-dev-server --config webpack.dev.js",
+  "build":"webpack --config webpack.prod.js"
+}
+```
+### weback-merge使用
+
+我们还可以通过 webpack-merge 来将 dev 和pro 文件公共部分提取出来。
+```javascript
+//webpack.dev.js
+const merge=require('webpack-merge');
+const commConfig=require('./webpack.comm.js');
+const devConfig={
+  ...
+}
+module.exports =merge(commConig,devConfig);
+```
+## Code Splitting（代码分割）
+
 # 杂记
 ## webpack 配置es6语法
 [官方指南戳这里](https://babeljs.io/setup#installation) 
@@ -213,6 +236,7 @@ options:{
     }]]
 }
 ```
+
 ### 解决babel-polyfil 污染全局环境问题
 使用 @babel/plugin-transform-runtime来进行转换
 1. 安装

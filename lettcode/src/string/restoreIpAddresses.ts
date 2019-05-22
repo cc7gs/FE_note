@@ -4,6 +4,10 @@
  * 输入: "25525511135"
  * 输出: ["255.255.11.135", "255.255.111.35"]
  */
+/**
+ * @param {string} s
+ * @return {string[]}
+ */
 export default (s:string)=>{
   var result:Array<string>=[];
   const dfs=(arr:Array<string>,res:string)=>{
