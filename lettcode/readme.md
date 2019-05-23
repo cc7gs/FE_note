@@ -22,6 +22,7 @@
 | 605 | [种花问题](./src/array/canPlaceFlowers.ts)              | Easy       |
 | 349 | [两个数组的交集](./src/array/intersection.ts)           | Easy       |
 | 169 | [求众数](./src/array/majorityElement.ts)                | Easy       |
+| 229 | [求众数](./src/array/majorityElement-two.ts)                | Medium       |
 
 ## sort
    

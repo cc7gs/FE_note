@@ -2,7 +2,8 @@ import {letterCombinations,
   hasGroupsSize,
   canFlowers,
   interSection,
-  majorityElement
+  majorityElement,
+  majorityElement_two,
 } from '../array'
  
 
@@ -22,7 +23,13 @@ describe('array',()=>{
   });
   it('求众数',()=>{
     expect(majorityElement([2,2,2,3,3,5,2])).toEqual(2)
-  })
+  });
+  it('求众数||',()=>{
+    expect(majorityElement_two([1,1,1,3,3,2,2,2])).toEqual([1,2])
+  });
+  it('求众数||',()=>{
+    expect(majorityElement_two([3,2,3])).toEqual([3])
+  });
 });
 
 

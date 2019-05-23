@@ -34,9 +34,10 @@ const majority_one = (arr: Array<number>) => {
 /**
  * 方案二
  * 记录数组第一个值，遇到相同+1,不同的-1;减到0,重新换一个数开始计数
+ * 摩尔投票法。该算法用于1/2情况，它说：“在任何数组中，出现次数大于该数组长度一半的值只能有一个。”
  */
 export default (arr: Array<number>) => {
-  let num = arr[0], count = 0;
+  let num = arr[0], count = 1;
   for (let i = 1; i < arr.length; i++) {
     if (num === arr[i]) {
       count++;
@@ -45,6 +46,5 @@ export default (arr: Array<number>) => {
       if (!count) num = arr[i + 1];
     }
   }
-  return num;
-  
+  return num; 
 }
