@@ -1,8 +1,5 @@
-import letterCombinations from '../array/letterCombinations'
-import hasGroupsSize from '../array/hasGroupsSize'
-import canFlowers from '../array/canPlaceFlowers';
-import grayCode from '../array/grayCode'
-import interSection from '../array/intersection'
+import {letterCombinations,hasGroupsSize,canFlowers,interSection} from '../array'
+ 
 
 describe('array',()=>{
   it('letterCombinations: 23',()=>{
@@ -14,9 +11,7 @@ describe('array',()=>{
   it('array flower: [0,0]',()=>{
     expect(canFlowers([0,0],1)).toBe(true)
   });
-  it('grade code:2',()=>{
-    expect(grayCode(2)).toEqual([0,1,3,2])
-  });
+  
   it('interSection:[1,2,2,2,1]',()=>{
     expect(interSection([1,2,2,2,1],[2,1])).toEqual([1,2])
   });
