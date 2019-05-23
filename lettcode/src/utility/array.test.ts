@@ -1,4 +1,9 @@
-import {letterCombinations,hasGroupsSize,canFlowers,interSection} from '../array'
+import {letterCombinations,
+  hasGroupsSize,
+  canFlowers,
+  interSection,
+  majorityElement
+} from '../array'
  
 
 describe('array',()=>{
@@ -15,6 +20,9 @@ describe('array',()=>{
   it('interSection:[1,2,2,2,1]',()=>{
     expect(interSection([1,2,2,2,1],[2,1])).toEqual([1,2])
   });
+  it('求众数',()=>{
+    expect(majorityElement([2,2,2,3,3,5,2])).toEqual(2)
+  })
 });
 
 
