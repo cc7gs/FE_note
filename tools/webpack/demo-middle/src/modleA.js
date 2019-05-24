@@ -1,2 +1,4 @@
-import _ from 'lodash';
-console.log(_.join(['one,two,three'],''));
+console.log('this modlle A ');
+export default ()=>{
+  console.log('button click hered');
+}

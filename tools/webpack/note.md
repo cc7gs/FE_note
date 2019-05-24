@@ -1,3 +1,4 @@
+
 # webpack 是什么?
 本质上webpack是一个现代javascript应用程序的静态打包工具。
 其它基础概念,查看[官方文档](https://webpack.docschina.org/concepts/)
@@ -224,7 +225,61 @@ module.exports = {
   },
 }
 ```
+### 动态导入
+```javascript
+function getComponent() {
+  return import(/* webpackChunkName: "lodash" */ 'lodash').then(_ => {
+    var element = document.createElement('div');
+    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    return element;
+  }).catch(err => 'An error occured while loading the component');
+}
+getComponent().then(component => {
+  document.body.appendChild(component);
+})
+```
+```javascript
+//webpack.config.js
+module.exports = {
+  mode: 'development',
+  entry: {
+    index: './src/index.js',
+  },
 
+  plugins: [
+    new cleanWebpackPlugin(),
+    new htmlWebpackPlugin({
+      template: 'index.html'
+    }),
+
+  ],
+```
+## lazy Loading（懒加载）
+懒加载可以帮助我们优化网页或应用程序提升加载速度。
+modleA.js
+```javascript
+console.log('this modlle A ');
+export default ()=>{
+  console.log('button click hered');
+}
+```
+index.js
+```javascript
+function initComponent() {
+  var button = document.createElement('button');
+  var br = document.createElement('br');
+  button.innerHTML = 'click me!';
+  document.body.appendChild(br);
+  document.body.appendChild(button);
+  button.addEventListener('click', () => {
+    import(/* webpackChunkName: "modleA" */ './modleA').then(module => {
+      var print = module.default;
+      print();
+    });
+  })
+}
+initComponent();
+```
 
 # 杂记
 ## webpack 配置es6语法
