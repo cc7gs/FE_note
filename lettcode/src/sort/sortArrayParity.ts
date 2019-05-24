@@ -1,13 +1,12 @@
 /**
- * 按奇偶排序数组 II
- * 给定一个非负整数数组 A， A 中一半整数是奇数，一半整数是偶数。
- * 对数组进行排序，以便当 A[i] 为奇数时，i 也是奇数；当 A[i] 为偶数时， i 也是偶数。
+ * 905. 按奇偶排序数组 
+ * 给定一个非负整数数组 A，返回一个数组，在该数组中， A 的所有偶数元素之后跟着所有奇数元素。
  */
 /**
  * 示例
- * 输入：[4,2,5,7]
- * 输出：[4,5,2,7]
- * 解释：[4,7,2,5]，[2,5,4,7]，[2,7,4,5] 也会被接受
+ * 输入：[3,1,2,4]
+ * 输出：[2,4,3,1]
+ * 解释：输出 [4,2,3,1]，[2,4,1,3] 和 [4,2,1,3] 也会被接受。
  */
 
 /**
@@ -16,14 +15,11 @@
  */
 export default (arr: Array<number>) => {
   let newArr: Array<number> = [];
-  let odd = 1, even = 0; //old 奇数 even 偶数
-  arr.forEach(item => {
-    if (item % 2 === 0) {
-      newArr[even] = item;
-      even += 2;
+  arr.forEach(num => {
+    if (num % 2 === 0) {
+      newArr.unshift(num);
     } else {
-      newArr[odd] = item;
-      odd += 2;
+      newArr.push(num);
     }
   });
   return newArr;

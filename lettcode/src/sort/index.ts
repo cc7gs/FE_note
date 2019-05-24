@@ -1,6 +1,7 @@
 import { bubbleSort, selectSort } from '../sort/basic'
 import MaximumGap from '../sort/maximumGap';
 import sortArrayParity from '../sort/sortArrayParity'
+import sortArrayParityTwo from '../sort/sortArrayParityTwo'
 import findKthLargest from '../sort/findKthLargest'
 import firstMissingPositive from '../sort/firstMissingPositive'
 
@@ -10,5 +11,6 @@ export {
   MaximumGap,
   sortArrayParity,
   findKthLargest,
+  sortArrayParityTwo,
   firstMissingPositive
 }

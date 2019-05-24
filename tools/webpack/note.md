@@ -194,6 +194,37 @@ const devConfig={
 module.exports =merge(commConig,devConfig);
 ```
 ## Code Splitting（代码分割）
+此特性可以把代码分离到不同的bundle中,然后可以按需加载或并行加载这些文件。
+常用的代码分离方法有三种：
+
+入口配置：使用 entry 配置手动地分离代码。
+防止重复：使用 SplitChunksPlugin 去重和分离 chunk。
+动态导入：通过模块中的内联函数调用来分离代码。
+### 使用入口配置
+```javascript
+   entry:{ //配置多个入口文件
+    index:'./src/index.js',
+    another:'./src/modleA.js'
+  },
+```
+通过配置多个入口文件，则可以生成多个chunk,但是如果每个入口文件(chunk)之间存在重复的模块，则会导致被重复引用进各个模块中。我们可以通过使用 [SplitChunksPlugin](https://webpack.docschina.org/plugins/split-chunks-plugin/) 插件来移除重复模块。
+### 防止重复(SplitChunksPlugin)
+该插件已经集成在webpack中，不需要再次安装，现在我们修改上面配置
+```javascript
+module.exports = {
+  mode:'development',
+  entry:{
+    index:'./src/index.js',
+    // another:'./src/modleA.js' //去掉手动引入loadsh 的入口文件
+  },
+  optimization:{ //添加如下配置
+    splitChunks:{
+      chunks:'all'
+    }
+  },
+}
+```
+
 
 # 杂记
 ## webpack 配置es6语法

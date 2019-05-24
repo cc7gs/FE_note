@@ -3,7 +3,8 @@ import {letterCombinations,
   canFlowers,
   interSection,
   majorityElement,
-  majorityElement_two,
+  majorityElementTwo,
+  arrayPairSum,
 } from '../array'
  
 
@@ -25,11 +26,14 @@ describe('array',()=>{
     expect(majorityElement([2,2,2,3,3,5,2])).toEqual(2)
   });
   it('求众数||',()=>{
-    expect(majorityElement_two([1,1,1,3,3,2,2,2])).toEqual([1,2])
+    expect(majorityElementTwo([1,1,1,3,3,2,2,2])).toEqual([1,2])
   });
   it('求众数||',()=>{
-    expect(majorityElement_two([3,2,3])).toEqual([3])
+    expect(majorityElementTwo([3,2,3])).toEqual([3])
   });
+  it('数组拆分|',()=>{
+    expect(arrayPairSum([1,4,3,2])).toBe(4);
+  })
 });
 
 
