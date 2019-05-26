@@ -1,3 +1,4 @@
+[TOC]
 
 # webpack 是什么?
 本质上webpack是一个现代javascript应用程序的静态打包工具。
@@ -104,6 +105,7 @@ devtool:'source-map' //production 环境默认配置
   - 带有modlue 的则会提示引入模块错误信息.
 - eval
   - 通过eval 生成source-map引入.  
+
 ## webpackDevServer
 它帮我们启动一个简单web server,并有实时重新加载功能.
 > npm i webpack-dev-server -D
@@ -115,7 +117,8 @@ devServer:{
   open:true, //自动打开默认浏览器,并访问服务
   proxy:{ //跨域代理
     '/api':'http://localhost:3000'
-  }
+  },
+  historyApiFallback:true //开启浏览器路由
 }
 ```
 ### webpack-dev-middleware
@@ -156,6 +159,7 @@ app.listen(3000,()=>{
 ```
 **启动server**
 > npm run server
+
 ## 模块热替换(hot module replacement)
 它会在应用程序运行过程中,替换、添加或删除模块，而不需要重新加载整个页面。
   - 保留在完全重新加载页面期间丢失的应用状态
@@ -173,7 +177,6 @@ const webpack=require('webpack');
  ```
 
 # webpack 提升篇  
-
 ## development 和 production 模块区分打包
 分别创建webpack.dev.js 和webpack.prod.js用于表示开发环境和生产环境配置。
 ```javascript
@@ -280,7 +283,116 @@ function initComponent() {
 }
 initComponent();
 ```
+## shim 预置依赖
+在webpack中,所有都是模块化，因此模块与模块之间是独立的，如果我们想运行下面这样代码，此时就需要shim 配置全局变量
+```javascript
+//juery.test.js
+export defualt ()=>{
+$('body').css('background':'green');
+}
+```
+```javascript
+import $ from 'jquery'
+import test from './juqery.test.js'
+test();
+```
+配置webpack
 
+```javascript
+const webpack=require('webpack');
+plugins:[
+  new webpack.providePlugin({
+    $:'juqery'
+  })
+]
+
+```
+## 配置 typescript
+//安装 webpack依赖 
+> npm install  --save-dev webpack webpack-cli
+> npm install --save-dev  typescript ts-loader
+### tsconfig 配置
+项目根目录新建tsconfig.json文件
+```javascript
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true
+  }
+}
+```
+### webpack 配置
+```javascript
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.ts',
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      }
+    ]
+  },
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ]
+  },
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+};
+```
+## 配置多页面
+```javascript
+entry:{
+  index:'./src/index.ts',
+  list:'./src/list.ts'
+},
+plugins:[
+  new HtmlWebapckPlugin({
+    fileName:'index.html',
+    chunks:['runtime','index'],
+  }),
+  new HtmlWebapckPlugin({
+    filename:'list.html',
+    chunks:['runtime','list'],
+  }),
+]
+```
+关于配置函数化提取，和配置。
+```javascript
+const makePlugins=(configs)=>{
+  const plugins=[
+    new CleanWebpackPlugin(['dist'],{
+      root:path.resolve(__dirname,'dist');
+    })
+  ];
+  Object.keys(configs.entry).forEarch(item=>{
+    plugins.push(new HtmlWebapckPlugin({
+      fileName:`${item}.html`,
+      chunks:['runtime',item],
+      })
+    )
+  });
+  return plugins;
+}
+const config={
+  entry:{
+  index:'./src/index.ts',
+  list:'./src/list.ts'
+},
+};
+config.configs=makePlugins(config);
+module.exports= config;
+```
+[源码](./demo-ts)
 # 杂记
 ## webpack 配置es6语法
 [官方指南戳这里](https://babeljs.io/setup#installation) 
@@ -346,3 +458,14 @@ npm install --save @babel/runtime-corejs2
   ]
 }
 ```
+## prefetch 与preload
+两者都能提升code coverage,prefetch 是指将来某个节点需要加载的资源;preload 是指当前可能需要加载的资源
+### 两者对比
+- preload会在父 chunk加载时,并行开始加载;prefetch 在父chunk加载完毕后开始加载
+- preload 具有优先级下载;而preload 是在浏览器空闲时开始加载
+
+```javascript
+import(/* webpackPrefetch: true */ 'LoginModal');
+
+import(/* webpackPreload: true */ 'ChartingLibrary');
+``` 
