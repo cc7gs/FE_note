@@ -58,8 +58,8 @@ function restore(s) {
       console.log(preArr);
       return;
     }
-    if( idx===s.length){
-      console.log(preArr,'idx ==length');
+    if (idx === s.length) {
+      console.log(preArr, 'idx ==length');
       return;
     }
     for (let i = idx; i < s.length; i++) {
@@ -70,4 +70,5 @@ function restore(s) {
     }
   }
 }
-restore('25525511135');
+// restore('25525511135');
+

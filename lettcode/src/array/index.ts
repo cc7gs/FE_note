@@ -1,12 +1,13 @@
-import letterCombinations from '../array/letterCombinations'
-import hasGroupsSize from '../array/hasGroupsSize'
-import canFlowers from '../array/canPlaceFlowers';
-import interSection from '../array/intersection'
-import majorityElement from '../array/majorityElement'
-import majorityElementTwo from '../array/majorityElement-two'
-import arrayPairSum from '../array/arrayPairSum'
-
+import letterCombinations from './letterCombinations'
+import hasGroupsSize from './hasGroupsSize'
+import canFlowers from './canPlaceFlowers';
+import interSection from './intersection'
+import majorityElement from './majorityElement'
+import majorityElementTwo from './majorityElement-two'
+import arrayPairSum from './arrayPairSum'
+import findDuplicates from './findDuplicates'
 export {
+  findDuplicates,
   letterCombinations,
   hasGroupsSize,
   canFlowers,

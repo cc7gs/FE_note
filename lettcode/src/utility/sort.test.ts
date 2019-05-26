@@ -24,7 +24,7 @@ describe('排序题', () => {
     expect(sortArrayParityTwo([4, 2, 5, 7])).toEqual([4, 5, 2, 7]);
   });
   it('奇偶排序', () => {
-    expect(sortArrayParity([3, 1, 2, 4])).toEqual([2, 4, 3,1]);
+    expect(sortArrayParity([3, 1, 2, 4])).toEqual([4,2, 3,1]);
   });
   it('数组中的第k个最大元素 [3,2,1,5,6,4]', () => {
     expect(findKthLargest([3, 2, 1, 5, 6, 4], 2)).toEqual(5);

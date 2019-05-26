@@ -5,10 +5,14 @@ import {letterCombinations,
   majorityElement,
   majorityElementTwo,
   arrayPairSum,
+  findDuplicates
 } from '../array'
  
 
 describe('array',()=>{
+  it('重复的数据',()=>{
+    expect(findDuplicates([4,3,2,7,8,2,3,1])).toEqual([2,3])
+  })
   it('letterCombinations: 23',()=>{
     expect(letterCombinations('2')).toStrictEqual(['a','b','c']);
   });
@@ -18,7 +22,6 @@ describe('array',()=>{
   it('array flower: [0,0]',()=>{
     expect(canFlowers([0,0],1)).toBe(true)
   });
-  
   it('interSection:[1,2,2,2,1]',()=>{
     expect(interSection([1,2,2,2,1],[2,1])).toEqual([1,2])
   });

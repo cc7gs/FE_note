@@ -24,6 +24,7 @@
 | 169 | [求众数](./src/array/majorityElement.ts)                | Easy       |
 | 229 | [求众数](./src/array/majorityElement-two.ts)            | Medium     |
 | 561 | [数组拆分 \| ](./src/array/arrayPairSum.ts)             | Easy       |
+| 442 | [数组中重复数字](./src/array/findDuplicates.ts)             | Medium       |
 
 ## sort
    

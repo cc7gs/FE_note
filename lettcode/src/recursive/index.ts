@@ -1,2 +1,4 @@
 import grayCode from '../recursive/grayCode'
-export {grayCode}
+import restoreIpAddresses from '../recursive/restoreIpAddresses'
+
+export {grayCode,restoreIpAddresses}
