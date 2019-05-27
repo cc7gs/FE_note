@@ -24,9 +24,9 @@ export default (emails:Array<string>)=>{
   return new Set(emails.map(email=>{
     let [localName, domain] = email.split('@');
     if(localName.indexOf('+')===-1){
-      localName=localName.replace(/\.g/,'');
+      localName=localName.replace(/\./g,'');
     }else{
-      localName=localName.split('+')[0].replace(/\.g/,'');
+      localName=localName.split('+')[0].replace(/\./g,'');
     }
     return `${localName}@${domain}`;
   })).size;
