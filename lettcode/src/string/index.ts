@@ -1,4 +1,10 @@
-import countBinarySubstrings from '../string/countBinarySubstr'
-import reverseWords from '../string/reverseWords';
-import reverseString from '../string/reverseString'
-export {countBinarySubstrings,reverseWords,reverseString}
+import countBinarySubstrings from './countBinarySubstr'
+import reverseWords from './reverseWords';
+import reverseString from './reverseString';
+import numUniqueEmail from './numUniqueEmails'
+export {
+  numUniqueEmail,
+  countBinarySubstrings,
+  reverseWords,
+  reverseString
+}

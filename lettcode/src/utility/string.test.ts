@@ -1,5 +1,14 @@
-import {countBinarySubstrings,reverseWords,reverseString} from '../string'
+import {
+  countBinarySubstrings,
+  reverseWords,
+  reverseString,
+  numUniqueEmail,
+} from '../string'
+
 describe('string', () => {
+  it('独特的电子邮件地址', () => {
+    expect(numUniqueEmail(["test.email+alex@leetcode.com", "test.e.mail+bob.cathy@leetcode.com", "testemail+david@lee.tcode.com"])).toBe(2);
+  });
   it('countBinarySubstrs:00110011', () => {
     expect(countBinarySubstrings("00110011")).toBe(6)
   });
@@ -7,6 +16,6 @@ describe('string', () => {
     expect(reverseWords('Let\'s take LeetCode contest')).toBe('s\'teL ekat edoCteeL tsetnoc');
   });
   it('reverseString', () => {
-    expect(reverseString(["h","e","l","l","o"])).toEqual(["o","l","l","e","h"]);
+    expect(reverseString(["h", "e", "l", "l", "o"])).toEqual(["o", "l", "l", "e", "h"]);
   });
 })
