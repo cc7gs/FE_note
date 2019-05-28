@@ -1,11 +1,12 @@
-import { bubbleSort, selectSort } from '../sort/basic'
-import MaximumGap from '../sort/maximumGap';
-import sortArrayParity from '../sort/sortArrayParity'
-import sortArrayParityTwo from '../sort/sortArrayParityTwo'
-import findKthLargest from '../sort/findKthLargest'
-import firstMissingPositive from '../sort/firstMissingPositive'
-
+import { bubbleSort, selectSort } from './basic'
+import MaximumGap from './maximumGap';
+import sortArrayParity from './sortArrayParity'
+import sortArrayParityTwo from './sortArrayParityTwo'
+import findKthLargest from './findKthLargest'
+import firstMissingPositive from './firstMissingPositive'
+import sortArray from './sortArray'
 export {
+  sortArray,
   bubbleSort,
   selectSort,
   MaximumGap,

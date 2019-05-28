@@ -20,11 +20,11 @@ export default (num1: string, num2: string) => {
   let carry = 0, i = num1.length - 1, j = num2.length - 1;
   while (i >= 0 || j >= 0 || carry != 0) {
     if (i >= 0) {
-      // carry += <any>num1.substr(i--, 1) - <any>'0';
-      carry += +num1.substr(i--, 1);
+      carry += <any>num1.substr(i--, 1) - <any>'0';
+      // carry += +num1.substr(i--, 1);
     }
     if (j >= 0) {
-      carry += <any>num1.substr(i--, 1) - <any>'0';
+      carry += <any>num2.substr(j--, 1) - <any>'0';
     }
     str.unshift(carry % 10);
     carry = Math.floor(carry/10);
