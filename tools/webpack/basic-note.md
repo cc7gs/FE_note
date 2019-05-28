@@ -393,6 +393,7 @@ config.configs=makePlugins(config);
 module.exports= config;
 ```
 [源码](./demo-ts)
+
 # 杂记
 ## webpack 配置es6语法
 [官方指南戳这里](https://babeljs.io/setup#installation) 
