@@ -3,9 +3,13 @@ import {
   reverseWords,
   reverseString,
   numUniqueEmail,
+  addStrings,
 } from '../string'
 
 describe('string', () => {
+  it('字符串相加',()=>{
+    expect(addStrings('12','19')).toBe('31');
+  })
   it('独特的电子邮件地址', () => {
     expect(numUniqueEmail(["test.email+alex@leetcode.com", "test.e.mail+bob.cathy@leetcode.com", "testemail+david@lee.tcode.com"])).toBe(2);
   });
