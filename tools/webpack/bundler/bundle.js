@@ -14,22 +14,52 @@ const moduleAnalyser = (filename) => {
   const ast = parser.parse(content, {
     sourceType: 'module',
   });
+  //存储文件的依赖关系 相对路径 和绝对路径
   const dependencies = {};
   traverse(ast, {
     ImportDeclaration({ node }) {
       const dirname = path.dirname(filename);
-      const newFile = path.join(dirname, node.source.value);
+      console.log(dirname);
+      const newFile = './' + path.join(dirname, node.source.value);
       dependencies[node.source.value] = newFile;
     }
   });
-  babel.transformFromAst(ast,null,{
-    presets:[]
+  const { code } = babel.transformFromAst(ast, null, {
+    presets: ['@babel/preset-env']
   });
+  // console.log(code);
   return {
     filename,
-    dependencies
+    dependencies,
+    code,
   }
-  console.log(dependencies);
   // console.log(ast.program.body);
 }
-moduleAnalyser('./src/index.js'); 
+/**
+ * 分析所有模块依赖关系
+ * @param {string} entry 
+ * @return {Object}
+ */
+const makeDependenciesGraph = (entry) => {
+  const entryModule = moduleAnalyser(entry);
+  const graphArry = [entryModule];
+  for (let i = 0; i < graphArry.length; i++) {
+    const item = graphArry[i];
+    const { dependencies } = item;
+    if (dependencies) {
+      for (let j in dependencies) {
+        graphArry.push(moduleAnalyser(dependencies[j]))
+    }
+  }
+ }
+const graph = {}
+graphArry.forEach(({ filename, dependencies, code }) => {
+  graph[filename] = {
+    dependencies,
+    code
+  }
+});
+return graph;
+}
+const graph=makeDependenciesGraph('./src/index.js');
+console.log(graph);
