@@ -47,7 +47,6 @@ module.exports={
   }
 }
 ```
-
 # 编写plugins
 
 ## 插件组成部分
@@ -64,8 +63,12 @@ module.exports={
 webpack.config.js
 ```javascript
 const path=require('path');
+const CopyrightWebpackPlugin=require('./plugins/copyRight-webpack-plugin');
 module.exports={
   entry:'src/index.js',
+  plugins:[
+    new CopyrightWebpackPlugin(),
+  ]
   output:{
     filename:'[name].js',
     path:path.resolve(__dirname,'dist')
@@ -74,21 +77,32 @@ module.exports={
 ```
 根目录创建文件夹 plguins,
 coypriht-webpack-plugin.js
-```javascript
+```javascript 
 // 一个 JavaScript 命名函数。
 class CopyrightWebpackPlugin{
-  constructor(){
-
+  constructor(options){
+    //获取插件里的参数
+      console.log(options);
   }
   //  在插件函数的 prototype 上定义一个 `apply` 方法。
   apply(compiler){
-    // 指定一个挂载到 webpack 自身的事件钩子。
-  compiler.plugin('webpacksEventHook', function(compilation /* 处理 webpack 内部实例的特定数据。*/, callback) {
-    console.log("This is an example plugin!!!");
-
+   
+  // 指定一个挂载到 webpack 自身的事件钩子。
+  //第一个参数插件名 第二个回调函数
+  compiler.hooks.emit.tapAsync('CopyrightWebpackPlugin',(compilation,callback)=>{
+    console.log("Done with async work...");
     // 功能完成后调用 webpack 提供的回调。
     callback();
   });
+   //下面写法与上面功能一样
+  // compiler.plugin("emit", function(compilation, callback) {
+  //   // 做一些异步处理……
+  //   setTimeout(function() {
+  //     console.log("Done with async work...");
+  //     callback();
+  //   }, 1000);
+  // });
   }
 }
 ```
+# [Bundler 源码编写](./bundler)

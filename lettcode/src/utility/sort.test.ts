@@ -1,6 +1,7 @@
 import {
   bubbleSort,
   selectSort,
+  quickSort,
   MaximumGap,
   sortArrayParity,
   sortArrayParityTwo,
@@ -38,4 +39,7 @@ describe('排序基础', () => {
   test('选择排序:[3,9,4,6]', () => {
     expect(selectSort([3, 9, 4, 6])).toEqual([3, 4, 6, 9]);
   });
+  it('快速排序',()=>{
+    expect(quickSort([3, 9, 4, 6,4,3])).toEqual([3,3,4,4,6,9]);
+  })
 });

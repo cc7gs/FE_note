@@ -1,4 +1,4 @@
-import { bubbleSort, selectSort } from './basic'
+import { bubbleSort, selectSort,quickSort } from './basic'
 import MaximumGap from './maximumGap';
 import sortArrayParity from './sortArrayParity'
 import sortArrayParityTwo from './sortArrayParityTwo'
@@ -7,6 +7,7 @@ import firstMissingPositive from './firstMissingPositive'
 import sortArray from './sortArray'
 export {
   sortArray,
+  quickSort,
   bubbleSort,
   selectSort,
   MaximumGap,

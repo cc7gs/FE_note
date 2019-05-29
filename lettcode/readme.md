@@ -43,7 +43,11 @@
 | --- | --------------------------------------------------- | ---------- |
 | 89  | [格雷编码](./src/recursive/grayCode.ts)             | Medium     |
 | 93  | [复原IP地址](./src/recursive/restoreIpAddresses.ts) | Medium     |
-
+## 链表
+| #   | title                                 | difficulty |
+| --- | ------------------------------------- | ---------- |
+|     | [实现单向链表](./src/linked/basic.ts) |            |
+||[删除链表中的节点](./src/linked/)||
 # 运行须知
 练习采用ts环境去运行编译,测试文件在test目录夹下
 [可以参考该问配置环境](https://tasaid.com/blog/2018122819513079.html)
