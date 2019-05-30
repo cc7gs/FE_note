@@ -5,8 +5,9 @@
 > npm install @babel/core --save  //babel 核心模块
 > npm install @babel/preset-env --save
 
+[source](./bundle.js)
 # 拓展
-
+ 
 高亮显示代码 工具
 > npm install cli-highlight -g
 使用

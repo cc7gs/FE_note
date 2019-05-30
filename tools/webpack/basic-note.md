@@ -396,6 +396,7 @@ module.exports= config;
 
 # 杂记
 ## webpack 配置es6语法
+
 [官方指南戳这里](https://babeljs.io/setup#installation) 
 ```javascript
 //安装loader 和babel 核心库
