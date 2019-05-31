@@ -1,0 +1,16 @@
+{
+  "name": "basic-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc greeter.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^3.5.1"
+  }
+}
