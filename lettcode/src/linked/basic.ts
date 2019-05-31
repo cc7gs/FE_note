@@ -31,15 +31,6 @@ class ListNode {
 
 }
 
-/**
- * 测试 遍历node 节点
- */
-let node: Node = new ListNode([1, 3, 2, 3, 5]) as any;
-while (node.next) {
-  console.log(node.val);
-  node = node.next;
-}
-
 export {
   ListNode,
   Node,
