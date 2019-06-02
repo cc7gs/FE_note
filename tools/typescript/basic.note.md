@@ -49,10 +49,6 @@ let x:[string,number]
 //初始化
 x=['wu',22]; //0k
 x-[22,'wu'] //Error 顺序类型不一致 
-//访问越界元素
-x[3]='chen'; //Ok 字符串可以赋值给 (string | number)类型
-console.log(x[5].toString()); // ok
-x=[4]=true; //Error 布尔不是(string | number)类型
 ```
 ## 枚举 (enum)
 
@@ -74,7 +70,6 @@ let colorName: string = Color[2]; // Green 它在代码里的值是2
 let notSure:any=4;
 notSure = false; //Ok
 ```
-
 ## Void 
 它表示没有任何类型。 当一个函数没有返回值时，你通常会见到其返回值类型是 void
 
@@ -94,11 +89,6 @@ function infiniteLoop():never{
   while(true){}
 }
 ```
-
-
-
-
-
 ## 类型断言
 类型断言好比其它语言里的类型转换，但是不进行特殊的数据检查和解构。 它没有运行时的影响，只是在编译阶段起作用。
 ```javascript
@@ -112,3 +102,66 @@ let someValue: any = "this is a string";
 let strLength: number = (someValue as string).length;
 ```
 注:当你在TypeScript里使用JSX时，只有 as语法断言是被允许的。
+
+
+# 接口
+接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。
+```javascript
+interface LabelledValue {
+  label: string;
+  number?: number; //可选属性
+  readonly size: number; //只读属性
+  [propName: string]: any;// 索引属性签名
+}
+function printLabel(labelledObj: LabelledValue) {
+  console.log(labelledObj.label);
+}
+let myobj = { size: 10,label:'size 10 Object'};
+printLabel(myobj);
+```
+ LabelledValue接口就好比一个名字，用来描述上面例子里的要求。它代表了有一个 label属性且类型为string的对象。
+
+## 接口函数类型
+ ```javascript
+interface SearchFunc {
+  (source: string, subString: string): boolean
+}
+let mySearch: SearchFunc = (source, subString) => {
+  return source.search(subString) > -1;
+}
+```
+## 可索引类型
+ 
+给索引签名设置只读，防止给索引赋值
+```javascript
+interface ReadonlyStringArray{
+  readonly [index:number]:string;
+}
+let myArray:ReadonlyStringArray=['cc','wgs'];
+// myArray[1]='readonly'; //error!
+```
+## 混合类型
+```javascript
+interface Counter{
+  (start:number):string;
+  interval:number;
+  reset():void; 
+}
+function getCounter():Counter{
+  let counter=(function(start:number){
+      
+  }) as Counter;
+  counter.interval=23;
+  counter.reset=function(){
+    console.log('reset call func');
+  }
+  return counter;
+}
+let counter=getCounter();
+counter(10);
+counter.reset();
+counter.interval=5
+```
+## 接口继承类
+当一个接口继承一个类时，会继承类的所有成员包括私有和保护成员，但并没有提供具体的实现。因此一个接口若继承一个拥有私有成员的类时，这个接口只能由该类或者子类所实现。
+# 类
