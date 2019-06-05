@@ -1,4 +1,4 @@
-import { MyCircularQueue } from '../queue'
+import { MyCircularQueue, leastInterval } from '../queue'
 describe('队列', () => {
   it('循环队列:', () => {
     const myQueue = new MyCircularQueue(3);
@@ -11,4 +11,7 @@ describe('队列', () => {
     expect(myQueue.Rear()).toBe(3);
     expect(myQueue.deQueue()).toBe(true);
   });
+  it('任务调度', () => {
+    expect(leastInterval(["A", "A", "A", "B", "B", "B"], 2)).toBe(8);
+  })
 })
