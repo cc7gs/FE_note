@@ -8,10 +8,14 @@ import {
   arrayPairSum,
   findDuplicates,
   spiralOrder,
+  containsDuplicate,
 } from '../array'
 
 
 describe('array', () => {
+  it('存在重复元素',()=>{
+    expect(containsDuplicate([1,2,3,4,5,3])).toBe(true);
+  })
   it('螺旋矩阵', () => {
     let input = [
       [1, 2, 3],

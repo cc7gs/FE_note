@@ -27,6 +27,7 @@
 | 561 | [数组拆分 \| ](./src/array/arrayPairSum.ts)             | Easy       |
 | 442 | [数组中重复数字](./src/array/findDuplicates.ts)         | Medium     |
 | 54  | [螺旋矩阵](./src/array/spiralOrder.ts)                  | Medium     |
+| 217 | [存在重复元素](./src/array/containsDuplicate.ts)        | Easy       |
 ## sort
    
 | #   | title                                                     | difficulty |
