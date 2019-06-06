@@ -26,7 +26,7 @@
 | 229 | [求众数](./src/array/majorityElement-two.ts)            | Medium     |
 | 561 | [数组拆分 \| ](./src/array/arrayPairSum.ts)             | Easy       |
 | 442 | [数组中重复数字](./src/array/findDuplicates.ts)         | Medium     |
-
+| 54  | [螺旋矩阵](./src/array/spiralOrder.ts)                  | Medium     |
 ## sort
    
 | #   | title                                                     | difficulty |
@@ -65,6 +65,6 @@
 [可以参考该问配置环境](https://tasaid.com/blog/2018122819513079.html)
 
 测试
->npm run test
+> npm run test
 
   
