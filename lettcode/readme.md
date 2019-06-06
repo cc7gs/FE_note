@@ -47,10 +47,11 @@
 
 ## 链表
 
-| #   | title                                 | difficulty |
-| --- | ------------------------------------- | ---------- |
-|     | [实现单向链表](./src/linked/basic.ts) |            |
-| 237 | [删除链表中的节点](./src/linked/)     | Easy       |
+| #   | title                                             | difficulty |
+| --- | ------------------------------------------------- | ---------- |
+|     | [实现单向链表](./src/linked/basic.ts)             |            |
+|     | [单链表快速排序](./src/linked/quick.sort.link.ts) |
+| 237 | [删除链表中的节点](./src/linked/)                 | Easy       |
 
 ## 队列
 
@@ -58,6 +59,7 @@
 | --- | ------------------------------------------------- | ---------- |
 | 622 | [循环队列](./src/queue/circular.queue.ts)         | Medium     |
 | 621 | [任务调度器](./src/queue/least.interval.queue.ts) | Medium     |
+
 # 运行须知
 练习采用ts环境去运行编译,测试文件在test目录夹下
 [可以参考该问配置环境](https://tasaid.com/blog/2018122819513079.html)
