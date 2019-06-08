@@ -1,0 +1,18 @@
+{
+  "name": "cors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server1": "nodemon server.js",
+    "server2": "nodemon server2.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.0.7",
+    "nodemon": "^1.19.1"
+  }
+}
