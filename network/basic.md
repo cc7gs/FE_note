@@ -38,7 +38,18 @@ ACK=Y+1,Seq=Z
     - script-src
     - manifest-src
     - img-src
-  
+5. https 四次握手
+client                   server
+ 客户端随机数       -->    接受随机数
+ 接受服务端随机数    <--    服务端证书
+ 服务端证书
+
+ 生成预密钥     --->        加密的预密钥通过私钥解密
+
+ 生成主密钥     <---加密数据传输-->      生成主密钥
+
+## [nginx 相关知识](./nginx.md)
+
 ## 面试题
 ### 输入url后http请求完整过程？
 
@@ -50,3 +61,9 @@ ACK=Y+1,Seq=Z
     2. 包含 URL和URN
 2.  URL:Uniform Resource Locator 统一资源定位器
 3. URN 永久统一资源符
+
+### http2 与 http1.1区别
+http2 优势
+    1. 信道复用
+    2. 分贞传输
+    3. server push
