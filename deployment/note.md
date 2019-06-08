@@ -270,6 +270,8 @@ export NVM_DIR="/root/.nvm"
 //创建文件
 2. sudo vi  /etc/iptables.up.rules    
 3. 编辑如下内容
+
+
 ```
 *filter
 # allow all connections
@@ -282,13 +284,13 @@ export NVM_DIR="/root/.nvm"
 -A INPUT -P tcp --dport 443 -j ACCEPT
 -A INPUT -P TCP --dport 80 -j ACCEPT
 
-#登录
+# 登录
 -A INPUT -P TCP -m state --sate NEW --dport 22 -j ACCEPT
 
 #ping
 -A INPUT -P icmp -m icmp --icmp-type 8 -j ACCEPT
 
-#mongodb connect
+# mongodb connect
 -A INPUT -s 127.0.0.1 -p tcp --destination-port 27017 -m start --state NEW,ESTABLISHED -j ACCEPT
 -A OUTPUT -d 127.0.0.1 -p tcp --source-port 27017 -m start --state ESTABLISHED -j ACCEPT
 
@@ -299,20 +301,20 @@ export NVM_DIR="/root/.nvm"
 - A INPUT -p tcp --dport 80 -i eth0 -m state --state NEW -m recent --set
 - A INPUT -p tcp --dport 80 -i eth0 -m state --state NEW -M recent --update --seconds 60 --hitcount 150 -j DROP
 
-#reject all other inbound
+# reject all other inbound
 -A INPUT -j REJECT
 -A FORWARD -j REJECT
 
 COMMIT 
 ```
-4. sudo iptables-restore < /etc/iptables.up.rules //查看配置文件是否正确
-5. sudo ufw status //查看防火墙状态
-6. sudo ufw enable // 激活防火墙
+1. sudo iptables-restore < /etc/iptables.up.rules //查看配置文件是否正确
+2. sudo ufw status //查看防火墙状态
+3. sudo ufw enable // 激活防火墙
 
 ### 防火墙 开机启动配置
 1. sudo vi /etc/network/if-up.d/iptables
 ```
-#!/bin/sh
+# !/bin/sh
 iptables-restore /etc/iptables.up.rules
 ```
 2. 给予权限 
@@ -324,7 +326,7 @@ fail2Ban 是一款入侵防御软件，可以保护服务器免受暴力攻击�
 2. 打开修改配置文件
    1. sudo vi /etc/fail2ban/fail.conf    
 ```
-#可以修改为自己的邮箱
+# 可以修改为自己的邮箱
 destemail=101303709@qq.com
 ```
 其它配置可以自行百度搜索修改。
