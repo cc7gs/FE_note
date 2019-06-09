@@ -164,4 +164,78 @@ counter.interval=5
 ```
 ## 接口继承类
 当一个接口继承一个类时，会继承类的所有成员包括私有和保护成员，但并没有提供具体的实现。因此一个接口若继承一个拥有私有成员的类时，这个接口只能由该类或者子类所实现。
+```javascript
+class Control {
+  private state!: boolean;
+}
+interface SelectControl extends Control{
+  select():void;
+}
+//报错，因为 SelectText 没有继承 Control,
+//或者说 只有是Control的子类才可以实现 SelectControl
+class SelectText implements SelectControl {
+  select() {
+
+  }
+}
+```
 # 类
+```javascript
+class Employee{
+  fullName:string; //默认是共有的
+  private _age:number; //私有属性
+  static MaxNum=20; //静态属性
+  get getAge():number{
+    return this._age;
+  }
+  set setAge(age:number){
+    this._age=age;
+    console.log('set age');
+  }
+
+}
+let employee=new Employee();
+employee.setAge(22);
+employee.fullName='wu chen';
+//修改静态属性
+let num:typeof Employee=Employee;
+num.maxNum=30;
+```
+# 函数
+```javascript
+//默认参数
+function buildName(firstName: string, lastName = "Smith") {
+    return firstName + " " + lastName;
+}
+
+//可选参数
+function buildName(firstName:string,lastName?:string){
+
+}
+
+//剩余参数类型定义
+typeof addFn=(a:number,...res:number[])=>void;
+
+
+```
+# 泛型
+可以使用泛型来创建可重用的组件，一个组件可以支持多种类型的数据。
+
+```javascript
+//泛型,这样可以确保传入的类型与返回类型一致
+function people<T>(name:T):T{
+  return name
+}
+//泛型接口
+interface People<T>{
+  (name:T):T
+}
+//泛型类
+class People<T>{
+  say(name:T)=>T;
+}
+let people=new People<string>();
+people.say=function(name){
+  return name;
+}
+```
