@@ -1,16 +1,18 @@
 {
-  "name": "basic-ts",
+  "name": "cors",
   "version": "1.0.0",
   "description": "",
-  "main": "src",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "temp": "tsc"
+    "server1": "nodemon server.js",
+    "server2": "nodemon server2.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^3.5.1"
+    "@types/node": "^12.0.7",
+    "nodemon": "^1.19.1"
   }
 }

@@ -33,7 +33,7 @@ console.log('接口',greeterTwo(userTwo));
  */
 class Student {
   fullName: string;
-  constructor(firstName, lastName) {
+  constructor(firstName: string, lastName: string) {
     this.fullName = firstName + '' + lastName;
   }
 }
