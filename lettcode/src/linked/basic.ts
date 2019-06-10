@@ -1,4 +1,3 @@
-import { maxHeaderSize } from 'http';
 
 /**
  * 实现单向链表

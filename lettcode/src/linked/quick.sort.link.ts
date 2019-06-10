@@ -1,4 +1,4 @@
-import {Node,ListNode} from './basic'
+import { Node } from './basic'
 
 /**
  * 单链表的快速排序
@@ -6,6 +6,37 @@ import {Node,ListNode} from './basic'
  * 2. 通过遍历以基准元素将链表分为两部分
  * 3. 以此类推重复 1,2
  */
-export default (head:Node)=>{
-
+type ISort = (begin: Node, end: Node | undefined) => void;
+type IPartition = (begin: Node, end: Node | undefined) => Node;
+export const sort: ISort = (begin, end) => {
+  if (begin !== end) {
+    let pos = partition(begin, end);
+    sort(begin, pos);
+    if (pos.next) {
+      sort(pos.next, end);
+    }
+  }
+}
+const partition: IPartition = (begin, end) => {
+  //基准元素
+  const  val = begin.val;
+  
+  let p = begin;
+  let q = begin.next;
+  while (q && q !== end) {
+    if (q && q.val < val) {
+      let next = p.next;
+      if (next) {
+        swap(next, q);
+        p = next;
+      }
+    }
+    q = q.next;
+  }
+  //交换基准元素
+  swap(p, begin);
+  return p;
+}
+const swap = (p: Node, q: Node) => {
+  [p.val, q.val] = [q.val, p.val];
 }
