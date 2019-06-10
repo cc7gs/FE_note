@@ -28,6 +28,8 @@
 | 442 | [数组中重复数字](./src/array/findDuplicates.ts)         | Medium     |
 | 54  | [螺旋矩阵](./src/array/spiralOrder.ts)                  | Medium     |
 | 217 | [存在重复元素](./src/array/containsDuplicate.ts)        | Easy       |
+| 48  | [旋转图像](./src/array/rotate.image.ts)                 | Medium     |
+| 189 | [旋转数组](./src/array/totate.image.ts)                 | Easy       |
 ## sort
    
 | #   | title                                                     | difficulty |

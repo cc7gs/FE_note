@@ -8,6 +8,7 @@ import arrayPairSum from './arrayPairSum'
 import findDuplicates from './findDuplicates'
 export * from './spiralOrder'
 export * from './containsDuplicate'
+export * from './rotate.image'
 export {
   findDuplicates,
   letterCombinations,

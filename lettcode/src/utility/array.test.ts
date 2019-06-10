@@ -9,10 +9,30 @@ import {
   findDuplicates,
   spiralOrder,
   containsDuplicate,
+  rotateImage,
+  rotateArray,
 } from '../array'
 
 
 describe('array', () => {
+  it('旋转数组',()=>{
+    const input=[1,2,3,4,5,6,7];
+    const output=[5,6,7,1,2,3,4];
+    expect(rotateArray(input,3)).toEqual(output);
+  })
+  it('旋转图像',()=>{
+    const input=[
+      [1,2,3],
+      [4,5,6],
+      [7,8,9]
+    ];
+    const output=[
+      [7,4,1],
+      [8,5,2],
+      [9,6,3]
+    ];
+    expect(rotateImage(input)).toEqual(output);
+  })
   it('存在重复元素',()=>{
     expect(containsDuplicate([1,2,3,4,5,3])).toBe(true);
   })
