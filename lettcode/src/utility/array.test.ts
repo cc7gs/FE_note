@@ -18,7 +18,8 @@ describe('array', () => {
   it('旋转数组',()=>{
     const input=[1,2,3,4,5,6,7];
     const output=[5,6,7,1,2,3,4];
-    expect(rotateArray(input,3)).toEqual(output);
+    rotateArray(input,3)
+    expect(input).toEqual(output);
   })
   it('旋转图像',()=>{
     const input=[

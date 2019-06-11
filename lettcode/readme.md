@@ -63,6 +63,11 @@
 | 622 | [循环队列](./src/queue/circular.queue.ts)         | Medium     |
 | 621 | [任务调度器](./src/queue/least.interval.queue.ts) | Medium     |
 
+# 树
+| #   | title                             | difficulty |
+| --- | --------------------------------- | ---------- |
+|     | [定义二叉树](./src/tree/basic.ts) |            |
+| 101 | [对称二叉树](./src/tree/basic.ts) | Easy       |
 # 运行须知
 练习采用ts环境去运行编译,测试文件在test目录夹下
 [可以参考该问配置环境](https://tasaid.com/blog/2018122819513079.html)
