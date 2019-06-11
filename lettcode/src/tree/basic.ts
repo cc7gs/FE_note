@@ -42,11 +42,14 @@ class Tree<T>{
 
   static isSymmetric(root: Node<Number>) {
     const walk = (left: Node<Number>, right: Node<Number>): boolean => {
+      if (!root) {
+        return true;
+      }
       //成为叶子节点时
       if (!left && !right) {
         return true;
       }
-      if (left.val !== right.val || (left && !right) || (!left && right)) {
+      if ((left && !right) || (!left && right) || left.val !== right.val) {
         return false
       }
       return walk(left.left!, right.right!) && walk(left.right!, right.left!)
