@@ -67,6 +67,7 @@
 | #   | title                             | difficulty |
 | --- | --------------------------------- | ---------- |
 |     | [定义二叉树](./src/tree/basic.ts) |            |
+|     | [定义搜索树](./src/tree/basic.ts) |            |
 | 101 | [对称二叉树](./src/tree/basic.ts) | Easy       |
 # 运行须知
 练习采用ts环境去运行编译,测试文件在test目录夹下

@@ -10,6 +10,9 @@ class Node<T> {
     this.left = this.right = undefined;
   }
 }
+/**
+ * 构建二叉树
+ */
 class Tree<T>{
   constructor(data: T[]) {
     //定义根节点
@@ -57,7 +60,56 @@ class Tree<T>{
     return walk(root.left!, root.right!)
   }
 }
+/**
+ * 构建二叉搜素树
+ * 特征如下:
+ * 节点的左子树只包含小于当前节点的数。
+ * 节点的右子树只包含大于当前节点的数。
+ * 所有左子树和右子树自身必须也是二叉搜索树。
+ */
+class SearchTree {
+  constructor(nums: any[]) {
+    const root = new Node(nums.shift()!);
+    nums.forEach(num => {
+      SearchTree.make(root, num);
+    })
+    return root;
+  }
+  /**
+   * @description 构建搜素树
+   * @param node 树节点
+   * @param val 传入的值
+   */
+  private static make(node: Node<number>, val: number) {
+    //左子树
+    if (val < node.val) {
+      if (!node.left) {
+        node.left = new Node(val);
+      } else {
+        this.make(node.left, val);
+      }
+    } else {
+      //右子树
+      if (!node.right) {
+        node.right = new Node(val);
+      } else {
+        this.make(node.right, val);
+      }
+    }
+  }
+  static isvaildBST(node: Node<number> | undefined): boolean {
+    if (!node) {
+      return true;
+    }
+    if ((node.left && node.left.val >= node.val) || (node.right && node.right.val <= node.val)) {
+      return false;
+    } else {
+      return this.isvaildBST(node.left) && this.isvaildBST(node.right)
+    }
+  }
+}
 export {
   Node,
+  SearchTree,
   Tree
 }

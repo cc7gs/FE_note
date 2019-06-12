@@ -58,7 +58,6 @@ export const leastInterval = (tasks: any[], n: number) => {
     }
     res += temp.join('').padEnd(n + 1, '-');
   }
-  console.log(res);
   //边界处理
   res = res.replace(/-+$/g, '')
   return res.length;

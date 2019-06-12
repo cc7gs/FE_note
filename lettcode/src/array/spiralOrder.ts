@@ -39,7 +39,6 @@ export const spiralOrder = (matrix: SpiralArr[]) => {
         res.push(top)
       }
     }
-    console.log(res);
     if (arr.length) {
       return map(arr, res);
     } else {
