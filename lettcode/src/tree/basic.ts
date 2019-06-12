@@ -1,3 +1,4 @@
+
 /**
  * 构建二叉树
  */
@@ -71,7 +72,7 @@ class SearchTree {
   constructor(nums: any[]) {
     const root = new Node(nums.shift()!);
     nums.forEach(num => {
-      SearchTree.make(root, num);
+      SearchTree.insert(root, num);
     })
     return root;
   }
@@ -80,32 +81,44 @@ class SearchTree {
    * @param node 树节点
    * @param val 传入的值
    */
-  private static make(node: Node<number>, val: number) {
+  private static insert(node: Node<any>, val: number) {
     //左子树
     if (val < node.val) {
       if (!node.left) {
         node.left = new Node(val);
       } else {
-        this.make(node.left, val);
+        this.insert(node.left, val);
       }
-    } else {
+    }
       //右子树
+    if (val > node.val) {
       if (!node.right) {
         node.right = new Node(val);
       } else {
-        this.make(node.right, val);
+        this.insert(node.right, val);
       }
     }
   }
-  static isvaildBST(node: Node<number> | undefined): boolean {
-    if (!node) {
-      return true;
+  /**
+   * 验证是否是搜索二叉树
+   * @param root 树根节点
+   */
+  static isvaildBST(root: Node<number> | undefined): boolean {
+    let max = Number.MIN_SAFE_INTEGER;
+    let isValidBSTFlag = true;
+    const search = (root: Node<number> | undefined) => {
+      if (root) {
+        search(root.left);
+        if (root.val > max) {
+          max = root.val;
+        } else {
+          isValidBSTFlag = false;
+        }
+        search(root.right);
+      }
     }
-    if ((node.left && node.left.val >= node.val) || (node.right && node.right.val <= node.val)) {
-      return false;
-    } else {
-      return this.isvaildBST(node.left) && this.isvaildBST(node.right)
-    }
+    search(root)
+    return isValidBSTFlag;
   }
 }
 export {

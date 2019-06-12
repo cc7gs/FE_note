@@ -12,16 +12,15 @@ describe('树', () => {
 
     let tree2 = new Tree([1, 2, 2, null, 3, null, 3]) as Node<number>;
     expect(Tree.isSymmetric(tree2)).toEqual(false);
-
     let emptyTree = new Tree([]) as Node<number>;
     expect(Tree.isSymmetric(emptyTree)).toEqual(true);
   });
   it('二叉搜索树', () => {
-    let input=[5,1,4,null,null,3,6];
+    let input = [10, 5, 15, null, 6, null, 20];
     let tree = new SearchTree([2, 1, 3]) as Node<number>;
     let tree1 = new SearchTree(input) as Node<number>;
     console.log(tree1);
     expect(SearchTree.isvaildBST(tree)).toBe(true);
-    expect(SearchTree.isvaildBST(tree1)).toBe(false);
+    expect(SearchTree.isvaildBST(tree1)).toBe(true);
   })
 })
