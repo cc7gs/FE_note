@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .layout {
+            margin-top: 20px;
+        }
+
+        .layout article div {
+            min-height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="layout float">
+        <style>
+            .layout.float .left,
+            .layout.float .right {
+                width: 300px;
+                background-color: orange;
+            }
+
+            .layout.float .left {
+                float: left;
+            }
+
+            .layout.float .right {
+                float: right;
+                background-color: blue;
+            }
+
+            .layout.float .center {
+                background-color: red;
+            }
+        </style>
+        <article class='left-right-center'>
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="center">
+                采用 float解决中间自适应问题
+            </div>
+        </article>
+    </section>
+
+    <section class="layout absolute">
+        <style>
+            .layout.absolute .left-center-right>div {
+                position: absolute;
+            }
+
+            .layout.absolute .left {
+                left: 0;
+                width: 300px;
+                background-color: bisque
+            }
+
+            .layout.absolute .right {
+                right: 0;
+                width: 300px;
+                background-color: brown;
+            }
+
+            .layout.absolute .center {
+                left: 300px;
+                right: 300px;
+                background-color: blue;
+            }
+        </style>
+        <article class='left-center-right'>
+            <div class="left"></div>
+            <div class="center">
+                采用 absolute 解决中间自适应问题
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+    <section class="layout flex">
+        <style>
+            .layout.flex .left-center-right {
+                display: flex;
+            }
+
+            .layout.flex .left {
+                width: 300px;
+                background-color: orange;
+            }
+
+            .layout.flex .right {
+                width: 300px;
+                background-color: burlywood;
+            }
+
+            .layout.flex .center {
+                flex: 1;
+                background-color: #339999;
+            }
+        </style>
+        <article class="left-center-right">
+            <div class="left"></div>
+            <div class="center">
+                flex 左中右布局
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+    <section class="layout table">
+        <style>
+            .layout.table .left-center-right{
+                width: 100%;
+                display: table;
+                min-height: 200px;
+            }
+            .layout.table .left-center-right>div {
+                display: table-cell;
+            }
+            .layout.table .left{
+                width: 300px;
+                background-color: aliceblue;
+            }
+            .layout.table .right{
+                width: 300px;
+                background-color:beige;
+            }
+            .layout.table .center{
+                background-color: cornsilk;
+            }
+        </style>
+        <article class="left-center-right">
+            <div class="left"></div>
+            <div class="center">
+                table 左中右布局
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+    <section class="layout grid">
+        <style>
+            .layout.grid .left-center-right{
+                display: grid;
+                width: 100%;
+                grid-template-rows: 100px;
+                grid-template-columns: 300px auto 300px;
+            }
+            .layout.grid .left{
+                background-color: aqua;
+            }
+            .layout.grid .center{
+                background-color:orange;
+            }
+            .layout.grid .right{
+                background-color: aqua;
+            }
+        </style>
+        <article class="left-center-right">
+            <div class="left"></div>
+            <div class="center">
+                网格左中右布局
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+    <section class="bfc">
+        <style>
+            .bfc{
+                margin-top:20px;
+            }
+            .bfc .parent{
+                background-color: red;
+                display: flow-root;
+            }
+            .bfc .child{
+                height: 200px;
+                background-color: green;
+                margin-top:10px;
+            }
+        </style>
+        <article class="parent">
+            <div class="child"></div>
+        </article>
+    </section>
+</body>
+
+</html>
