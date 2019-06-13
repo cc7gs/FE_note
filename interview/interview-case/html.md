@@ -225,3 +225,76 @@
 </html>
 ```
 关于margin负值的应用 请参照该博主的整理:https://www.jianshu.com/p/549aaa5fabaa
+## 五 采用table布局
+```javascript
+  <section class="layout table">
+        <style>
+            .layout.table .left-center-right{
+                width: 100%;
+                display: table;
+                min-height: 200px;
+            }
+            .layout.table .left-center-right>div {
+                display: table-cell;
+            }
+            .layout.table .left{
+                width: 300px;
+                background-color: aliceblue;
+            }
+            .layout.table .right{
+                width: 300px;
+                background-color:beige;
+            }
+            .layout.table .center{
+                background-color: cornsilk;
+            }
+        </style>
+        <article class="left-center-right">
+            <div class="left"></div>
+            <div class="center">
+                table 左中右布局
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+```
+## 六 采用网格布局
+```javascript
+  <section class="layout grid">
+        <style>
+            .layout.grid .left-center-right{
+                display: grid;
+                width: 100%;
+                grid-template-rows: 200px;
+                grid-template-columns: 300px auto 300px;
+            }
+            .layout.grid .left{
+                background-color: aqua;
+            }
+            .layout.grid .center{
+                background-color:orange;
+            }
+            .layout.grid .right{
+                background-color: aqua;
+            }
+        </style>
+        <article class="left-center-right">
+            <div class="left"></div>
+            <div class="center">
+                网格左中右布局
+            </div>
+            <div class="right"></div>
+        </article>
+    </section>
+```
+
+# 各种方法的优缺点
+| name     | 优点                         | 缺点                                         |
+| -------- | ---------------------------- | -------------------------------------------- |
+| 浮动     | 兼容性好                     | 需要消除对周边元素的影响                     |
+| 绝对定位 | 快捷方便                     | 脱离文档流后，对其他元素产生影响，不容易控制 |
+| flex     | 兼容性好，容易操作（i8以上） |            作用于一纬坐标                              |
+| table    | 兼容性好                     | 某一栏高度变化会导致其它同步变高             |
+| grid     |    grid布局用法和flex相似，但是作用于二维布局                          |             |                 
+
+
