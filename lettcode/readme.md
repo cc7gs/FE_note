@@ -35,6 +35,7 @@
 | #   | title                                                     | difficulty |
 | --- | --------------------------------------------------------- | ---------- |
 |     | [基本排序算法](./src/sort/basic.ts)                       | practice   |
+|     | [堆排序](./src/heap/basic.ts)                             | practice   |
 | 922 | [按奇偶排序数组 \|\|](./src/sort/sortArrayParityTwo.ts)   | Easy       |
 | 922 | [按奇偶排序数组 ](./src/sort/sortArrayParity.ts)          | Easy       |
 | 164 | [最大间距](./src/sort/maximumGap.ts)                      | Hard       |
@@ -71,7 +72,10 @@
 | 101 | [对称二叉树](./src/tree/basic.ts)     | Easy       |
 | 98  | [搜素二叉树](./src/tree/basic.ts)     | Medium     |
 | 617 | [合并二叉树](./src/tree/mergeTree.ts) | Easy       |
-
+# 堆
+| #   | title                         | difficulty |
+| --- | ----------------------------- | ---------- |
+|     | [创建最大堆](./src/heap/basic.ts) |            |
 # 运行须知
 练习采用ts环境去运行编译,测试文件在test目录夹下
 [可以参考该问配置环境](https://tasaid.com/blog/2018122819513079.html)
