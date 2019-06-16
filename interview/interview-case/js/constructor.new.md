@@ -28,7 +28,7 @@ function People(name){
 ```javascript
 function create(){
   let obj={};
-  const Cons=[].shift.call(arguments);func
+  const Cons=[].shift.call(arguments);
   obj.__proto__=Cons.prototype;
   const result=Cons.apply(obj,arguments);
   return  result instanceof Object? result: obj;
