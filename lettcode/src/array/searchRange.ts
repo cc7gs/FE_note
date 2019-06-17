@@ -16,7 +16,7 @@ export const searchRange: ISearchRange = (nums, target) => {
   let len = nums.length, start = 0, end = len - 1, mid = 0;
   let flag = false;
   if (!nums.length) return [-1, -1];
-  while (start < end) {
+  while (start <= end) {
     mid = Math.floor((start + end) / 2);
     if (target < nums[mid]) {
       end = mid - 1;
@@ -33,7 +33,7 @@ export const searchRange: ISearchRange = (nums, target) => {
   while (start - 1 >= 0 && nums[start - 1] === target) {
     start--;
   }
-  while (end + 1 <= nums.length && nums[end + 1] === target) {
+  while (end + 1 < len && nums[end + 1] === target) {
     end++;
   }
   return [start, end];

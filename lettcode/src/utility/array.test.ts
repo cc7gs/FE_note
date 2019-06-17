@@ -21,6 +21,10 @@ describe('array', () => {
     const input=[5,7,7,8,8,10];
     expect(searchRange(input,8)).toEqual([3,4]);
   })
+  it('在排序数组中查找元素的第一个和最后一个位置',()=>{
+    const input=[1];
+    expect(searchRange(input,1)).toEqual([0,0]);
+  })
   it('杨辉三角', () => {
     const output =
       [[1],
