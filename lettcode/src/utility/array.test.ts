@@ -11,31 +11,51 @@ import {
   containsDuplicate,
   rotateImage,
   rotateArray,
+  generate,
+  searchRange
 } from '../array'
 
 
 describe('array', () => {
-  it('旋转数组',()=>{
-    const input=[1,2,3,4,5,6,7];
-    const output=[5,6,7,1,2,3,4];
-    rotateArray(input,3)
+  it('在排序数组中查找元素的第一个和最后一个位置',()=>{
+    const input=[5,7,7,8,8,10];
+    expect(searchRange(input,8)).toEqual([3,4]);
+  })
+  it('在排序数组中查找元素的第一个和最后一个位置',()=>{
+    const input=[1];
+    expect(searchRange(input,1)).toEqual([0,0]);
+  })
+  it('杨辉三角', () => {
+    const output =
+      [[1],
+      [1, 1],
+      [1, 2, 1],
+      [1, 3, 3, 1],
+      [1, 4, 6, 4, 1]
+      ];
+      expect(generate(5)).toEqual(output);
+  })
+  it('旋转数组', () => {
+    const input = [1, 2, 3, 4, 5, 6, 7];
+    const output = [5, 6, 7, 1, 2, 3, 4];
+    rotateArray(input, 3)
     expect(input).toEqual(output);
   })
-  it('旋转图像',()=>{
-    const input=[
-      [1,2,3],
-      [4,5,6],
-      [7,8,9]
+  it('旋转图像', () => {
+    const input = [
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, 9]
     ];
-    const output=[
-      [7,4,1],
-      [8,5,2],
-      [9,6,3]
+    const output = [
+      [7, 4, 1],
+      [8, 5, 2],
+      [9, 6, 3]
     ];
     expect(rotateImage(input)).toEqual(output);
   })
-  it('存在重复元素',()=>{
-    expect(containsDuplicate([1,2,3,4,5,3])).toBe(true);
+  it('存在重复元素', () => {
+    expect(containsDuplicate([1, 2, 3, 4, 5, 3])).toBe(true);
   })
   it('螺旋矩阵', () => {
     let input = [
