@@ -9,6 +9,8 @@ import findDuplicates from './findDuplicates'
 export * from './spiralOrder'
 export * from './containsDuplicate'
 export * from './rotate.image'
+export * from './triangle.generate'
+export * from './searchRange'
 export {
   findDuplicates,
   letterCombinations,

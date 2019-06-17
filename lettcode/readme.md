@@ -16,20 +16,23 @@
 
 ## array
 
-| #   | title                                                   | difficulty |
-| --- | ------------------------------------------------------- | ---------- |
-| 17  | [电话号码的字母组合](./src/array/letterCombinations.ts) | Medium     |
-| 914 | [卡牌分组](./src/array/hasGroupsSize.ts)                | Easy       |
-| 605 | [种花问题](./src/array/canPlaceFlowers.ts)              | Easy       |
-| 349 | [两个数组的交集](./src/array/intersection.ts)           | Easy       |
-| 169 | [求众数](./src/array/majorityElement.ts)                | Easy       |
-| 229 | [求众数](./src/array/majorityElement-two.ts)            | Medium     |
-| 561 | [数组拆分 \| ](./src/array/arrayPairSum.ts)             | Easy       |
-| 442 | [数组中重复数字](./src/array/findDuplicates.ts)         | Medium     |
-| 54  | [螺旋矩阵](./src/array/spiralOrder.ts)                  | Medium     |
-| 217 | [存在重复元素](./src/array/containsDuplicate.ts)        | Easy       |
-| 48  | [旋转图像](./src/array/rotate.image.ts)                 | Medium     |
-| 189 | [旋转数组](./src/array/totate.image.ts)                 | Easy       |
+| #   | title                                                                    | difficulty |
+| --- | ------------------------------------------------------------------------ | ---------- |
+| 17  | [电话号码的字母组合](./src/array/letterCombinations.ts)                  | Medium     |
+| 914 | [卡牌分组](./src/array/hasGroupsSize.ts)                                 | Easy       |
+| 605 | [种花问题](./src/array/canPlaceFlowers.ts)                               | Easy       |
+| 349 | [两个数组的交集](./src/array/intersection.ts)                            | Easy       |
+| 169 | [求众数](./src/array/majorityElement.ts)                                 | Easy       |
+| 229 | [求众数](./src/array/majorityElement-two.ts)                             | Medium     |
+| 561 | [数组拆分 \| ](./src/array/arrayPairSum.ts)                              | Easy       |
+| 442 | [数组中重复数字](./src/array/findDuplicates.ts)                          | Medium     |
+| 54  | [螺旋矩阵](./src/array/spiralOrder.ts)                                   | Medium     |
+| 217 | [存在重复元素](./src/array/containsDuplicate.ts)                         | Easy       |
+| 48  | [旋转图像](./src/array/rotate.image.ts)                                  | Medium     |
+| 189 | [旋转数组](./src/array/totate.image.ts)                                  | Easy       |
+| 118 | [杨辉三角](./src/array/triangle.generate.ts)                             | Easy       |
+| 34  | [在排序数组中查找元素的第一个和最后一个位置](./src/array/searchRange.ts) | Easy       |
+
 ## sort
    
 | #   | title                                                     | difficulty |
@@ -73,8 +76,8 @@
 | 98  | [搜素二叉树](./src/tree/basic.ts)     | Medium     |
 | 617 | [合并二叉树](./src/tree/mergeTree.ts) | Easy       |
 # 堆
-| #   | title                         | difficulty |
-| --- | ----------------------------- | ---------- |
+| #   | title                             | difficulty |
+| --- | --------------------------------- | ---------- |
 |     | [创建最大堆](./src/heap/basic.ts) |            |
 # 运行须知
 练习采用ts环境去运行编译,测试文件在test目录夹下
