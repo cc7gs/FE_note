@@ -34,7 +34,7 @@
 | 34  | [在排序数组中查找元素的第一个和最后一个位置](./src/array/searchRange.ts) | Easy       |
 | 121  | [买卖股票的最佳时机](./src/array/max.profit.ts) | Easy       |
 | 122  | [买卖股票的最佳时机2](./src/array/max.profit.ts) | Easy       |
-
+| 860  | [柠檬水找零](./src/array/lemonade.ts) | Easy       |
 
 ## sort
    

@@ -14,11 +14,15 @@ import {
   generate,
   searchRange,
   maxprofit,
-  maxprofit2
+  maxprofit2,
+  lemonadeChange
 } from '../array'
 
 
 describe('array', () => {
+  it('柠檬水找零',()=>{
+    expect(lemonadeChange([5,5,5,10,20])).toBe(true);
+  })
   it('买卖股票的最佳时机',()=>{
     expect(maxprofit([7,1,5,3,6,4])).toBe(5);
   })
