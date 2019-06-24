@@ -13,6 +13,7 @@ export * from './triangle.generate'
 export * from './searchRange'
 export * from './max.profit'
 export * from './lemonade'
+export * from './unique.paths'
 export {
   findDuplicates,
   letterCombinations,
