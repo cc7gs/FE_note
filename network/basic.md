@@ -18,6 +18,8 @@ ACK=Y+1,Seq=Z
       1. 请求不为：post、get、head
       2. 请求包含 header
       3. Content-type值不是以下几种：text/plain、mutipart/form-data、application/x-www-form-urlencoded
+      4. 不携带cookie
+
 ```javascript
   res.writeHead(200,{
         "Access-Control-Allow-Origin":"http://localhost:8888",

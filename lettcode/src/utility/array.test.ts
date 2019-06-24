@@ -12,11 +12,19 @@ import {
   rotateImage,
   rotateArray,
   generate,
-  searchRange
+  searchRange,
+  maxprofit,
+  maxprofit2
 } from '../array'
 
 
 describe('array', () => {
+  it('买卖股票的最佳时机',()=>{
+    expect(maxprofit([7,1,5,3,6,4])).toBe(5);
+  })
+  it('买卖股票的最佳时机2',()=>{
+    expect(maxprofit2([7,1,5,3,6,4])).toBe(7);
+  })
   it('在排序数组中查找元素的第一个和最后一个位置',()=>{
     const input=[5,7,7,8,8,10];
     expect(searchRange(input,8)).toEqual([3,4]);

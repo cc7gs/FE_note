@@ -20,7 +20,7 @@
 #### 前后端如何通信
 - ajax
 - webSocket
-- cors
+- cors 
 #### 跨域通信方法
 - JSONP
 - postMessage
