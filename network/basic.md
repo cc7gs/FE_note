@@ -11,6 +11,7 @@ SYN=1,Seq=x      SYN=1,ACK=x+1,Seq=Y
 ACK=Y+1,Seq=Z
 
 解决网络延迟，服务器无用的等待。
+
 3. cors
    1. 首先跨越请求是发送出去了，是在浏览器将响应拦截了。
    2. 在服务端配置 Access-Control-Allow-Origin 可以解决跨越问题
@@ -27,6 +28,7 @@ ACK=Y+1,Seq=Z
         "Access-Control-Allow-Methods":"PUT、Delete"
     })
 ```
+
 4.  内容安全策略(csp)
     1.  作用    
         1.  限制网页资源获取
