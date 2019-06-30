@@ -71,4 +71,4 @@ http2 优势
     1. 信道复用
     2. 分贞传输
     3. server push
-### [其它相关面试题](../../../interview/interview-case/http.md)
+### [其它相关面试题](../interview/interview-case/http.md)

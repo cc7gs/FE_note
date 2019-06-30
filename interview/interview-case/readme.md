@@ -10,7 +10,7 @@
 - [页面性能相关](./js/performance.md)
 
 ## 网络相关
-- [http基础](../../../../network/basic.md)
+- [http基础](../../network/basic.md)
 - [http面试题](./http.md)
 ### 通信类
 #### 什么同源策略？
