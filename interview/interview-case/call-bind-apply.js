@@ -2,10 +2,9 @@
  * 实现思路:
  *  1. 当不传入第一个参数时,则默认上下文环境为window
  *  2. 改变this 指向,让新的对象可以执行该函数，并能接受参数
- * 
+ * func.call(thisArg,arg1,arg2,...)
  */
 Function.prototype.myCall=function(context){
-    console.log('text',context,'------',this);
     //如果调用者不是函数则抛出异常
     if(typeof this!=='function'){
         throw new TypeError('Error');
@@ -18,8 +17,10 @@ Function.prototype.myCall=function(context){
     delete context.fn;
     return result;
 }
+
 /**
  * apply实现思路与call相同,只是参数处理方式不同 
+ * func.apply(thisArg,[arg1,arg2,...])
  */
 Function.prototype.myApply=function(context){
     if(typeof this !=='function'){
@@ -38,6 +39,7 @@ Function.prototype.myApply=function(context){
     delete context.fn;
     return result;
 }
+
 /** 
  * 实现思路如下:
  *  1. 对传入context的处理,如果不传或传null、undefined 则赋值为window
@@ -74,12 +76,12 @@ var obj={
         return a+b;
     }
 }
-console.log(this);
+console.log(this,'window or global');
 var a1=add(4,2);
 var a2=add.call(this,4,2);
 var a3=add.call(obj,4,2);
 var a4=add.myCall(obj,4,2);
-// var a4=add.myApply(obj,[4,2]);
+var a4=add.myApply(obj,[4,2]);
 var a5=add.myBind(obj,4)(2);
 
-console.log(a1,a2,a3,a4,a5);
+console.log(a1,a2,a3,a4,a5,'result');

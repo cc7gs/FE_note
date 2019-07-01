@@ -4,4 +4,4 @@
   - [关于事件循环](./async/async-loop.md)
 - jsx
    [jsxDemo](./jsxDemo)
-- [面经和面试题](./interview-case)
+- [js面试篇](./interview-case/readme.md)
