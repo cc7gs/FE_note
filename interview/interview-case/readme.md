@@ -11,6 +11,7 @@
 
 ## 网络相关
 - [http基础](../../network/basic.md)
+- [浏览器缓存](./cache.md)
 - [http面试题](./http.md)
 ### 通信类
 #### 什么同源策略？

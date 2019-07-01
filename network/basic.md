@@ -51,13 +51,12 @@ client                   server
  生成预密钥     --->        加密的预密钥通过私钥解密
 
  生成主密钥     <---加密数据传输-->      生成主密钥
-
 ## [nginx 相关知识](./nginx.md)
 
 ## 面试题
 ### 输入url后http请求完整过程？
 
-首先 redirect(跳转) --> App cache(应用缓存） --> DNS(DNS解析） --> TCP(创建TCP链接)-->Request(发送请求) --> Response(接受相应)
+首先 redirect(跳转) --> DNS(DNS解析） --> TCP(创建TCP链接)-->Request(发送请求) --> Response(接受相应)--> 浏览器解析
 
 ###  URL、URI、URN
 1.  URI:Uniform Resource Identifier 统一资源标志符
