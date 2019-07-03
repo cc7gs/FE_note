@@ -1,18 +1,17 @@
 # 面试题
 ## html、css
-- [页面布局](./html.md)
-- [盒模型与BFC](./css.md)
+- [页面布局](./html/html.md)
+- [盒模型与BFC](./html/css.md)
 ## js
 - [构造函数与操作符](./js/constructor.new.md)
 - [js原型链](./js/prototype.md)
 - [js渲染机制](./js/渲染.md)
-  - @todo 浏览器渲染流程
 - [页面性能相关](./js/performance.md)
 
 ## 网络相关
 - [http基础](../../network/basic.md)
-- [浏览器缓存](./cache.md)
-- [http面试题](./http.md)
+- [浏览器缓存](./network/cache.md)
+- [http面试题](./network/http.md)
 ### 通信类
 #### 什么同源策略？
 同源策略限制从一个源加载的文档或脚本如何与另一个源进行交互，它是一个隔离恶意文件的安全机制。
