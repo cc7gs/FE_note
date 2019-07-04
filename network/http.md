@@ -28,7 +28,6 @@
 - 5xx: 服务端错误
   - 500 服务端发生错误
   - 503 请求未完成，服务器临时过载
-
 # 什么持久连接？
 http 1.1版本后,当使用 Keep-Alive模式(持久连接)时,使客户端到服务端的连接持续有效,它避免了重新新建连接开销。
 # 什么是 管道化？
@@ -42,3 +41,18 @@ http 1.1版本后,当使用 Keep-Alive模式(持久连接)时,使客户端到服
 - 管道化机制通过持久化连接完成，仅HTTP/1.1支持此技术
 - 只有GET和HEAD请求可以进行管线化
 - 服务端必须支持
+#  URL、URI、URN
+1.  URI:Uniform Resource Identifier 统一资源标志符
+    1. 用于唯一标示互联网上的信息资源
+    2. 包含 URL和URN
+2.  URL:Uniform Resource Locator 统一资源定位器
+3. URN 永久统一资源符
+
+# http2 与 http1.1区别
+http2 优势
+    1. 信道复用
+    2. 分贞传输
+    3. server push
+
+# 输入url后http请求完整过程？
+首先 redirect(跳转) --> DNS(DNS解析） --> TCP(创建TCP链接)-->Request(发送请求) --> Response(接受相应)--> 浏览器解析

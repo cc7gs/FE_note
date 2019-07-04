@@ -52,22 +52,10 @@ client                   server
 
  生成主密钥     <---加密数据传输-->      生成主密钥
 ## [nginx 相关知识](./nginx.md)
-
+## [浏览器缓存](./cache.md)
 ## 面试题
-### 输入url后http请求完整过程？
+### [http面试题](../../network/http.md)
 
-首先 redirect(跳转) --> DNS(DNS解析） --> TCP(创建TCP链接)-->Request(发送请求) --> Response(接受相应)--> 浏览器解析
 
-###  URL、URI、URN
-1.  URI:Uniform Resource Identifier 统一资源标志符
-    1. 用于唯一标示互联网上的信息资源
-    2. 包含 URL和URN
-2.  URL:Uniform Resource Locator 统一资源定位器
-3. URN 永久统一资源符
 
-### http2 与 http1.1区别
-http2 优势
-    1. 信道复用
-    2. 分贞传输
-    3. server push
-### [其它相关面试题](../interview/interview-case/http.md)
+

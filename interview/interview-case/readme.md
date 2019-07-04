@@ -10,8 +10,8 @@
 
 ## 网络相关
 - [http基础](../../network/basic.md)
-- [浏览器缓存](./network/cache.md)
-- [http面试题](./network/http.md)
+- [浏览器缓存](../../network/cache.md)
+- [http面试题](../../network/http.md)
 ### 通信类
 #### 什么同源策略？
 同源策略限制从一个源加载的文档或脚本如何与另一个源进行交互，它是一个隔离恶意文件的安全机制。
