@@ -2,7 +2,7 @@
 node_modules/
 image/
 test.js
-chapter-5/
+
 dist/
 # 
 # 数据库篇/demo1_CURD/node_modules
