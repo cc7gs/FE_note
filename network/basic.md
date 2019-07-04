@@ -11,6 +11,7 @@ SYN=1,Seq=x      SYN=1,ACK=x+1,Seq=Y
 ACK=Y+1,Seq=Z
 
 解决网络延迟，服务器无用的等待。
+
 3. cors
    1. 首先跨越请求是发送出去了，是在浏览器将响应拦截了。
    2. 在服务端配置 Access-Control-Allow-Origin 可以解决跨越问题
@@ -18,6 +19,8 @@ ACK=Y+1,Seq=Z
       1. 请求不为：post、get、head
       2. 请求包含 header
       3. Content-type值不是以下几种：text/plain、mutipart/form-data、application/x-www-form-urlencoded
+      4. 不携带cookie
+
 ```javascript
   res.writeHead(200,{
         "Access-Control-Allow-Origin":"http://localhost:8888",
@@ -25,6 +28,7 @@ ACK=Y+1,Seq=Z
         "Access-Control-Allow-Methods":"PUT、Delete"
     })
 ```
+
 4.  内容安全策略(csp)
     1.  作用    
         1.  限制网页资源获取
@@ -47,13 +51,12 @@ client                   server
  生成预密钥     --->        加密的预密钥通过私钥解密
 
  生成主密钥     <---加密数据传输-->      生成主密钥
-
 ## [nginx 相关知识](./nginx.md)
 
 ## 面试题
 ### 输入url后http请求完整过程？
 
-首先 redirect(跳转) --> App cache(应用缓存） --> DNS(DNS解析） --> TCP(创建TCP链接)-->Request(发送请求) --> Response(接受相应)
+首先 redirect(跳转) --> DNS(DNS解析） --> TCP(创建TCP链接)-->Request(发送请求) --> Response(接受相应)--> 浏览器解析
 
 ###  URL、URI、URN
 1.  URI:Uniform Resource Identifier 统一资源标志符
@@ -67,3 +70,4 @@ http2 优势
     1. 信道复用
     2. 分贞传输
     3. server push
+### [其它相关面试题](../interview/interview-case/http.md)

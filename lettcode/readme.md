@@ -32,6 +32,12 @@
 | 189 | [旋转数组](./src/array/totate.image.ts)                                  | Easy       |
 | 118 | [杨辉三角](./src/array/triangle.generate.ts)                             | Easy       |
 | 34  | [在排序数组中查找元素的第一个和最后一个位置](./src/array/searchRange.ts) | Easy       |
+| 121  | [买卖股票的最佳时机](./src/array/max.profit.ts) | Easy       |
+| 122  | [买卖股票的最佳时机2](./src/array/max.profit.ts) | Easy       |
+| 860  | [柠檬水找零](./src/array/lemonade.ts) | Easy       |
+| 62  | [不同路径](./src/array/unique.paths.ts) | medium       |
+| 63  | [不同路径2](./src/array/unique.paths.ts) | medium       |
+
 
 ## sort
    
