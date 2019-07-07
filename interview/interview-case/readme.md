@@ -1,17 +1,30 @@
 # 面试题
 ## html、css
-- [页面布局](./html/html.md)
+- [三列布局 中间自适应布局](./html/center.auto.md)
+- [三列布局 间距固定,宽度自适应](./html/fixed.space.md)
+  - @todo
+- [三列布局 中间固定,两边自适应](./html/fixed.center.md)
+  - @todo
 - [盒模型与BFC](./html/css.md)
+### absolute中 top\left与 transform 移动区别？
+
 ## js
+- [js 参考基础题](./js/js.basic.md)
+  -  @todo
 - [构造函数与操作符](./js/constructor.new.md)
 - [js原型链](./js/prototype.md)
 - [js渲染机制](./js/渲染.md)
 - [页面性能相关](./js/performance.md)
-
+- [数组去重](./js/code/arrSet.js)
+- [数组扁平化](./js/code/flatDeep.js)
+- [统 0-1000 所有0](./js/code/count.zero.js)
+  - @todo
 ## 网络相关
 - [http基础](../../network/basic.md)
 - [浏览器缓存](../../network/cache.md)
 - [http面试题](../../network/http.md)
+- [cdn 是什么 解决了什么?](../../network/cdn.md)
+  - @todo
 ### 通信类
 #### 什么同源策略？
 同源策略限制从一个源加载的文档或脚本如何与另一个源进行交互，它是一个隔离恶意文件的安全机制。
