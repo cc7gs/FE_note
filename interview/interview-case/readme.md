@@ -9,8 +9,7 @@
 ### absolute中 top\left与 transform 移动区别？
 
 ## js
-- [js 参考基础题](./js/js.basic.md)
-  -  @todo
+- [js 常考基础题](./js/js.basic.md)
 - [构造函数与操作符](./js/constructor.new.md)
 - [js原型链](./js/prototype.md)
 - [js渲染机制](./js/渲染.md)
