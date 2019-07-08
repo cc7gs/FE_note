@@ -17,14 +17,12 @@
 - [页面性能相关](./js/performance.md)
 - [数组去重](./js/code/arrSet.js)
 - [数组扁平化](./js/code/flatDeep.js)
-- [统 0-1000 所有0](./js/code/count.zero.js)
-  - @todo
+- [统计 0-1000 所有0](./js/code/count.zero.js)
 ## 网络相关
 - [http基础](../../network/basic.md)
 - [浏览器缓存](../../network/cache.md)
 - [http面试题](../../network/http.md)
 - [cdn 是什么 解决了什么?](../../network/cdn.md)
-  - @todo
 ### 通信类
 #### 什么同源策略？
 同源策略限制从一个源加载的文档或脚本如何与另一个源进行交互，它是一个隔离恶意文件的安全机制。
