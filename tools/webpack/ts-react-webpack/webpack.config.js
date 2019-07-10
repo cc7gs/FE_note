@@ -27,7 +27,10 @@ const  commonConfig={
     plugins:[
         new CleanWebpackPlugin(),
         new CheckerPlugin(),
-        new htmlWebpackPlugins({title:'webpack leanring',}),
+        new htmlWebpackPlugins({
+            title:'webpack leanring',
+            template:'./src/web/index.html'
+        }),
     ],
     resolve:{
         extensions: ['.ts', '.tsx', '.js', '.jsx']

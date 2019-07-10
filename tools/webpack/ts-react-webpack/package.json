@@ -19,6 +19,7 @@
     "scripty": "^1.9.1",
     "typescript": "^3.5.2",
     "webpack": "^4.35.3",
+    "webpack-build-notifier": "^1.0.3",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1",
