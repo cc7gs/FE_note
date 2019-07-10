@@ -23,11 +23,8 @@ BFC 即 Block Formatting Contexts (块级格式化上下文)，它属于上述�
 ## BFC可以的解决问题
 ###  消除浮动
 **清除浮动**
-```
-<div className="box">
-  <div className="float">I am a floated box!</div>
-  <p>I am content inside the container.</p>
-</div>
+```html
+<style>
 .box {
   background-color: rgb(224, 206, 247);
   border: 5px solid rebeccapurple;
@@ -41,7 +38,13 @@ BFC 即 Block Formatting Contexts (块级格式化上下文)，它属于上述�
   background-color: white;
   border:1px solid black;
   padding: 10px;
-}    
+}  
+</style>
+<div className="box">
+  <div className="float">I am a floated box!</div>
+  <p>I am content inside the container.</p>
+</div>
+  
 ```
 ### 防止文字环绕
 ```html
@@ -49,6 +52,7 @@ BFC 即 Block Formatting Contexts (块级格式化上下文)，它属于上述�
   <div class="floated">Floated div</div>
   <p>Quae hic ut ab perferendis sit quod architecto,dolor debitis quam rem provident aspernatur tempora expedita.</p>
 </div>
+<style>
 .container{
   width: 150px;
   background-color: green;
@@ -68,16 +72,13 @@ BFC 即 Block Formatting Contexts (块级格式化上下文)，它属于上述�
   overflow: hidden;
   background-color: aqua;
 }
+</syle>
 ```
 ### 外边距塌陷
 创建新的BFC避免两个相邻 <div> 之间的 外边距合并 问题
-```
-<div class="blue"></div>
-<div class="red-outer">
-  <div class="red-inner">red inner</div>
-</div>
-
-.blue, .red-inner {
+```html
+<style>
+  .blue, .red-inner {
   height: 50px;
   margin: 10px 0;
 }
@@ -93,5 +94,9 @@ BFC 即 Block Formatting Contexts (块级格式化上下文)，它属于上述�
 .red-inner{
   background: gray;
 }
-
+</style>
+<div class="blue"></div>
+<div class="red-outer">
+  <div class="red-inner">red inner</div>
+</div>
 ```

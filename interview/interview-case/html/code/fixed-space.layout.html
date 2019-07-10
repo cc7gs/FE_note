@@ -1,9 +1,22 @@
-# 实现等宽等间距三列布局
-面试官问: 现在要实现一个三列布局并且它们宽度自适应中间间距10px。
-## 采用 flex
-父元素设置 flex,子元素平分空间 然后中间采用margin 左右各10px
-```html
- <section class="layout-flex">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三列布局 间距固定、宽度自适应</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <section class="layout-flex">
         <style>
             .layout-flex>.left-center-right {
                 display: flex;
@@ -33,16 +46,12 @@
             <div class="right">right</div>
         </article>
     </section>
-```
-## 采用 float
-主要借助box-sizing 特性。设置边框盒模型然后每个盒子设置 padding、并采用 background-clip裁剪内容区域，最后给父元素设置margin -10px 取出两边的间距。
-```html
- <section class="layout-float">
+    <section class="layout-float">
         <style>
             .layout-float>.left-center-right {
                 margin: 0 -5px;
-                height: 100%;
-                 display: flow-root; /*清除浮动 */
+                display: flow-root;
+                /*清除浮动 */
             }
 
             .layout-float>.left-center-right>div {
@@ -53,6 +62,7 @@
                 background-clip: content-box;
                 float: left;
             }
+
             .layout-float>.left-center-right .left {
                 background-color: gray;
             }
@@ -73,11 +83,7 @@
             <div class="right">right</div>
         </article>
     </section>
-```
-## 采用 margin calc 计算属性
-该方法和采用 float 大致思想一致,只是现在with由 calc计算。
-```html
- <section class="layout-margin-calc">
+    <section class="layout-margin-calc">
         <style>
             .layout-margin-calc .left-center-right {
                 margin-left: -10px;
@@ -106,4 +112,6 @@
             <div class="right">right</div>
         </article>
     </section>
-```
+</body>
+
+</html>

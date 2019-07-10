@@ -1,8 +1,22 @@
-# 中间固定 两边自适应
-描述：现在有三列 a、b、a;其中它们高度一定、b宽度200px,让a自适应 该如何做？
-## float +负margin
-```html
- <section class="layout-float">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>中间固定 两边自适应布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <section class="layout-float">
         <style>
             .layout-float {
                 min-height: 200px;
@@ -39,10 +53,7 @@
             <div class="right">right</div>
         </article>
     </section>
-```
-## flex 布局
-```html
- <section class="layout-flex">
+    <section class="layout-flex">
         <style>
             .layout-flex > .left-center-right{
                 display: flex;
@@ -67,4 +78,6 @@
             <div class="right"></div>
         </article>
     </section>
-```
+</body>
+
+</html>

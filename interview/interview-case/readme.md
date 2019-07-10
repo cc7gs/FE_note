@@ -2,12 +2,11 @@
 ## html、css
 - [三列布局 中间自适应布局](./html/center.auto.md)
 - [三列布局 间距固定,宽度自适应](./html/fixed.space.md)
-  - @todo
 - [三列布局 中间固定,两边自适应](./html/fixed.center.md)
-  - @todo
 - [盒模型与BFC](./html/css.md)
 ### absolute中 top\left与 transform 移动区别？
-
+- absolute 中left、right是相对最近的外层元素并且该元素满足 是 relative、aboslute、fixed。
+- transform 做偏移是相对自身的中心点而言，如果用百分比则相对自身元素的宽度。
 ## js
 - [js 常考基础题](./js/js.basic.md)
 - [构造函数与操作符](./js/constructor.new.md)
