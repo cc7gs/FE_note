@@ -20,6 +20,7 @@ package.json
 ```
 ![目录结构图](./content.png)
 ## 执行
+
 ```
 #! ./scripts/client/dev.sh
 echo hello,dev!
@@ -31,12 +32,22 @@ echo hello,dev!
 
 [仓库地址](https://github.com/cc7gs/frontEnd_note/tree/master/tools/webpack/ts-react-webpack)
 
+# 处理命令行参数 yargs-parser
+该库可以读取命令行参数如下实例
 
-# 待总结
+```javascript
+const params=proccess.argv(2); //通过系统变量读取命令行参数
+const args=require('yargs-parser')(params);
+console.log(params);//['node执行路径','执行文件路径',‘参数’]
+console.log(args); //{_:[],'参数键值对'}
 
-- [ ] yargs-parser
-- [ ] friendly-errors-webpack-plugin
-- [ ] webpack-build-notifier
+//执行
+$ node ./test.js --name=cc
+
+params //['.../node','...','--name=cc']
+args //{_:[],name:'cc'}
+```
+
 
 
 

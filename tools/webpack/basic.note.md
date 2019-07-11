@@ -81,6 +81,50 @@ file-loader 和 url-loader 可以接收并加载任何文件也包括字体.
     })
   ],
 ```
+- friendly-errors-webpack-plugin
+它可以识别某些类别的webpack错误，并清理，聚合和优先级，以提供更好的开发人员体验。
+
+```javascript
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+plugins:[
+   new FriendlyErrorsPlugin({
+            compilationSuccessInfo: {
+              messages: ['You application is running here http://localhost:3000'],
+              notes: ['Some additionnal notes to be displayed unpon successful compilation']
+            },
+            onErrors: function (severity, errors) {
+              // You can listen to errors transformed and prioritized by the plugin
+              // severity can be 'error' or 'warning'
+            },
+            // should the console be cleared between each compilation?
+            // default is true
+            clearConsole: true,
+           
+            // add formatters and transformers (see below)
+            additionalFormatters: [],
+            additionalTransformers: []
+          })
+]
+```
+- webpack-build-notifier
+  它使用节点通知程序模块显示Webpack构建错误和警告的操作系统级别通知。
+```javascript
+const WebpackBuildNotifierPlugin=require('webpack-build-notifier');
+
+{
+devServer:{
+  //...
+  quiet:true
+},
+  plugins:[
+    new WebpackBuildNotifierPlugin({
+            title: "My Project Webpack Build",
+            // logo: path.resolve("./img/favicon.png"),
+            suppressSuccess: true
+          }),
+  ]
+}
+```
 ## 开发环境(devtool)
 **sourceMap:**
 它是一个映射关系,可以找到打包后代码位置在打包前哪个位置.

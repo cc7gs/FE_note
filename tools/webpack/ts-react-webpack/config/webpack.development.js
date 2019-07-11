@@ -1,5 +1,5 @@
 const {join}=require('path');
-//webpacks友好的界面提示
+//webpack友好的界面提示
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 //webpacck error or success 窗口提示
 const WebpackBuildNotifierPlugin=require('webpack-build-notifier');
