@@ -7,7 +7,7 @@
 ## loader
 webpack 只能理解javascript和json文件。loader可以让它能够处理其他类型的文件，并将其转换有效模块。
 
-### filer-loader & url-loader
+### file-loader & url-loader
 两者主要功能都是对加载资源进行打包,但是 url-loader设置资源大小来对小资源进行打包js内，来减少网络带宽
 ```javascript
  module: {
