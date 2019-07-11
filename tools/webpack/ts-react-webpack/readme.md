@@ -19,7 +19,6 @@ package.json
 },
 ```
 ![目录结构图](./content.png)
-
 ## 执行
 ```
 #! ./scripts/client/dev.sh
@@ -31,3 +30,14 @@ echo hello,dev!
 > chmod -R +x ./scripts
 
 [仓库地址](https://github.com/cc7gs/frontEnd_note/tree/master/tools/webpack/ts-react-webpack)
+
+
+# 待总结
+
+- [ ] yargs-parser
+- [ ] friendly-errors-webpack-plugin
+- [ ] webpack-build-notifier
+
+
+
+
