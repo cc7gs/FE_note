@@ -1,11 +1,11 @@
 import * as React from 'react'
 import Routes from '../routes'
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter as Router} from 'react-router-dom'
 const App=()=>{
     return(
-        <BrowserRouter baseName='/'>
+        <Router baseName='/'>
         {Routes()}
-        </BrowserRouter>
+        </Router>
     )
 }
 export default App;
