@@ -97,6 +97,135 @@ border-radius: 50%;
 ### 伪元素和伪类区别
 - 伪类表示 状态比如： link,hover;使用单冒号 
 - 伪元素表示真的元素比如： after,before;使用双冒号
+## 布局
+### float
+采用浮动布局后,会使父元素内容塌陷,此时一定记住要清除浮动
+```html
+<style>
+/* 父元素清除浮动 */
+.row::after{
+    content:''; 
+    display:table;
+    clear:both;
+}
+.col-2{
+    float:left;
+    width:44%;
+    margin-left:4%;
+    margin-right:0;
+}
+</style>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-2"></div>
+</div>
+```
+** 这里除了使用`table`元素外还可以使用`flow-root`效果相同，或者采用其它形成BFC方案`overflow`,`inline-bolck`,`block`等，当由于这些在生产中会产生副作用，建议采用前面方案。 
+
+### flex
+#### 属性
+##### Parent (Flex Container)
+- display：flex | inline-flex
+- flex-direction: row | row-reverse | column | column-reverse
+- flex-wrap:wrap | nowrap | wrap-reverse
+- flex-flow: (是 flex-direction和flex-wrap 简写)
+- justify-content(主轴): flex-start | flex-end | center | space-between | space-around | space-evenly;
+- align-items(交叉轴 每个flex元素对齐方式):flex-start | flex-end | center | baseline | stretch
+- align-content(交叉轴 多行时每行对齐方式):flex-start | flex-end | center | stretch | space-between | space-around;
+  
+##### Children (Flex Items)
+- order:<integer> 
+- flex-grow: <number>
+- flex-shrink: <number>; 
+- flex-basis: <length> | auto;
+- flex:是（grow, shrink, and basis）简写 默认（0 1 auto）
+- align-self: 覆盖在父级上面的对齐方式
+
+### grid
+#### 属性
+##### Parent (Grid Container)
+- 	display: grid | inline-grid;
+- grid-template-columns、grid-template-rows:基于网格列的纬度去定义定义网格线名称和尺寸  <size>| <repeat>
+
+```css
+.myClass {
+    grid-template-columns: [col1] 40px [col2] 3fr;
+    grid-template-rows: 50% 25vh auto;
+}
+
+.anotherClass {
+    grid-template-rows: repeat(2, 350px [name]) 10%;
+}
+/* 等价 */
+.anotherClass {
+    grid-template-rows: 350px [name] 350px [name] 10%;
+}
+```
+- grid-template-areas:是网格区域 grid areas 在CSS中的特定命名。通过选择器命名区域。 然后通过此属性指定布局。 必须为每个列/行指定区域名称。
+```css
+.wrapper {
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto;
+    /*1. 定义行和列数 与区域名称（2*4）*/
+    /* [.]表示空出此行 */
+    grid-template-areas: 
+    "header header header header"
+    "aside . article article";
+}
+/* 2. 指定区域 */
+.class1 {
+    grid-area: header;
+}
+.class2 {
+    grid-area: article;
+}
+.class3 {
+    grid-area: aside;
+}
+```
+- grid-template:是 grid-template-rows, grid-template-columns, and grid-template-areas 缩写
+- grid-column-gap:<number> 列间距
+- grid-row-gap:<number> 行间距
+- grid-gap: grid-column-gap and grid-row-gap缩写
+- justify-items:align grid items 行轴对齐 start | end | center | stretch(default);
+- align-items:align grid items 纵轴对齐 start | end | center | stretch(default);
+- justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
+- align-content:  start | end | center | stretch | space-around | space-between | space-evenly;
+- grid-auto-columns、grid-auto-rows: <track-size>;
+
+##### Children (Grid Items)
+- 	grid-column-start
+	grid-column-end
+	grid-row-start
+	grid-row-end: <number> | <name> | span <number> | span <name> | auto;
+
+```css
+.class1 {
+    grid-column-start: 1;
+    grid-column-end: span 4;
+    grid-row-start: 3;
+    grid-row-end: span footer-end;
+}
+```
+- grid-column
+	grid-row: <start-line> / <end-line> | <start-line> / span <value>;
+
+```css
+.class1 {
+    grid-column: 1 / span 4;
+    grid-row: 3 / span footer-end;
+}	
+```
+- grid-area:  <name> | <row-start> / <column-start> / <row-end> / <column-end>;
+有两种名称grid-area:1. 使用区域名称;2. 使用 <row-start> / <column-start> / <row-end> / <column-end>
+```css
+.class1 {
+    grid-area: 1 / name3 / namedline / 4;
+}
+```
+- justify-self:覆盖 justify-items.  start | end | center | stretch;
+- align-self:覆盖 align-items. start | end | center | stretch;
+
 
 ## css 效果
 ### box-show
