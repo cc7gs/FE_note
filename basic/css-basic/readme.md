@@ -226,7 +226,76 @@ border-radius: 50%;
 - justify-self:覆盖 justify-items.  start | end | center | stretch;
 - align-self:覆盖 align-items. start | end | center | stretch;
 
-
+**练习:**通过grid 布局让下面html 在不同设备下展示不通的排版
+```css
+.wrapper {
+	display: grid;
+	grid-gap: 10px;
+	font-family: Arial, sans-serif;
+}
+.wrapper > * {
+	padding: 1em;
+	border-radius: 1em;
+}
+header {
+	background-color: blue;
+	color: white;
+}
+article {
+	background-color: green;
+	color: white;
+}
+aside {
+	background-color: yellow;
+}
+@media (min-width: 650px) { 
+	header {
+		grid-column: 1 / 2;
+		grid-row: 2 / 3;
+	}
+	article {
+		grid-column: 1 / 2;
+		grid-row: 1 / 2;
+	}
+	aside {
+		grid-column: 2 / 3;
+		grid-row: 1 / 3;
+	}
+}
+@media (min-width: 1000px) { 
+	header {
+		grid-column: 2 / 3;
+		grid-row: 1 / 2;
+	}
+	article {
+		grid-column: 2 / 3;
+		grid-row: 2 / 3;
+	}
+	aside {
+		grid-column: 1 / 2;
+		grid-row: 1 / 3;
+	}
+}
+```
+```html
+<div class="wrapper">
+		<header>
+			<h1>My Fine Header</h1>
+		</header>
+		<article>
+			<h2>Article Title</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci laborum, ex tempora esse fuga consequuntur dolores excepturi, eaque quis incidunt?</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci laborum, ex tempora esse fuga consequuntur dolores excepturi, eaque quis incidunt?</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci laborum, ex tempora esse fuga consequuntur dolores excepturi, eaque quis incidunt?</p>
+		</article>
+		<aside>
+			<h3>My Aside</h3>
+			<blockquote>
+				A fine quote!
+			</blockquote>
+		</aside>
+	</div>
+```
 ## css 效果
 ### box-show
 该属性可以让几乎所有元素的边框产生阴影。如果元素同时设置了 border-radius ，阴影也会有圆角效果。
