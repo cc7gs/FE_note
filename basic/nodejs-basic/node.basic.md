@@ -1,4 +1,70 @@
+
+# nodejs 能做什么？
+- 构建工具(比如 自动化，webpack...)
+- API(REST,即时通讯)
+- CDNs
+- 共享库
+- 桌面应用
+- 物联网（IOT）
+- ...
+
+# globals
+- process 提供有关当前Node.js进程并对其进行控制的信息
+- require 查找和使用当前模块的函数
+- __dirname 当前目录路径
+- module nodejs中一切都是模块(最小一个js文件),供其它模块消费使用
+- gobal 和window一样,它是服务器全局变量
+...
+[其它nodejs globals](https://nodejs.org/api/globals.html#globals_global)
+
 # nodejs 常用API
+
+## modules
+`foo.js`
+```js
+const circle = require('./circle.js');
+console.log(`The area of a circle of radius 4 is ${circle.area(4)}`);
+```
+`circle.js`
+```js
+const { PI } = Math;
+
+exports.area = (r) => PI * r ** 2;
+
+exports.circumference = (r) => 2 * PI * r;
+
+//➡️ equal
+
+// const area=(r)=>PI*r**2;
+// const circumference = (r) => 2 * PI * r;
+// module.exports={
+//   area,
+//   circumference
+// }
+
+```
+
+## fs
+
+```js
+/**
+ * 文件的读取
+ */
+const fs=require('fs');
+//同步读取文件
+const readme=fs.readFileSync('../readme.md');
+console.log('同步读取',readme);
+const reameAsync=fs.readFile('../readme.md',(err,data)=>{
+    if(err) throw err;
+    console.log('异步读取数据',data.toString());
+});
+```
+** 读取文件的路如果是相对路径的话，那么则相对相对的是当前命令行执行的路径,而不是文件所在路径。
+> node  basic/nodejs-basic/basic fs.js
+
+> cd basic/nodejs-basic/basic 
+> node fs.js
+前者运行会报错,因为在当前命令行路径找不到 readme.md,因此我们一般采用`path.join(__dirname,'../readme.md')`,具体分析看`path`
 
 ## path -路径
 - __dirname: 表示当前执行文件所在目录的完整目录名
@@ -77,4 +143,10 @@ console.log(path.resolve('/foo/bar','/a/nodeJs'));
 console.log(path.resolve('foo/bar','/a'));
 console.log(path.resolve(''))
 ```
-## fs -文件系统
+
+
+# 调试
+
+1. node --inspect app.js
+2. chrome://inspect/#devices
+
