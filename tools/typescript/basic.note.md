@@ -2,6 +2,11 @@
 
 >  npm install -g typescript
 
+`初始化配置项`
+
+> tsc -- init 
+
+
 在编辑器，将下面的代码输入到greeter.ts文件里：
 
 ## 类型注解
@@ -21,6 +26,7 @@ interface Persion {
   firstName: string;
   lastName: string;
 }
+
 /**
  * @description 接口使用
  * @param person
@@ -102,7 +108,6 @@ let someValue: any = "this is a string";
 let strLength: number = (someValue as string).length;
 ```
 注:当你在TypeScript里使用JSX时，只有 as语法断言是被允许的。
-
 
 # 接口
 接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。
