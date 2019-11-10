@@ -61,3 +61,39 @@ let counter=getCounter();
 counter(10);
 counter.reset();
 counter.interval=5
+
+
+let a=1;
+let b='1';
+type Type=string|number;
+
+function Print(type:Type){
+  if(typeof type==='number'){
+    console.log('number',type.toFixed(2))
+  }
+  if(typeof type==='string'){
+    console.log('string',type.toUpperCase())
+  }
+}
+
+interface Rtangle{
+  kind:'tangle',
+  w:number;
+  h:number
+}
+interface Circle{
+  kind:'circle',
+  r:number;
+}
+type Shape=Rtangle|Circle;
+
+function area(s:Shape){
+  switch(s.kind){
+    case 'tangle':
+      return s.h*s.w;
+    case 'circle':
+      return Math.PI*s.r**2;
+    default:
+      return ((e:never)=>{throw Error(`没有覆盖所有可选类型${e}`)})(s)
+  }
+}
