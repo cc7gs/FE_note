@@ -52,9 +52,9 @@ exports.circumference = (r) => 2 * PI * r;
  */
 const fs=require('fs');
 //同步读取文件
-const readme=fs.readFileSync('../readme.md');
+const readme=fs.readFileSync('../README.md');
 console.log('同步读取',readme);
-const reameAsync=fs.readFile('../readme.md',(err,data)=>{
+const reameAsync=fs.readFile('../README.md',(err,data)=>{
     if(err) throw err;
     console.log('异步读取数据',data.toString());
 });
@@ -64,7 +64,7 @@ const reameAsync=fs.readFile('../readme.md',(err,data)=>{
 
 > cd basic/nodejs-basic/basic 
 > node fs.js
-前者运行会报错,因为在当前命令行路径找不到 readme.md,因此我们一般采用`path.join(__dirname,'../readme.md')`,具体分析看`path`
+前者运行会报错,因为在当前命令行路径找不到 README.md,因此我们一般采用`path.join(__dirname,'../README.md')`,具体分析看`path`
 
 ## path -路径
 - __dirname: 表示当前执行文件所在目录的完整目录名
