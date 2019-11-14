@@ -253,6 +253,26 @@ const unsubscribe =subscribe({next:(x)=>{console.log(x)}});
 unsubscribe();
 ```
 ### Observer
+
+### Subscription
+订阅代表一次性资源的对象,通常是指Observable执行。它还有一个方法 `unsubscribe`它不带任何参数，而只是释放该订阅所拥有的资源。
+```js
+import { interval } from 'rxjs';
+ 
+const observable1 = interval(400);
+const observable2 = interval(300);
+ 
+const subscription = observable1.subscribe(x => console.log('first: ' + x));
+const childSubscription = observable2.subscribe(x => console.log('second: ' + x));
+ 
+subscription.add(childSubscription);
+ 
+setTimeout(() => {
+  // Unsubscribes BOTH subscription and childSubscription
+  subscription.unsubscribe();
+}, 1000);
+```
+### Operators
 > 管道运算符是一个将Observable作为其输入并返回另一个Observable的函数。这是一个纯粹的操作：以前的Observable保持不变
 > 
 例如，被调用的运算符map类似于同名的Array方法。就像[1, 2, 3].map(x => x * x) 一样输出[1, 4, 9]，Observable创建如下：
@@ -268,8 +288,57 @@ map(x => x * x)(of(1, 2, 3)).subscribe((v) => console.log(`value: ${v}`));
 // value: 4
 // value: 9
 ```
-
-### Subscription
-### Operators
 ### Subject
+Subject 就像一个可观察对象(Observable),但它传播给多个观察者。
+```js
+import {Subject} from 'rxjs'
+
+const subject=new Subject<number>();
+
+subject.subscribe({next:(x)=>{console.log('观察这A',x)}})
+
+subject.subscribe({next:(x)=>{console.log('观察者B',x)}})
+
+subject.next(1);
+subject.next(2);
+ 
+// Logs:
+//观察这A 1
+//观察者B 1
+//观察这A 2
+//观察者B 2
+```
 ### Schedulers
+调度程序控制何时开始订阅以及何时传递通知。它由三个部分组成
+- 调度程序是一种数据结构。
+- 调度程序是一个执行上下文。
+- 调度程序具有（虚拟）时钟
+
+> 调度程序使您可以定义可观察对象将在哪些执行上下文中向其观察者传递通知
+```js
+import { Observable, asyncScheduler } from 'rxjs';
+import { observeOn } from 'rxjs/operators';
+ 
+const observable = new Observable((observer) => {
+  observer.next(1);
+  observer.next(2);
+  observer.next(3);
+  observer.complete();
+}).pipe(
+  observeOn(asyncScheduler)
+);
+ 
+console.log('just before subscribe');
+observable.subscribe({
+  next(x) {
+    console.log('got value ' + x)
+  },
+  error(err) {
+    console.error('something wrong occurred: ' + err);
+  },
+  complete() {
+     console.log('done');
+  }
+});
+console.log('just after subscribe');
+```
