@@ -1,5 +1,4 @@
 import {from, Observable} from 'rxjs'
-import {a}from './observable'
 
 const observable=from([1,2,3]);
 const subscription=observable.subscribe(x=>console.log('from',x));
@@ -21,6 +20,8 @@ const intervalOb=new Observable(function subscribe(subscriber){
 })
 
 let un=intervalOb.subscribe(x=>console.log(x));
+//leater
+
 un.unsubscribe();
 
 //和下面类似 👇

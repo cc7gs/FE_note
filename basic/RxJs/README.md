@@ -342,3 +342,7 @@ observable.subscribe({
 });
 console.log('just after subscribe');
 ```
+
+
+> 关于搭建环境可以👇
+> [ts+webpack 搭建环境](https://github.com/cc7gs/frontEnd_note/tree/master/tools/webpack/demo-ts)
