@@ -1,4 +1,6 @@
 import {from, Observable} from 'rxjs'
+require('./operators')
+
 
 const observable=from([1,2,3]);
 const subscription=observable.subscribe(x=>console.log('from',x));

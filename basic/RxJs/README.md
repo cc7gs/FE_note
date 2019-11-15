@@ -1,19 +1,17 @@
-# 入门RxJs 
-RxJS 是使用 Observables 的响应式编程的库，它使编写异步或基于回调的代码更容易。
-> 可以将它看作一个事件处理的Lodash
-ReactiveX将Observer模式与Iterator模式以及功能性编程与集合相结合，从而满足了管理事件序列的理想方式的需求。
+> 这是一个学习RxJs 笔记仓库,通过书籍和实践总结出一个手册,如有错误可以击提issue,如果觉得ok 请点个star, `送人玫瑰手有余香`
+# 什么是Rx?
+> **Ractive Extension** 也叫 **ReactiveX**,或者简称`Rx`,指的是实践响应式编程的一套工具。Rx是一个大家族它包含 RxJava、RxPy等，`RxJS是Rx用JavaScript语言实现`。
 
-`RXJS一些概念`:
+ RxJs擅长处理异步操作,因为它采用`推`的处理方式,当一个数据产生时，被推送给对应的处理函数,而这个处理函数`不用关心数据是同步产生还是异步产生`的。因此学习RxJS就是学习如何组合操作符来解决复杂问题。简而言之:
+ 1. RxJS 是使用 `Observables 的响应式编程的库`，它使编写异步或基于回调的代码更容易。  
+ 2. 可以将它看作一个事件处理的Lodash
+1. ReactiveX将`观察者模式`与`迭代器模式`以及函数编程相结合，从而满足了管理事件序列的理想方式的需求。
 
-- Observable:表示未来可以调用的值或者集合
-- Observer:一组回调,用来监听Observable传递的值
-- Subscription:表示Observable的执行，主要用于取消执行
-- Operators:是一个纯函数,它将一个Observable作为输入并生成另一个Observable作为输出
-- Subject:等同于EventEmitter，并且是将值或事件多播到多个观察者的唯一方法
-- Schedulers:是集中式控制并发调度
+> 关于Rx更多内容请👇这里
+> [了解Rx](./concept.md)
 
 
-## 搭建学习仓库
+# 搭建学习仓库
 > npm init -y
 > npm typescript ts-node ts-node-dev  -D
 
@@ -32,6 +30,7 @@ ReactiveX将Observer模式与Iterator模式以及功能性编程与集合相结�
     "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts"
   },
 ```
+
 ## 小试牛刀
 ```ts
 import {Observable} from 'rxjs';
@@ -57,10 +56,9 @@ console.log('just after subscribe');
 > npm run dev
 
 
-## 基础
-
-### Observable
-#### pull与push
+# 基础
+## 被观察对象(Observable)
+### pull与push
 pull和push 是两种不同的协议,它们描述了数据生产者(Producer)如何数据消费者(Consumer)通信
 - `pull`:在 pull 系统中`Consumer`明确知道何时从`Producer`中接收数据,但是`Producer`不知道何时将数据发送给`Consumer`。
 每个JavaScript函数都是一个Pull系统。该函数是数据的生产者，并且调用该函数的代码通过从调用中“拉出” 单个返回值来使用它。
@@ -252,9 +250,13 @@ const unsubscribe =subscribe({next:(x)=>{console.log(x)}});
 //later
 unsubscribe();
 ```
-### Observer
-
-### Subscription
+## 观察者(Observer)
+Observable对象的函数 `subscribe`中的方法就是观察者。
+```js
+function observer(x){}
+xxx.subscribe(observer);
+```
+## Subscription
 订阅代表一次性资源的对象,通常是指Observable执行。它还有一个方法 `unsubscribe`它不带任何参数，而只是释放该订阅所拥有的资源。
 ```js
 import { interval } from 'rxjs';
@@ -272,23 +274,28 @@ setTimeout(() => {
   subscription.unsubscribe();
 }, 1000);
 ```
-### Operators
+## 操作符(Operators)
 > 管道运算符是一个将Observable作为其输入并返回另一个Observable的函数。这是一个纯粹的操作：以前的Observable保持不变
-> 
-例如，被调用的运算符map类似于同名的Array方法。就像[1, 2, 3].map(x => x * x) 一样输出[1, 4, 9]，Observable创建如下：
 
 ```js
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import {from} from 'rxjs'
+import {map,filter} from 'rxjs/operators'
 
-map(x => x * x)(of(1, 2, 3)).subscribe((v) => console.log(`value: ${v}`));
+import {addItem} from './utils'
 
-// Logs:
-// value: 1 
-// value: 4
-// value: 9
+let numersObservable=from([1,2,3,4,5]);
+let squaredNumbers=numersObservable.pipe(
+    filter(val=>val>2),
+    map(val=>val*val)
+);
+
+let subscription=squaredNumbers.subscribe(result=>{
+    addItem(result)
+})
+subscription.unsubscribe();
+ 
 ```
-### Subject
+## Subject
 Subject 就像一个可观察对象(Observable),但它传播给多个观察者。
 ```js
 import {Subject} from 'rxjs'
@@ -308,7 +315,7 @@ subject.next(2);
 //观察这A 2
 //观察者B 2
 ```
-### Schedulers
+## Schedulers
 调度程序控制何时开始订阅以及何时传递通知。它由三个部分组成
 - 调度程序是一种数据结构。
 - 调度程序是一个执行上下文。
@@ -346,3 +353,7 @@ console.log('just after subscribe');
 
 > 关于搭建环境可以👇
 > [ts+webpack 搭建环境](https://github.com/cc7gs/frontEnd_note/tree/master/tools/webpack/demo-ts)
+
+# 参考
+[官方网站入门手册](https://rxjs-dev.firebaseapp.com/guide/overview)
+[深入浅出RxJS 程墨](https://book.douban.com/subject/30217949/)
