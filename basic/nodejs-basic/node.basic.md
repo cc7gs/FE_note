@@ -1,13 +1,4 @@
 
-# nodejs 能做什么？
-- 构建工具(比如 自动化，webpack...)
-- API(REST,即时通讯)
-- CDNs
-- 共享库
-- 桌面应用
-- 物联网（IOT）
-- ...
-
 # globals
 - process 提供有关当前Node.js进程并对其进行控制的信息
 - require 查找和使用当前模块的函数
