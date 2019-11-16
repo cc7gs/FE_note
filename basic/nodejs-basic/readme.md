@@ -24,5 +24,5 @@
 # 框架
   -[mvc分层思路](./framework/user-mvc)
 # 案例
-  - [文件上传案例](./fileUpload/) 
-  - [登录模块案例](./login/) 
+  - [文件上传案例](./demo/fileUpload/) 
+  - [登录模块案例](./demo/login/) 
