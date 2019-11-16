@@ -22,7 +22,9 @@
 [nodeJS基础API](./node.basic.md)
 
 # 框架
-  -[mvc分层思路](./framework/user-mvc)
+  - [mvc分层思路](./framework/user-mvc)
+  - [express](./framework/express-demo/README.md)
+
 # 案例
   - [文件上传案例](./demo/fileUpload/) 
   - [登录模块案例](./demo/login/) 
