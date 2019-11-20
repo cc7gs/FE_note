@@ -4,11 +4,16 @@ import {json,urlencoded} from 'body-parser'
 import cors from 'cors'
 import morgan from 'morgan'
 import routes from './routes'
+import mongoose from 'mongoose';
+import {DB_URL} from './config'
+
 class App{
     public app:express.Application;
     constructor(){
         this.app=express();
         this.config()
+        this.setMongoConfig()
+        
         // 引入路由
         this.app.use(routes)
     }
@@ -21,6 +26,12 @@ class App{
         this.app.use(urlencoded({extended:false}))
         //日志中间件
         this.app.use(morgan('dev'))
+    }
+    private setMongoConfig(){
+        mongoose.Promise = global.Promise;
+        mongoose.connect(DB_URL, {
+            useNewUrlParser: true
+          });
     }
 
 }

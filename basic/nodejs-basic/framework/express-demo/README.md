@@ -4,7 +4,8 @@
 1. [搭建环境](#搭建开发环境)
 2. [hello express](#helloexpress)
 3. [构建路由](#构建路由)
-4. [引入MongoDB](#引入MongoDB)
+4. [Controller and MongoDB](#引入MongoDB)
+5. [nodeJs 错误处理](#nodeJs错误处理)
   
 
 # 搭建开发环境
@@ -120,7 +121,6 @@ export default new App().app
 │   │   ├── index.ts
 │   │   └── user.ts
 │   └── server.ts
-├── tree.text
 └── tsconfig.json
 ```
 
@@ -207,6 +207,158 @@ constructor(){
 //...
 ```
 # 引入MongoDB
+[MongoDB安装与入门](./mongoDB.md)
+
+`目录结构`
+```
+├── README.md
+├── package-lock.json
+├── package.json
+├── src
+│   ├── config
+│   │  └── index.ts
+│   ├── controllers
+│   │  └── userControllers.ts
+│   ├── models
+│   │  └── user.model.ts
+│   ├── routes
+│   │   ├── index.ts
+│   │   └── user.ts
+│   └── server.ts
+│   ├── app.ts
+└── tsconfig.json
+```
+
+**引入Mongoose** ➡️ `app.ts`
+```js
+class App{
+
+constructor(){
+   //... 省略其它
+    this.setMongoConfig()
+}
+// ...
+
+private setMongoConfig(){
+    mongoose.Promise = global.Promise;
+    mongoose.connect(DB_URL, {
+        useNewUrlParser: true
+        });
+    }
+}
+```
+`配置文件` ➡️ `config/index.ts`
+```js
+export const DB_URL='mongodb://localhost:27017/express-api';
+export const PORT=3000;
+```
+`添加Models` ➡️ `user.model.ts`
+
+```js
+import * as mongoose from 'mongoose'
+
+const Schema=mongoose.Schema;
+
+const userSchema = new Schema({
+    firstName: {
+        type: String,
+        required: 'Enter a first name'
+    },
+    lastName: {
+        type: String,
+        required: 'Enter a last name'
+    },
+    email: {
+        type: String
+    },
+    status:{
+        type:String,
+        required:true,
+        enum:['active','complete','pastdue'],
+        default:'active'
+    },
+    company: {
+        type: String
+    },
+    phone: {
+        type: Number
+    },
+    created_date: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+const User=mongoose.model('user',userSchema)
+
+export default User
+```
+`处理业务逻辑(Controllers)` ➡️ `controllers/userController.ts`
+
+- 增加(C): model.create()、new model()
+- 查询(R): model.find()、model.findOne()、model.findById()
+- 修改(U):model.update()、model.findByIdAndUpdate()、model.findOneUpdate()
+- 删除(D):model.remove()、model.findByIdAndRemove()、model.findOneRemove()
+
+```js
+import { Request, Response } from "express";
+import User from '../models/user.model'
+
+class UserController{
+    static listAll=async (req:Request,res:Response)=>{
+        console.log('list ALl');
+        User.find({},(err,allInfo)=>{
+            if(err){
+                res.send(err)
+            }
+                res.send(allInfo)
+        })
+    }
+    static getOneById=async(req:Request,res:Response)=>{
+        console.log('get one by id');
+        User.findById(req.params.id,(err,userInfo)=>{
+            if(err){
+                res.send(err)
+            }
+            res.send(userInfo)
+        })
+    }
+    static newUser=async (req:Request,res:Response)=>{
+        console.log('create user');
+        let newUser=new User(req.body);
+        newUser.save((err,info)=>{
+            if(err){
+                res.send(err)
+            }
+            res.send(info)
+        })
+
+    }
+   static editUser=async (req:Request,res:Response)=>{
+        console.log('edit user');
+        User.findOneAndUpdate({_id:req.params.id},req.body,(err,info)=>{
+            if(err){
+                res.send(err)
+            }
+            res.send(info)
+        })
+
+    }
+    static delUser=async (req:Request,res:Response)=>{
+        console.log('del user');
+        User.remove({_id:req.params.id},(err)=>{
+            if(err){
+                res.send(err)
+            }
+            res.send({message:'Successfully deleted user!'})
+        })
+    }
+}
+export default UserController
+``` 
+
+
+# nodeJs错误处理
 
 # auth
 
