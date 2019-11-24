@@ -6,7 +6,7 @@
 3. [构建路由](#构建路由)
 4. [Controller and MongoDB](#引入MongoDB)
 5. [nodeJs 错误处理](#nodeJs错误处理)
-  
+6.  [auth](#auth)  
 
 # 搭建开发环境
 
@@ -360,9 +360,177 @@ export default UserController
 
 # nodeJs错误处理
 
+通过上面的学习,存在一个很大问题,就是我们把操作数据库的错误抛给了`client`这种实践是非常糟糕的,现在我们封装一个错误处理的中间件。
+
+> 首先，让我们创建一个将用于引发错误的类。
+
+`src/exceptions/HttpException.ts`
+
+```js
+class HttpException extends Error{
+    constructor(public status:number,public message:string){
+        super(message);
+        this.status=status;
+        this.message=message
+    }
+}
+export default HttpException
+```
+
+>如果您想了解有关Error对象和一般错误的更多信息，请尝试使用[try…catch](https://wanago.io/2018/11/12/handling-errors-in-javascript-with-try-catch-and-finally/)检查  JavaScript处理错误，最后
+
+> 接下来，书写错误中间件
+
+`middleware/error.middleware.ts`
+
+```js
+import {Request,Response,NextFunction} from 'express'
+import HttpException from '../expceptions/httpException'
+function errorMiddleware(error:HttpException,request:Request,response:Response,next:NextFunction){
+    const status=error.status||500;
+    const message=error.message||'Something went wrong';
+    response
+        .status(status)
+        .send({
+            status,
+            message
+        })
+}
+export default errorMiddleware
+```
+> 引入中间件
+
+`app.ts`
+
+```js
+import express from 'express' 
+import {json,urlencoded} from 'body-parser'
+import cors from 'cors'
+import morgan from 'morgan'
+import routes from './routes'
+import mongoose from 'mongoose';
+import errorMiddleware from './middleware/error.middleware'
+import {DB_URL} from './config'
+
+class App{
+    public app:express.Application;
+    constructor(){
+        this.app=express();
+        this.config()
+        this.setMongoConfig()
+        
+        // 引入路由
+        this.app.use(routes)
+
+        //错误处理
+        this.initializeErrorHandling();
+    }
+
+    private config(){
+        //开启 cors
+        this.app.use(cors())
+        //支持  application/json类型 发送数据
+        this.app.use(json());
+        //支持 application/x-www-form-urlencoded 发送数据
+        this.app.use(urlencoded({extended:false}))
+        //日志中间件
+        this.app.use(morgan('dev'))
+    }
+    
+    private initializeErrorHandling(){
+        this.app.use(errorMiddleware)
+    }
+
+    private setMongoConfig(){
+        mongoose.Promise = global.Promise;
+        mongoose.connect(DB_URL, {
+            useNewUrlParser: true
+          });
+    }
+
+}
+export default new App().app
+```
+> 应用
+`controllers/userController.ts`
+```js
+import HttpException from '../expceptions/httpException'
+
+class UserController{
+    static getOneById=async(req:Request,res:Response,next:NextFunction)=>{
+        const id=req.params.id;
+        User.findById(id,(err,userInfo)=>{
+            if(err){
+                next(new HttpException(404,`id:${id},not found`))
+            }else{
+                res.send(userInfo)
+
+            }            
+        })
+    }
+}
+
+```
+
+> 对于404页面我们可以再进一步抽离出一个`notFoundException`类。
+
+`expceptions/NotFoundException.ts`
+
+```js
+import HttpException from './HttpException'
+
+class NotFoundException extends HttpException{
+    constructor(id:string){
+        super(404,`id:${id},not found`);
+    }
+}
+export default NotFoundException
+```
+进一步修改`controller`
+
+`controllers/userController.ts`
+```js
+import NotFoundException from '../expceptions/NotFoundException'
+
+class UserController{
+    static getOneById=async(req:Request,res:Response,next:NextFunction)=>{
+        const id=req.params.id;
+        User.findById(id,(err,userInfo)=>{
+            if(err){
+                next(new NotFoundException(id))
+            }else{
+                res.send(userInfo)
+            }
+        })
+    }
+}
+```
+
 # auth
+本文我们采用[bcrypt npm 包](https://www.npmjs.com/package/bcrypt)实现的bcrypt哈希算法,
+
+> npm install bcrypt
+> npm install --save-dev @types/bcrypt
+
+举个🌰👇
+
+```js
+const passwordInPlainText = '12345678';
+const hashedPassword = await bcrypt.hash(passwordInPlaintext, 10);
+ 
+const doPasswordsMatch = await bcrypt.compare(passwordInPlaintext, hashedPassword);
+console.log(doPasswordsMatch); // true
+```
+## 登录与注册模块
 
 
+```js
+
+```
+
+
+# 参考地址
+[TypeScript Express tutorial #4. Registering users and authenticating with JWT](https://wanago.io/2018/12/24/typescript-express-registering-authenticating-jwt/)
 # 工具
 [insomnia](https://insomnia.rest/download/):一个强大的发送接收 APIs工具,类似postMan
 [morgan](https://www.npmjs.com/package/morgan):nodejs HTTP 请求日志中间件

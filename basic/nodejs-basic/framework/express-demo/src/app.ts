@@ -5,6 +5,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 import routes from './routes'
 import mongoose from 'mongoose';
+import errorMiddleware from './middleware/error.middleware'
 import {DB_URL} from './config'
 
 class App{
@@ -16,7 +17,11 @@ class App{
         
         // 引入路由
         this.app.use(routes)
+
+        //错误处理
+        this.initializeErrorHandling();
     }
+
     private config(){
         //开启 cors
         this.app.use(cors())
@@ -27,6 +32,11 @@ class App{
         //日志中间件
         this.app.use(morgan('dev'))
     }
+    
+    private initializeErrorHandling(){
+        this.app.use(errorMiddleware)
+    }
+
     private setMongoConfig(){
         mongoose.Promise = global.Promise;
         mongoose.connect(DB_URL, {
