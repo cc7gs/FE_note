@@ -42,7 +42,6 @@
   ]
 }                     /* Redirect output structure to the directory. */
 ```
-
 `配置脚本命令`
 
 ```js
@@ -54,7 +53,9 @@
     "prod":"npm run build && npm run start"
   },
 ```
+
 # hello express
+
 `src/server.ts`
 ```js
 import app from './app'
@@ -64,6 +65,7 @@ app.listen(PORT,()=>{
     console.log(`Express server listening on port ${PORT}`);
 })
 ```
+
 `app.ts`
 
 ```js
@@ -100,6 +102,8 @@ export default new App().app
 
 - body-parser:正文解析器使我们可以接收带有不同格式数据的请求，例如json或x-www-form-urlencoded。
 - CORS (Cross-Origin Resource Sharing):使用附加的HTTP标头，这些标头使我们的浏览器知道必须允许在一个域中运行的Web应用程序从其他来源的服务器访问资源。 
+
+[⬆ back to top](#目录)
 
 # 构建路由
 `RESTful`
@@ -206,6 +210,9 @@ constructor(){
   }
 //...
 ```
+
+[⬆ back to top](#目录)
+
 # 引入MongoDB
 [MongoDB安装与入门](./mongoDB.md)
 
@@ -356,7 +363,7 @@ class UserController{
 }
 export default UserController
 ``` 
-
+[⬆ back to top](#目录)
 
 # nodeJs错误处理
 
@@ -506,6 +513,8 @@ class UserController{
 }
 ```
 
+[⬆ back to top](#目录)
+
 # auth
 本文我们采用[bcrypt npm 包](https://www.npmjs.com/package/bcrypt)实现的bcrypt哈希算法,
 
@@ -521,13 +530,217 @@ const hashedPassword = await bcrypt.hash(passwordInPlaintext, 10);
 const doPasswordsMatch = await bcrypt.compare(passwordInPlaintext, hashedPassword);
 console.log(doPasswordsMatch); // true
 ```
-## 登录与注册模块
 
+## 登录与注册模块
+首先对用户创建前置加入密码加密、和用户登录时密码校验逻辑。此时我们可以将此逻辑加入到Model层。
+
+`user.model.ts`
+
+```js
+userSchema.pre('save',function(next){
+    if(!this.isModified('password')){
+        return next()
+    }
+    bcrypt.hash(this.password,8,(err,hash)=>{
+        if(err){
+            return next(err)
+        }
+        this.password=hash;
+        return next();
+    })
+})
+
+userSchema.methods.checkPassword=function(password:string){
+    const passwordHash = this.password;
+    return new Promise((resovle,reject)=>{
+        bcrypt.compare(password,passwordHash,(err,same)=>{
+            if(err) return reject(err)
+            return resovle(same)
+        })
+    })
+}
+```
+
+下面我们我们来实现登录和注册模块。
+`src/controllers/ authcontroller.ts`
+```js
+import { Request, Response, NextFunction } from 'express'
+import User from '../models/user.model'
+import NotFoundException from '../expceptions/notFoundException'
+import HttpException from '../expceptions/httpException'
+
+class AuthController {
+    static signup = async (req: Request, res: Response, next: NextFunction) => {
+        if (!req.body.email || !req.body.password) {
+            next(new HttpException(400, 'need email password'))
+        }
+        try {
+            const user = await User.create(req.body);
+           
+            next(new HttpException(200, token))
+        } catch (err) {
+            next(new HttpException(500, `注册失败`))
+        }
+    }
+    static signin = async (req: Request, res: Response, next: NextFunction) => {
+        if (!req.body.email || !req.body.password) {
+            next(new HttpException(400, 'need email password'))
+        }
+        try {
+            const user = await User.findOne({ email: req.body.email })
+                .select('email password')
+                .exec();
+            if (!user) {
+                next(new NotFoundException(req.body.email))
+            }
+            const match = await user!.checkPassword(req.body.password);
+            if (!match) {
+                next(new HttpException(401, 'Invalid email and passoword combination'))
+            }
+        } catch (error) {
+            console.error(error, 'signin')
+            next(new HttpException(500, '登录失败'))
+        }
+    }
+}
+export default AuthController
+```
+>提示:我们并不清楚用户尝试登录时是用户名还是密码错误。由于显示了一般错误消息，因此我们防止了潜在的攻击者了解任何有效的用户名不知道密码。
+
+## 使用JWT令牌进行身份验证
+JWT是一段JSON数据，在用户登录后使用秘密密钥在我们的服务器上签名，然后发送给他。当他发出其他请求时，他在标头中发送此令牌，以便我们可以对其进行编码使用相同的密钥。如果令牌有效，则我们知道发出请求的用户是谁。
+
+> npm install jsonwebtoken
+> npm install npm install @types/jsonwebtoken
+
+`src/utils/auth.ts`
+我们根据用户id创建token,最后在校验成功后我们可以根据此id查找到用户并进行返回。
 
 ```js
 
+import { secrets } from '../config'
+import jwt from 'jsonwebtoken'
+
+export const newToken = (user: any) => {
+    return jwt.sign({ id: user.id }, secrets.jwt, {
+        expiresIn: secrets.jwtExp
+    })
+}
+export const verifyToken= (token: string) => {
+   return new Promise<{id:string}>((resolve, reject) => {
+        jwt.verify(token, secrets.jwt, (err, payload) => {
+            if (err) return reject(err)
+            resolve(payload as any)
+        })
+    })
+}
+
+```
+`src/config/index.ts`
+
+```js
+export const secrets={
+    jwt:'user',
+    jwtExp:60 * 60 // an hour
+}
+```
+现在，我们可以更新AuthenticationController的代码。
+```js
+import { Request, Response, NextFunction } from 'express'
+import User from '../models/user.model'
+import {newToken,verifyToken} from '../utils/auth'
+import NotFoundException from '../expceptions/notFoundException'
+import HttpException from '../expceptions/httpException'
+
+
+class AuthController {
+    static signup = async (req: Request, res: Response, next: NextFunction) => {
+        if (!req.body.email || !req.body.password) {
+            next(new HttpException(400, 'need email password'))
+        }
+        try {
+            const user = await User.create(req.body);
+            const token = newToken(user);
+            next(new HttpException(200, token))
+        } catch (err) {
+            next(new HttpException(500, `注册失败:${err}`))
+        }
+    }
+    static signin = async (req: Request, res: Response, next: NextFunction) => {
+        if (!req.body.email || !req.body.password) {
+            next(new HttpException(400, 'need email password'))
+        }
+        try {
+            const user = await User.findOne({ email: req.body.email })
+                .select('email password')
+                .exec();
+            if (!user) {
+                next(new NotFoundException(req.body.email))
+            }
+            const match = await user!.checkPassword(req.body.password);
+            if (!match) {
+                next(new HttpException(401, 'Invalid email and passoword combination'))
+            }
+            const token = newToken(user);
+            next(new HttpException(200, token))
+        } catch (error) {
+            console.error(error, 'signin')
+            next(new HttpException(500, '登录失败'))
+        }
+    }
+    static protect = async (req: Request, res: Response, next: NextFunction) => {
+        const bearer = req.headers.authorization;
+        if (!bearer || !bearer.startsWith('Bearer ')) {
+            next(new HttpException(401, '没有权限访问'))
+        }
+        const token = bearer!.split('Bearer ')[1].trim();
+        let payload: any;
+        try {
+            payload = await verifyToken(token)
+
+        } catch (err) {
+            next(new HttpException(401, 'token 失效'))
+        }
+
+        const user = await User.findById(payload.id)
+            .select('-password')
+            .lean()
+            .exec()
+
+        if (!user) {
+            next(new HttpException(401, 'not user'))
+        }
+        req.user = user
+        next()
+    }
+    
+}
+export default AuthController
 ```
 
+添加路由和访问权限
+`/src/routes/index.ts`
+
+```js
+import { Router} from "express";
+import AuthController from '../controllers/AuthController'
+import user from './user'
+
+const routes = Router();
+
+routes.post('/signup',AuthController.signup)
+routes.post('/signin',AuthController.signin)
+
+routes.use('/api',AuthController.protect)
+routes.use('/api/user',user)
+
+export default routes
+```
+# 总结
+在本文中，我们介绍了在*Typescript Express*应用程序中**注册**和**登录**功能。要实现它，我们必须知道如何使用`bcrypt来对密码进行哈希处理`以确保其安全。
+我们在这里实现的身份验证是使用JSON Web令牌（JWT）完成的，该Web令牌提供了一种轻松的方法来`标识用户和验证请求`。
+
+[⬆ back to top](#目录)
 
 # 参考地址
 [TypeScript Express tutorial #4. Registering users and authenticating with JWT](https://wanago.io/2018/12/24/typescript-express-registering-authenticating-jwt/)

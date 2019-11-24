@@ -1,4 +1,4 @@
-import HttpException from './HttpException'
+import HttpException from './httpException'
 
 class NotFoundException extends HttpException{
     constructor(id:string){
