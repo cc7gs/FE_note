@@ -15,7 +15,7 @@
  2. 可以将它看作一个事件处理的Lodash
 1. ReactiveX将`观察者模式`与`迭代器模式`以及函数编程相结合，从而满足了管理事件序列的理想方式的需求。
 
-> 关于Rx更多内容请👇这里
+> 关于Rx概念更多内容请👇这里
 
 > [了解Rx](./concept.md)
 
@@ -64,6 +64,10 @@ observable.subscribe({
 console.log('just after subscribe');
 ```
 > npm run dev
+
+> 关于搭建环境可以👇
+> [ts+webpack 搭建环境](https://github.com/cc7gs/frontEnd_note/tree/master/tools/webpack/demo-ts)
+
 
 **[⬆ back to top](#目录)**
 
@@ -294,8 +298,33 @@ setTimeout(() => {
 }, 1000);
 ```
 ## 操作符(Operators)
-> 管道运算符是一个将Observable作为其输入并返回另一个Observable的函数。这是一个纯粹的操作：以前的Observable保持不变
 
+> 操作符是一个将Observable作为其输入并返回另一个Observable的函数。这是一个纯函数操作：使Observable保持不变
+
+操作符就是在 `subscribe`接上一个`Observer`之前的一系列数据处理。并且每一个操作都是返回一个全新的Observable对象的函数。
+
+```js
+import {Observable} from  'rxjs'
+import {map} from 'rxjs/operators'
+
+const onSubscribe=observer=>{
+    observer.next(1);
+    observer.next(2)
+};
+const source$=new Observable<number>(onSubscribe);
+source$.pipe(map(x=>x*2)).subscribe(console.log)
+```
+`分类`
+- 创建类
+- 转换类
+- 过滤类
+- 合并类
+- 多播类
+- 错误处理类
+- 条件分支类
+- 数字和合计类
+
+`上手实例：`
 ```js
 import {from} from 'rxjs'
 import {map,filter} from 'rxjs/operators'
@@ -314,6 +343,97 @@ let subscription=squaredNumbers.subscribe(result=>{
 subscription.unsubscribe();
  
 ```
+> 关于更多操作细节和使用请👇这里
+
+> [更多操作符使用](./operators.md)
+
+
+### map 实现与分析
+#### 原型上添加
+`operator/map.ts`
+```js
+import {Observable} from 'rxjs'
+/**
+ * 1. 返回一个全新的Observable对象
+ * 2. 对上游和下游的订阅及退订处理
+ * 3. 处理异常情况
+ * 4. 及时释放资源
+ */
+function map(project){
+    return new Observable(observer=>{
+        const sub=this.subscribe({
+            next:value=>{
+                try {
+                    observer.next(project(value))
+                } catch (error) {
+                    observer.error(error)
+                }
+            },
+            error:err=>observer.error(err),
+            complete:()=>observer.complete()
+        });
+        return{
+            unsubscribe:()=>{
+                sub.unsubscribe()
+            }
+        }
+    });
+}
+Observable.prototype.map=map;
+```
+`测试`
+```js
+import {Observable} from  'rxjs'
+require('./operator/map')
+const onSubscribe=observer=>{
+    observer.next(1);
+    observer.next(2)
+};
+const source$=new Observable<number>(onSubscribe);
+source$.map(x=>x*3).subscribe(console.log)
+```
+#### 通过 pipe 组合
+实现逻辑和上面一样,只是不再挂载到Observer中并使用es6简写
+```js
+
+/**
+ * 方式二,通过pipe 形式引入
+ */
+export const map=fn=>ob$=>new Observable(observer=>{
+    const sub=ob$.subscribe({
+        next:value=>{
+            try {
+                observer.next(fn(value))
+            } catch (error) {
+                observer.error(error)
+            }
+        },
+        error:err=>observer.error(err),
+        complete:()=>observer.complete()
+    });
+    return{
+        unsubscribe:()=>{
+            sub.unsubscribe()
+        }
+    }
+})
+```
+`测试`
+```js
+import {Observable} from  'rxjs'
+import {map} from  './operator/map'
+
+const onSubscribe=observer=>{
+    observer.next(1);
+    observer.next(2)
+};
+const source$=new Observable<number>(onSubscribe);
+source$.pipe(map(x=>x*2)).subscribe(console.log)
+```
+
+
+**[⬆ back to top](#目录)**
+
 ## Subject
 Subject 就像一个可观察对象(Observable),但它传播给多个观察者。
 ```js
@@ -334,6 +454,7 @@ subject.next(2);
 //观察这A 2
 //观察者B 2
 ```
+
 ## Schedulers
 调度程序控制何时开始订阅以及何时传递通知。它由三个部分组成
 - 调度程序是一种数据结构。
@@ -370,8 +491,6 @@ console.log('just after subscribe');
 ```
 
 
-> 关于搭建环境可以👇
-> [ts+webpack 搭建环境](https://github.com/cc7gs/frontEnd_note/tree/master/tools/webpack/demo-ts)
 
 **[⬆ back to top](#目录)**
 

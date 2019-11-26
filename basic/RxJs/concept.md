@@ -54,8 +54,32 @@ observable.subscribe(console.log)
 #### 迭代器模式
 迭代器是指能够遍历一个数据集合的对象,由于数据集合有多种:数组、树形结构、单向链表...。迭代器作用就是提供通用的接口,让我们可以完全不用关心这个数据集合实现形式。
 
-### 结论
+#### 结论
 > RxJs中，作为迭代器的使用者,我们并不需要主动去从Observable中"pull"数据,我们只需要subscribe后,自然就能够接收到消息推送(`push`)。
+
+### Hot Observable 与 Cold Observable
+这两者都是对于 Observable 对象有有多对象订阅时,后者对于前者数据处理的不同形式。
+- Hot Observable: 当后者订阅时,对于错过的数据不在订阅从最新的开始订阅。
+
+> 对于Hot Observable 概念上是有一个独立于`Observable`对象的*生产者*,而这个*生产者*的创建和`subscribe`调用没有关系。 
+
+```js
+const producer=new Producer();
+const hot$=new Observable(observer=>{
+    //让observable 去接受producer产生的数据
+})
+```
+- Cold Observable: 当后者订阅时,对于已经错过的数据从新开始订阅。
+
+>每一个Cold Observable 可以认为它对每一次`subscribe`都产生一个`生产者`,然后对这个生产者的数据通过*next*函数传递给订阅的`观察者(Observer)`
+
+```js
+const cold$=new Observable(observer=>{
+    //产生数据
+    const producer=new Producer();
+    //...
+})
+```
 
 ## 走近RxJs
 `RXJS一些概念`:
