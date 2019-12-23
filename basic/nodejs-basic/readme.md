@@ -3,8 +3,9 @@
 # 目录
 1. [nodeJs能做什么?](#nodejs能做什么?)
 2. [nodeJsAPI](#nodeJS基础API)
-3. [框架](#框架)
-4. [案例](#案例)
+3. [GraphQL](#GraphQL)
+4. [框架](#框架)
+5. [案例](#案例)
 
 # nodejs能做什么？
 - 构建工具(比如 自动化，webpack...)
@@ -21,6 +22,21 @@
 
 [nodeJS基础API](./node.basic.md)
 
+# GraphQL
+是一种 API 查询语言也是一种用于实现数据查询的运行时。有一下特点:
+ - facebook 开源
+ - 提高开发速度。可以减少发出的请求数，因此页降低了服务器压力，加快了前端的渲染速度。
+ - 客户端就可以明确选择它们想要哪些内容
+ - 强类型类似typescript
+ - 它让从多个数据源汇总取数据变得更简单
+
+[graphQL](./framework/graphql/README.md)
+
+## GraphQL API 工具
+[graphQL playground](https://www.graphqlbin.com/)
+[graphiQL](https://github.com/graphql/graphiql)
+[graqhQL公共接口](https://github.com/APIs-guru/graphql-apis)
+[Snowtooth](http://snowtooth.moonhighway.com/)
 # 框架
   - [mvc分层思路](./framework/user-mvc)
   - [express](./framework/express-demo/README.md)

@@ -71,7 +71,7 @@ console.log('just after subscribe');
 
 **[⬆ back to top](#目录)**
 
-# 基础
+# 基本概念
 ## 被观察对象(Observable)
 ### pull与push
 pull和push 是两种不同的协议,它们描述了数据生产者(Producer)如何数据消费者(Consumer)通信
