@@ -1,0 +1,29 @@
+# defination schema
+
+enum PhotoCategory {
+  SELFIE
+  PORTRAIT
+  ACTION
+  LANDSCAPE
+  GRAPHIC
+}
+type Photo {
+  id: ID!
+  url: String!
+  name: String!
+  description: String
+  category: PhotoCategory!
+}
+
+type Query {
+  totalPhotos: Int!
+  allPhotos: [Photo!]!
+}
+input PostPhotoInput {
+  name: String!
+  category: PhotoCategory = SELFIE
+  description: String
+}
+type Mutation {
+  postPhoto(input: PostPhotoInput!): Photo!
+}

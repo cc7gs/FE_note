@@ -43,17 +43,17 @@ const typeDefs=`
     }
 `
 let _id=0;
-const photos=[];
+const photos:any[]=[];
 const resolvers={
     Photo:{
-        url:parent=>`http://https://blog.ccwgs.top/img/${parent.id}.jpg`
+        url:(parent:any)=>`http://https://blog.ccwgs.top/img/${parent.id}.jpg`
     },
     Query:{
         totalPhotos:()=>photos.length,
         allPhotos:()=>photos
     },
     Mutation:{
-        postPhoto(_,args){
+        postPhoto(_:any,args:any){
             const newPhoto={
                 id:_id++,
                 ...args.input

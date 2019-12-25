@@ -4,21 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev --respawn --transpileOnly ./src/demo/index.ts"
+    "demo": "ts-node-dev --respawn --transpileOnly ./src/demo/index.ts",
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+    "build": "tsc && ncp src/schema  dist/schema ",
+    "clear":"rimraf dist/",
+    "start": "npm run clear && npm run build && node  ./dist/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^12.12.14",
+    "rimraf": "^3.0.0",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.7.2"
   },
   "dependencies": {
     "apollo-server": "^2.9.12",
+    "apollo-server-express": "^2.9.14",
+    "express": "^4.17.1",
     "graphql": "^14.5.8",
     "graphql-import": "^0.7.1",
+    "graphql-playground-middleware-express": "^1.7.12",
     "graphql-tools": "^4.0.6",
-    "mongoose": "^5.7.13"
+    "mongoose": "^5.7.13",
+    "ncp": "^2.0.0"
   }
 }
