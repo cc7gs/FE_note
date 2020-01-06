@@ -1,93 +1,4 @@
 
-# 语法
-
-# 搭建 Server API 环境
-> npm i apollo-server 
-> npm i typescript ts-node-dev -D
-
-`package.json`
-
-```js
-  "scripts": {
-    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
-  },
-```
-
-```js
-import {ApolloServer} from 'apollo-server'
-
-const typeDefs=`
-    enum PhotoCategory {
-        SELFIE
-        PORTRAIT
-        ACTION
-        LANDSCAPE
-        GRAPHIC
-    }
-
-    type Photo {
-        id: ID!
-        url: String!
-        name: String!
-        description: String
-        category: PhotoCategory!
-    }
-
-    type Query{
-        totalPhotos:Int!
-        allPhotos: [Photo!]!
-    }
-
-    input PostPhotoInput {
-        name: String!
-        category: PhotoCategory=SELFIE
-        description: String
-    }
-
-    type Mutation {
-        postPhoto(input: PostPhotoInput!):Photo!
-    }
-`;
-//_id 模拟数据自增ID
-let _id=0;
-const photos=[];
-
-const resolvers={
-    Photo:{
-        url:parent=>`http://https://blog.ccwgs.top/img/${parent.id}.jpg`
-    },
-    Query:{
-        totalPhotos:()=>photos.length,
-        allPhotos:()=>photos
-    },
-    Mutation:{
-        postPhoto(_,args){
-            const newPhoto={
-                id:_id++,
-                ...args.input
-            };
-            photos.push(newPhoto);
-            return newPhoto;
-        }
-    }
-}
-const server=new ApolloServer({
-    typeDefs,
-    resolvers
-});
-
-//开启服务监听 默认4000端口
-server
-    .listen()
-    .then(({url})=>console.log(`GraphQL Service running on ${url}`))
-
-```
-> npm start
-> 打开 连接 http://localhost:4000
-
-![运行实例图](images/demo1.png)
-
-喜欢ts伙伴可以查看👉[使用 node+typescript 搭建 GraphQL API](https://ccwgs.blog.csdn.net/article/details/103701560)
 # 语法简介
 ## 查询与变更
 ## schema与类型
@@ -267,6 +178,95 @@ type Mutation{
     ...
 }
 ```
+
+# 搭建 Server API 环境
+> npm i apollo-server 
+> npm i typescript ts-node-dev -D
+
+`package.json`
+
+```js
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpileOnly ./src/index.ts",
+  },
+```
+
+```js
+import {ApolloServer} from 'apollo-server'
+
+const typeDefs=`
+    enum PhotoCategory {
+        SELFIE
+        PORTRAIT
+        ACTION
+        LANDSCAPE
+        GRAPHIC
+    }
+
+    type Photo {
+        id: ID!
+        url: String!
+        name: String!
+        description: String
+        category: PhotoCategory!
+    }
+
+    type Query{
+        totalPhotos:Int!
+        allPhotos: [Photo!]!
+    }
+
+    input PostPhotoInput {
+        name: String!
+        category: PhotoCategory=SELFIE
+        description: String
+    }
+
+    type Mutation {
+        postPhoto(input: PostPhotoInput!):Photo!
+    }
+`;
+//_id 模拟数据自增ID
+let _id=0;
+const photos=[];
+
+const resolvers={
+    Photo:{
+        url:parent=>`http://https://blog.ccwgs.top/img/${parent.id}.jpg`
+    },
+    Query:{
+        totalPhotos:()=>photos.length,
+        allPhotos:()=>photos
+    },
+    Mutation:{
+        postPhoto(_,args){
+            const newPhoto={
+                id:_id++,
+                ...args.input
+            };
+            photos.push(newPhoto);
+            return newPhoto;
+        }
+    }
+}
+const server=new ApolloServer({
+    typeDefs,
+    resolvers
+});
+
+//开启服务监听 默认4000端口
+server
+    .listen()
+    .then(({url})=>console.log(`GraphQL Service running on ${url}`))
+
+```
+> npm start
+> 打开 连接 http://localhost:4000
+
+![运行实例图](images/demo1.png)
+
+喜欢ts伙伴可以查看👉[使用 node+typescript 搭建 GraphQL API](https://ccwgs.blog.csdn.net/article/details/103701560)
+
 # 服务端开发
 基于上面环境搭建将 `apollo-server`更换`apollo-server-express`
 
@@ -380,6 +380,7 @@ function start(){
 
 ```
 ## 修改解析器(从数据库中获取数据)
+
 shema如下：
 ```js
 type Query{
@@ -401,6 +402,7 @@ const allPhotos:Fn=(parent,args,{db})=>
 
 ```
 ## github OAuth
+
 [OAuth 介绍与使用](https://blog.csdn.net/qq_37674616/article/details/99496916)
 
 1. 构建请求函数
@@ -453,11 +455,42 @@ type Mutation {
 }
 ```
 3. 构建解析器
+
 ```js
 //resolvers/Mutation.ts
 
+const githubAuth:Fn=async(parent,{code},{db})=>{
+
+ let {
+    message,
+    access_token,
+    avatar_url,
+    login,
+    name
+  } = await authorizeWithGithub({
+    client_id: process.env.CLIENT_ID!,
+    client_secret: process.env.CLIENT_SECRET!,
+    code
+  });
+
+  if(message){
+      throw new Error(message)
+  }
+
+  let latestUserInfo={
+      name,
+      githubLogin:login,
+      githubToken:access_token,
+      avatar:avatar_url
+  }
+  const {ops:[user]}=await db
+  .collection('users')
+  .replaceOne({githubLogin:login},latestUserInfo,{upsert:true})
+
+  return {user,token:access_token}
+}
 ```
-4. 测试
+1. 测试
 
 > https://github.com/login/oauth/authorize?client_id=**&scope=user
 
@@ -515,6 +548,8 @@ query getCurrentUser{
   }
 }
 ```
+
+
 # 参考
 [intro-to-graphql](https://slides.com/scotups/intro-to-graphql#/)
 [grapQL](https://graphql.cn/learn/)
