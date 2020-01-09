@@ -1,3 +1,4 @@
+❗️❗️ 项目迁移 [click here!](https://github.com/cc7gs/graphql-photo-api)
 
 # 语法简介
 ## 查询与变更
