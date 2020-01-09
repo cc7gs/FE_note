@@ -4,6 +4,7 @@
       1. nodejs
          1. 常用api知识和一些模块demo
          2. koa框架实战
+         3. 了解graphQL
       2. 工作中常用的css技巧
   1. 数据结构和算法
      1. 学习前端基本算法与数据结构
@@ -42,4 +43,7 @@
 
 # 推销
 大家可以猛戳,哈哈
-[个人博客](https://blog.ccwgs.top)
+
+[个人博客](https://blog.ccwgs.top):很久不更新了😂
+
+[CSDN](https://blog.csdn.net/qq_37674616) 🎉🎉
