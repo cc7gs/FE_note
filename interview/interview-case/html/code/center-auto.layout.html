@@ -170,6 +170,75 @@
             <div class="right"></div>
         </article>
     </section>
+    <section class="layout float-relative">
+        <style>
+            .center-left-right>.container{
+                padding-left: 200px;
+                padding-right: 150px;
+            }
+             .layout.float-relative .column{
+                float: left;
+                position: relative;
+             }
+            .layout.float-relative .center{
+                background-color:blue;
+                width: 100%;
+            }
+             .layout.float-relative .left{
+                background-color: chartreuse;
+                margin-left: -100%;
+                width: 200px;
+                right: 200px;
+            }
+             .layout.float-relative .right{
+                background-color: black;
+                width: 150px;
+                margin-right: -150px;
+            }
+        </style>
+        <article class="center-left-right">
+            <div class="container">
+                <div class="center column">center...</div>
+                <div class="left column">left</div>
+                <div class="right column">right</div>
+            </div>
+        </article>
+    </section>
+    <section class="layout float-wrap">
+        <style>
+            .layout.float-wrap .container{
+                position: relative;
+            }
+            .layout.float-wrap .container>.column{
+                float: left;
+            }
+            .layout.float-wrap .center-wrap{
+                width: 100%;
+            }
+            .layout.float-wrap .center-wrap>.center{
+                background-color: yellowgreen;
+                margin-left: 200px;
+                margin-right: 150px;
+            }
+            .layout.float-wrap .left{
+                width: 200px;
+                margin-left: -100%;
+                background-color: #339999;
+            }
+            .layout.float-wrap .right{
+                width:150px;
+                margin-left: -150px;
+                background-color: bisque;
+            }
+        </style>
+        <div class="container">
+            <div class="center-wrap column">
+                <div class="center">center...</div>
+            </div>
+            <div class="left column">left.</div>
+            <div class="right column">right..</div>
+        </div>
+    </section>
     <section class="bfc">
         <style>
             .bfc{
