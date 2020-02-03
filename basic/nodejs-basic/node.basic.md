@@ -35,7 +35,7 @@ exports.circumference = (r) => 2 * PI * r;
 
 ```
 
-## fs
+## fs模块
 
 ```js
 /**
@@ -135,6 +135,19 @@ console.log(path.resolve('foo/bar','/a'));
 console.log(path.resolve(''))
 ```
 
+## http
+
+```js
+const http=require('http');
+const server=http.createServer((req,res)=>{
+  res.send('welcome to nodeJs');
+});
+server.listen(3000)
+```
+## streams
+
+
+# 事件和错误处理
 
 # 调试
 
