@@ -145,7 +145,12 @@ const server=http.createServer((req,res)=>{
 server.listen(3000)
 ```
 ## streams
+```js
+var stream1; //readable
+var stream2; //writable
 
+stream1.pip(stream2)  // return readable stream
+```
 
 # 事件和错误处理
 
