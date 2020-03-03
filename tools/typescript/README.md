@@ -42,7 +42,7 @@ let userTwo = { firstName: 'wu', lastName: 'chen' };
 如果通过项目依赖安装,则可以通过以下命令
 > npx tsc greeter.ts
 
-[source](./basic-ts/greeter.ts)
+[source](./basic-ts/src/greeter.ts)
 
 # 基础篇
 
