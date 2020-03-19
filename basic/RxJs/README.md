@@ -1,11 +1,15 @@
 > 这是一个学习RxJs 笔记仓库,通过书籍和实践总结出一个手册,如有错误可以击提issue 💪,如果觉得ok,请点个star 🙏, `送人玫瑰、手有余香`
 
 # 目录
-1. [什么是Rx?](#什么是Rx?)
-2. [Observable](#被观察对象(Observable))
-3. [操作符(Operators)](#操作符(Operators))
-4. [搭建仓库](#搭建仓库)
-5. [进阶篇]()
+1. [初识函数编程](#初识函数编程(预热))
+2. [什么是Rx?](#什么是Rx?)
+3. [Observable](#被观察对象(Observable))
+4. [操作符(Operators)](#操作符(Operators))
+5. [搭建仓库](#搭建仓库)
+6. [进阶篇]()
+
+# 初识函数编程(预热)
+[👋](./preOperators.md)
 
 # 什么是Rx?
 > **Ractive Extension** 也叫 **ReactiveX**,或者简称`Rx`,指的是实践响应式编程的一套工具。Rx是一个大家族它包含 RxJava、RxPy等，`RxJS是Rx用JavaScript语言实现`。
