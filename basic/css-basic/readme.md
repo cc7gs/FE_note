@@ -98,6 +98,8 @@ border-radius: 50%;
 - 伪类表示 状态比如： link,hover;使用单冒号 
 - 伪元素表示真的元素比如： after,before;使用双冒号
 ## 布局
+决定布局方式的主要是`position`、`float`、以及css3新增的`display`属性的grid、flex值。下面介绍基本用法，关于更多面试相关👉[布局相关面试题](/interview/interview-case/readme.md)
+
 ### float
 采用浮动布局后,会使父元素内容塌陷,此时一定记住要清除浮动
 ```html
@@ -296,6 +298,7 @@ aside {
 		</aside>
 	</div>
 ```
+
 ## css 效果
 ### box-show
 该属性可以让几乎所有元素的边框产生阴影。如果元素同时设置了 border-radius ，阴影也会有圆角效果。

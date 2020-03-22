@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>两列布局(内联块级元素)</title>
+</head>
+<style>
+   
+</style>
+<body>
+    <section class="layout-inline">
+        <style>
+           .layout-inline .left{
+                display: inline-block;
+                font-size: 12px;
+                width:100px;
+                margin-left: -100px;
+                background-color: lightblue;
+                vertical-align: top;
+             }
+             .layout-inline  .main{
+                display: inline-block;
+                font-size: 14px;
+                background-color: orange;
+                vertical-align: top;
+            }
+            .layout-inline  .wrap{
+                padding-left: 100px;
+                font-size: 0;
+            }
+        </style>
+        <div class="wrap">
+            <div class="left">left</div>
+            <div class="main">main</div>
+        </div>
+    </section>
+    <section class="layout-float">
+        <style>
+           .layout-float> .left{
+                float: left;
+                width:100px;
+                background-color: blue;
+            }
+            .layout-float > .main{
+                margin-left: 100px;
+                background-color: green;
+            }
+        </style>
+            <div class="left">left</div>
+            <div class="main">main</div>
+    </section>
+</body>
+</html>

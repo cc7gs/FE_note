@@ -120,7 +120,85 @@
 </body>
 </html>
 ```
-## 三、采用flex布局
+## 三、 圣杯布局
+- 优先渲染`center`,因此布局顺序先写 center -->left --> right
+- 通过 负margin + 相对定位，解决元素定位问题
+
+问题： 当中间元素宽度小于左边宽度时则发生布局错乱，此时可以采用双飞翼布局。
+
+```html
+<!-- html -->
+	<div class="container">
+		<div class="center column">center...</div>
+		<div class="left column">left</div>
+		<div class="right column">right</div>
+	</div>
+<!-- css -->
+<style>
+	.container{
+		padding-left: 200px;
+		padding-right: 150px;
+	}
+	.column{
+		float: left;
+		position: relative;
+	}
+	.center{
+		background-color:blue;
+		width: 100%;
+	}
+	.left{
+		background-color: chartreuse;
+		margin-left: -100%;
+		width: 200px;
+		right: 200px;
+	}
+	.right{
+		background-color: black;
+		width: 150px;
+		margin-right: -150px;
+	}
+</style>
+```
+## 四、双飞翼布局
+```html
+<!-- html -->
+<div class="container">
+	<div class="center-wrap column">
+		<div class="center">center...</div>
+	</div>
+	<div class="left column">left.</div>
+	<div class="right column">right..</div>
+</div>
+<!-- css -->
+<style>
+	  .container{
+		position: relative;
+	}
+	  .container>.column{
+		float: left;
+	}
+	  .center-wrap{
+		width: 100%;
+	}
+	  .center-wrap>.center{
+		background-color: yellowgreen;
+		margin-left: 200px;
+		margin-right: 150px;
+	}
+	  .left{
+		width: 200px;
+		margin-left: -100%;
+		background-color: #339999;
+	}
+	  .right{
+		width:150px;
+		margin-left: -150px;
+		background-color: bisque;
+	}
+</style>
+```
+## 五、采用flex布局
 ```html
 <!DOCTYPE html>
 <html>
@@ -168,7 +246,7 @@
 </body>
 </html>
 ```
-## 四、浮动+负margin
+## 六、浮动+负margin
 该方法让一个父元素浮动起来充满全屏，然后 让center元素用margin占据空间。此时left采用margin-left:-100%(与wrapwidth相同)就浮动到最右边；right同理。
 ```html
 <!DOCTYPE html>
@@ -225,7 +303,7 @@
 </html>
 ```
 关于margin负值的应用 请参照该博主的整理:https://www.jianshu.com/p/549aaa5fabaa
-## 五 采用table布局
+## 七、采用table布局
 ```javascript
   <section class="layout table">
         <style>
@@ -258,7 +336,7 @@
         </article>
     </section>
 ```
-## 六 采用网格布局
+## 八、 采用网格布局
 ```javascript
   <section class="layout grid">
         <style>
