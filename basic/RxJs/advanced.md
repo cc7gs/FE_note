@@ -163,3 +163,186 @@ const subscription=$btn.forEach({
 ----
 
 上面是本篇文章的全部内容,这只是一个简单的`demo`和基础操作符的实现,其它操作符可以自行探索～
+
+```js
+
+interface Observer {
+    next: (value?: any) => void;
+    error?: (e: any) => void;
+    completed?: () => void;
+}
+
+interface Unsubscribable {
+    unsubscribe(): void;
+}
+
+type ISubscribe = (p: Observer) => Unsubscribable
+
+class Observable {
+    private _subscribe: ISubscribe;
+    constructor(subscribe: ISubscribe) {
+        this._subscribe = subscribe;
+    }
+    public subscribe(observer) {
+        return this._subscribe(observer)
+    }
+    map(projectionFunction) {
+        return new Observable(({ next, ...otherProps }) => {
+            const subscription = this.subscribe({
+                next(x) {
+                    let value;
+                    try {
+                        value = projectionFunction(x);
+                        next(value);
+                    } catch (error) {
+                        otherProps.error(error);
+                        subscription.unsubscribe();
+                    }
+                },
+                ...otherProps
+            });
+            return subscription;
+        })
+    }
+    filter(conditionFunction) {
+        return new Observable(observer => {
+            return this.subscribe({
+                next(x) {
+                    if (conditionFunction(x)) {
+                        observer.next(x)
+                    }
+                },
+                error(e) { observer.error(e) },
+                completed() { observer.completed() }
+            })
+        })
+    }
+    take(num) {
+        return new Observable(observer => {
+            let counter = 0;
+            const subscription = this.subscribe({
+                next(v) {
+                    observer.next(v);
+                    counter++;
+                    if (counter === num) {
+                        observer.completed();
+                        subscription.unsubscribe();
+                    }
+                },
+                error(e) {
+                    observer.error(e)
+                },
+                completed() {
+                    observer.completed()
+                }
+            });
+            return subscription;
+        })
+    }
+    retry(num) {
+        return new Observable(observer => {
+            let currentSub = null;
+            const processRequest = (currentAttempNumber) => {
+                currentSub = this.subscribe({
+                    next(x) {
+                        observer.next(x)
+                    },
+                    completed() {
+                        observer.completed()
+                    },
+                    error(err) {
+                        if (currentAttempNumber === 0) {
+                            observer.error(err);
+                        } else {
+                            processRequest(currentAttempNumber - 1);
+                        }
+                    }
+                })
+            }
+            processRequest(num);
+            return currentSub
+        })
+    }
+    static concat(...observables) {
+        return new Observable(observer => {
+            let myObservables = observables.slice();
+            let currentSub = null;
+
+            let processObservable = () => {
+                if (myObservables.length === 0) {
+                    observer.completed()
+                } else {
+                    let observable = myObservables.shift();
+                    currentSub = observable.subscribe({
+                        next(x) {
+                            observer.next(x)
+                        },
+                        error(err) {
+                            observer.error(err)
+                            currentSub.unsubscribe()
+                        },
+                        completed() {
+                            processObservable()
+                        }
+                    })
+                }
+            }
+            processObservable()
+            return {
+                unsubscribe() {
+                    currentSub && currentSub.unsubscribe()
+                }
+            }
+        })
+    }
+    static fromEvent(dom: HTMLElement, eventName) {
+        return new Observable(observer => {
+            const handle = (e) => observer.next(e);
+            dom.addEventListener(eventName, handle);
+            return {
+                unsubscribe() {
+                    dom.removeEventListener(eventName, handle);
+                    observer.completed()
+                }
+            }
+        })
+    }
+    static timeout(time) {
+        return new Observable(function subscribe(observer) {
+            const handle = setTimeout(() => {
+                observer.next();
+                observer.completed()
+            }, time);
+            return {
+                unsubscribe() {
+                    clearTimeout(handle)
+                }
+            }
+        })
+    }
+}
+
+// *****************
+// 用于测试
+// *****************
+
+var btn = document.getElementById('clickBtn');
+
+var ob = Observable.
+    fromEvent(btn, 'click').
+    filter(e => e.pageX > 20).
+    map(e => e.pageX + "px").
+    take(1)
+// var ob=Observable.timeout(500);
+
+
+const subscription = ob.subscribe({
+    next() {
+        console.log('next');
+        subscription.unsubscribe();
+    },
+    completed() {
+        console.log('completed')
+    }
+})
+```
