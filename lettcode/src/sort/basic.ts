@@ -1,3 +1,5 @@
+type SortType<T>=(arr:T)=>T
+
 /**
  * 1. 冒泡排序
  *  算法描述如下:   
@@ -6,7 +8,7 @@
  *   针对所有元素重复以上的步骤,除了最后一个元素
  *   重复上面1~3步骤,知道排序结束
  */
-const bubbleSort = (arr: Array<number>) => {
+const bubbleSort:SortType<Array<number>> = (arr) => {
   for (let i = arr.length - 1; i > 0; i--) {
     for (let j = 0, temp; j < i; j++) {
       if (arr[j] > arr[j + 1]) {
@@ -23,7 +25,7 @@ const bubbleSort = (arr: Array<number>) => {
  * 初始时在未排序序列中找最小(最大)元素,放到序列的起始位置作为已排序序列;
  * 然后再从剩余未排序元素中继续寻找最小(大)元素,放到已排序序列的末尾
  */
-const selectSort_2 = (arr: Array<number>) => {
+const selectSort_2:SortType<Array<number>>  = (arr) => {
   for (let i = 0, min, temp; i < arr.length; i++) {
     min = i;
     for (let j = i + 1; j <= arr.length - 1; j++) {
@@ -39,7 +41,7 @@ const selectSort_2 = (arr: Array<number>) => {
   }
   return arr;
 }
-const selectSort = (arr: Array<number>) => {
+const selectSort:SortType<Array<number>>   = (arr) => {
   for (let i = 0, min, len = arr.length; i < len; i++) {
     min = arr[i];
     for (let j = i + 1, temp; j < len; j++) {
@@ -54,6 +56,7 @@ const selectSort = (arr: Array<number>) => {
   return arr;
 }
 
+
 /**
  * 3. 快速排序
  */
@@ -62,7 +65,7 @@ const selectSort = (arr: Array<number>) => {
  * 2. 小于基准元素放到左边，大于基准元素放到右边
  * 3. 对左右两个集合不断重复1、2中步骤
  */
-const quickSort = (arr: Array<number>): Array<number> => {
+const quickSort:SortType<Array<number>> = (arr) => {
   if (arr.length <= 1) {
     return arr;
   }
@@ -80,5 +83,50 @@ const quickSort = (arr: Array<number>): Array<number> => {
   }
   return quickSort(left).concat([pivot], quickSort(right));
 }
+const quickSort2:SortType<Array<number>>=(arr)=>{
+ 
+  if(arr.length<2){
+    return arr
+  }
 
-export { bubbleSort, selectSort,quickSort }
+  const pivot=arr[arr.length-1];
+  const left=[];
+  const right=[];
+  for(let i=0;i<arr.length-1;i++){
+    if(arr[i]<pivot){
+      left.push(arr[i]);
+    }else{
+      right.push(arr[i])
+    }
+  }
+  return [...quickSort2(left),pivot,...quickSort2(right)]
+}
+
+/**
+ * 
+ * @param arr 归并排序
+ */
+const mergeSort:SortType<Array<number>>  =(arr)=>{
+  if(arr.length<2){
+    return arr;
+  }
+  const length=arr.length;
+  const middle=Math.floor(length/2);
+  const left=arr.slice(0,middle);
+  const right=arr.slice(middle);
+  return merge(mergeSort(right),mergeSort(left))
+}
+const merge=(left:number[],right:number[])=>{
+  const result=[];
+  while(left.length&&right.length){
+    if(left[0]<right[0]){
+      result.push(left.shift()!)
+    } else{
+      result.push(right.shift()!)
+    } 
+  }
+  return result.concat(left,right);
+}
+
+
+export { bubbleSort, selectSort,quickSort,mergeSort,quickSort2 }

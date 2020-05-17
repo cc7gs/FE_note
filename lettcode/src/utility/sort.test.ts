@@ -1,6 +1,8 @@
 import {
   bubbleSort,
   selectSort,
+  quickSort2,
+  mergeSort,
   quickSort,
   MaximumGap,
   sortArrayParity,
@@ -42,4 +44,12 @@ describe('排序基础', () => {
   it('快速排序',()=>{
     expect(quickSort([3, 9, 4, 6,4,3])).toEqual([3,3,4,4,6,9]);
   })
+  it('快速排序2',()=>{
+    expect(quickSort2([3, 9, 4, 6,4,3])).toEqual([3,3,4,4,6,9]);
+  })
+  it('merge sort', () => {
+    var nums = [10,5,3,8,2,6,4,7,9,1];
+    var ans = mergeSort(nums);
+    expect(ans).toEqual([1,2,3,4,5,6,7,8,9,10]);
+  });
 });
