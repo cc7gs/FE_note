@@ -14,6 +14,7 @@ export * from './searchRange'
 export * from './max.profit'
 export * from './lemonade'
 export * from './unique.paths'
+export * from './basic'
 export {
   findDuplicates,
   letterCombinations,

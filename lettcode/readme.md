@@ -18,6 +18,7 @@
 
 | #   | title                                                                    | difficulty |
 | --- | ------------------------------------------------------------------------ | ---------- |
+|     | [实现ArrayList](./src/array/basic.ts)                  |      |
 | 17  | [电话号码的字母组合](./src/array/letterCombinations.ts)                  | Medium     |
 | 914 | [卡牌分组](./src/array/hasGroupsSize.ts)                                 | Easy       |
 | 605 | [种花问题](./src/array/canPlaceFlowers.ts)                               | Easy       |
