@@ -3,6 +3,28 @@
 该仓库主要是学习数据结构的一些总结,习题来自[LettCode](https://leetcode-cn.com)
 
 # 内容
+## 基础篇
+
+| # |  title | 备注 | 
+| --- | ---- | ------- | 
+| Stack | [实现栈结构](./src/stack/basic.ts) |  |
+|  | [进制转化问题](./src/basic/converter.ts) | stack 习题 |
+| Queue | [实现队列结构] |  |
+| Linked    | [实现单向链表]   | |
+|  Set   | [构建数据集合]   | |
+|  Dict   | [构建字典类]   | |
+|  HashTable   | [构建散列表]   | |
+|  Sort   | [基本排序算法](./src/sort/basic.ts)  |    |
+|  Tree   | [定义二叉树](./src/tree/basic.ts) |  |
+| Graph |[构建图类]|
+
+@TODO:
+* [ ] Queue
+* [ ] Linked
+* [ ] Set
+* [ ] Dict
+* [ ] HashTable
+* [ ] Graph
 
 ## string
    
@@ -86,6 +108,7 @@
 | #   | title                             | difficulty |
 | --- | --------------------------------- | ---------- |
 |     | [创建最大堆](./src/heap/basic.ts) |            |
+
 # 运行须知
 练习采用ts环境去运行编译,测试文件在test目录夹下
 [可以参考该问配置环境](https://tasaid.com/blog/2018122819513079.html)
