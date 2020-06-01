@@ -1,4 +1,4 @@
-import {Stack} from '../stack/basic'
+import {Stack} from '../../stack/basic'
 
 describe('Stack',()=>{
     let stack:Stack<number>;

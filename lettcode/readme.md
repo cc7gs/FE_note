@@ -9,17 +9,25 @@
 | --- | ---- | ------- | 
 | Stack | [实现栈结构](./src/stack/basic.ts) |  |
 |  | [进制转化问题](./src/basic/converter.ts) | stack 习题 |
-| Queue | [实现队列结构] |  |
+| Queue | [实现队列结构](./src/queue/basic.ts) |  |
+|  | [] | queue 习题 |
 | Linked    | [实现单向链表]   | |
+|  | [] | Linked 习题 |
 |  Set   | [构建数据集合]   | |
+|  | [] | set 习题 |
 |  Dict   | [构建字典类]   | |
+|  | [] | Dict 习题 |
 |  HashTable   | [构建散列表]   | |
-|  Sort   | [基本排序算法](./src/sort/basic.ts)  |    |
+|  | [] | HashTable 习题 |
+|  Sort   | [基本排序算法](./src/sort/basic.ts)||
 |  Tree   | [定义二叉树](./src/tree/basic.ts) |  |
+|  | [] | Tree 习题 |
 | Graph |[构建图类]|
+|  | [] | Graph 习题 |
 
 @TODO:
-* [ ] Queue
+
+* [ ] Queue  
 * [ ] Linked
 * [ ] Set
 * [ ] Dict
