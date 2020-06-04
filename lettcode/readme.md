@@ -10,7 +10,7 @@
 | Stack | [实现栈结构](./src/stack/basic.ts) |  |
 |  | [进制转化问题](./src/basic/converter.ts) | stack 习题 |
 | Queue | [实现队列结构](./src/queue/basic.ts) |  |
-|  | [] | queue 习题 |
+|  | [回文检查器](./src/basic/palindromeChecker.ts) | queue 习题 |
 | Linked    | [实现单向链表]   | |
 |  | [] | Linked 习题 |
 |  Set   | [构建数据集合]   | |
@@ -26,8 +26,7 @@
 |  | [] | Graph 习题 |
 
 @TODO:
-
-* [ ] Queue  
+  
 * [ ] Linked
 * [ ] Set
 * [ ] Dict
