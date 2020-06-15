@@ -18,14 +18,16 @@
 |  HashTable   | [构建散列表]   | |
 |  | [] | HashTable 习题 |
 |  Sort   | [基本排序算法](./src/sort/basic.ts)||
-|  Tree   | [定义二叉树](./src/tree/basic.ts) |  |
-|  | [] | Tree 习题 |
+|  Tree   | [二叉搜索树](./src/tree/basic/index.ts) |  |
+|  | [AVL树]() | Tree 习题 |
+|  | [红黑树]() | Tree 习题 |
 | Graph |[构建图类]|
 |  | [] | Graph 习题 |
 
 @TODO:
   
 * [ ] HashTable
+* [ ] AVL树、红黑树
 * [ ] Graph
 
 ## string
