@@ -1,3 +1,5 @@
+[toc]
+
 # []==[] 返回什么？
 == 转换规则如下：
 1. 首先判断两者类型是否相同，相同的话就是比较大小
@@ -84,4 +86,159 @@ let obj={
 +obj //hint：number  ==> +'hinit' ==>NaN
 obj+200 //hint:default ==> 'hint'+200 ==>'hint200'
 ```
+# [斐波那契数列](./fibonacci.md)
+# 实现一个深拷贝
+```js
+/**
+ * 深拷贝
+ * @param {Object} obj 
+ */
+function deepClone(obj={}){
+    //边界判断
+    if(typeof obj !=='object'|| obj===null){
+        return obj
+    }
 
+    let result=obj instanceof Array?[]:{};
+
+    for(let key in obj){
+        if(obj.hasOwnProperty(key)){
+            result[key]=deepClone(obj[key])
+        }
+    }
+    return result
+}
+```
+
+# window.onload 与 DOMContentLoaded区别
+
+> 原文地址：http://javascript.info/onload-ondomcontentloaded
+
+HTML页面的生命周期有以下三个重要事件：
+
+DOMContentLoaded —— 浏览器已经完全加载了 HTML，DOM 树已经构建完毕，但是像是 <img> 和样式表等外部资源可能并没有下载完毕。
+load —— 浏览器已经加载了所有的资源（图像，样式表等）。
+beforeunload/unload —— 当用户离开页面的时候触发。
+每个事件都有特定的用途
+
+DOMContentLoaded —— DOM 加载完毕，所以 JS 可以访问所有 DOM 节点，初始化界面。
+load —— 附加资源已经加载完毕，可以在此事件触发时获得图像的大小（如果没有被在 HTML/CSS 中指定）
+beforeunload/unload —— 用户正在离开页面：可以询问用户是否保存了更改以及是否确定要离开页面。
+
+# 手写bind函数
+```js
+/**
+ * 实现思路:
+ *  1. 当不传入第一个参数时,则默认上下文环境为window
+ *  2. 改变this 指向,让新的对象可以执行该函数，并能接受参数
+ * func.call(thisArg,arg1,arg2,...)
+ */
+Function.prototype.myCall=function(context){
+    //如果调用者不是函数则抛出异常
+    if(typeof this!=='function'){
+        throw new TypeError('Error');
+    }
+    //如果context,没有传，或者传入undefined null 则this 执行 window
+    context=context || window;
+    context.fn=this;
+    const args=[...arguments].slice(1);
+    const result=context.fn(...args);
+    delete context.fn;
+    return result;
+}
+
+/**
+ * apply实现思路与call相同,只是参数处理方式不同 
+ * func.apply(thisArg,[arg1,arg2,...])
+ */
+Function.prototype.myApply=function(context){
+    if(typeof this !=='function'){
+        throw new TypeError('Error');
+    }
+    context=context||window;
+    context.fn=this;
+    let result=null;
+    //如果传入参数则出入
+    if(arguments[1]){
+        result=context.fn(...arguments[1]);
+    }else{
+        result=context.fn();
+    }
+    //释放内存空间
+    delete context.fn;
+    return result;
+}
+
+/** 
+ * 实现思路如下:
+ *  1. 对传入context的处理,如果不传或传null、undefined 则赋值为window
+ *  2. 对于返回函数调用形式处理:
+ *      2.1 普通函数调用
+ *          对于该形式我们应该处理 f.bind(obj,2)(4)形式参数的处理
+ *      2.2 new的方式调用   
+ *          对于该形式来说，this不会被外界传入改变
+*/
+Function.prototype.myBind=function(context){
+    if(typeof this !=='function'){
+        throw new TypeError('error');
+    }
+    const that=this;
+    const args=[...arguments].slice(1);
+    context=context||window;
+    return function F(){
+        if(this instanceof F){
+            return new that(...args,...arguments);
+        }
+        return that.apply(context,args.concat(...arguments));
+    }
+}
+/**
+ * 测试代码如下
+ *  */
+function add(a,b){
+    console.log(this.name,'this');
+    return a+b;
+}
+var obj={
+    name:'obj',
+    sub(a,b){
+        return a+b;
+    }
+}
+console.log(this,'window or global');
+var a1=add(4,2);
+var a2=add.call(this,4,2);
+var a3=add.call(obj,4,2);
+var a4=add.myCall(obj,4,2);
+var a4=add.myApply(obj,[4,2]);
+var a5=add.myBind(obj,4)(2);
+
+console.log(a1,a2,a3,a4,a5,'result');
+```
+# 节流与防抖
+```js
+
+const debounce=(fn,wait)=>{
+    let timer=null;
+    return (...args)=>{
+        if(timer){
+            clearTimeout(timer);
+        }
+        timer=setTimeout(()=>{
+                fn.apply(this,args)
+        },wait)
+    }
+}
+
+function throttle(fn,delay){
+    let canRun=true;
+    return (...args)=>{
+        if(!canRun) return;
+        canRun=false;
+        setTimeout(()=>{
+            fn.apply(this,args);
+            cunRun=true;
+        },delay)
+    }
+}
+```
