@@ -22,7 +22,7 @@
 - 当执行完所有微任务后，如有必要会渲染页面
 然后开始下一轮 Event Loop，执行宏任务中的异步代码，也就是 setTimeout 中的回调函数
 
-==**微任务包括:**== process.nextTick,promise,MutationObserver。
+==**微任务包括:**== process.nextTick,promise,DOM发生变化、MutationObserver。
 ==**宏任务包括:**== 包括整体代码script,setTimeout,setInterval,setImmediate,I/O,UI rendering.
 
 
