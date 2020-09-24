@@ -1,0 +1,1 @@
+@TODO: 待文档整理，[源码地址](./code/promise.ts)
