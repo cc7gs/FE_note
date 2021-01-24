@@ -19,8 +19,7 @@
 - [数组扁平化](./js/code/flatDeep.js)
 - [统计 0-1000 所有0](./js/code/count.zero.js)
 
-@TODO:
-- [ ] promise 实现
+- [promise 实现](./js/promise.md)
 
 ## node 相关
 

@@ -43,74 +43,92 @@ class MyPromise {
             onFulfilled = () => this.value;
         }
         if (typeof onRejected != 'function') {
-            onRejected = () => {throw this.value} 
+            onRejected = () => { throw this.value }
         }
 
         return new MyPromise((resolve, reject) => {
             if (this.status === MyPromise.PENDING) {
                 this.callbacks.push({
-                    onFulfilled:value=>{
-                        this.parse(()=>onFulfilled(value),resolve,reject)
+                    onFulfilled: value => {
+                        this.parse(() => onFulfilled(value), resolve, reject)
                     },
-                    onRejected:(value)=>{
-                        this.parse(()=>onRejected(value),resolve,reject)
+                    onRejected: (value) => {
+                        this.parse(() => onRejected(value), resolve, reject)
                     }
                 })
             }
             if (this.status === MyPromise.FULFILLED) {
                 setTimeout(() => {
-                    this.parse(()=>onFulfilled(this.value),resolve,reject)
+                    this.parse(() => onFulfilled(this.value), resolve, reject)
                 })
             }
             if (this.status === MyPromise.REJECTED) {
                 setTimeout(() => {
-                 this.parse(()=>onRejected(this.value),resolve,reject)
+                    this.parse(() => onRejected(this.value), resolve, reject)
                 });
             }
         })
     }
-    static resolve(value){
-        return new MyPromise((resolve,reject)=>{
-            if(value instanceof MyPromise){
-                value.then(resolve,reject)
-            }else{
+    public catch(errorCallback: Function) {
+        return this.then(null, errorCallback);
+    }
+    public finally(callback) {
+        return this.then(value => {
+            return MyPromise.resolve(callback()).then(() => value)
+        }, reason => {
+            return MyPromise.resolve(callback()).then(() => { throw reason })
+        })
+    }
+    static resolve(value) {
+        return new MyPromise((resolve, reject) => {
+            if (value instanceof MyPromise) {
+                value.then(resolve, reject)
+            } else {
                 resolve(value)
             }
         })
     }
-    static reject(reason){
-        return new MyPromise((_,reject)=>{
+    static reject(reason) {
+        return new MyPromise((_, reject) => {
             reject(reason)
         })
     }
-    static all(promises){
-        let values=[];
-        return new MyPromise((resolve,reject)=>{
-            promises.forEach(promise => {
-                promise.then(value=>{
-                    values.push(value);
-                    if(values.length===promises.length){
-                        resolve(values)
-                    }
-                },reason=>{
-                    reject(reason)
-                })
-            });
-        })
-    }
-    static race(promises){
-        return new MyPromise((resolve,reject)=>{
-            promises.forEach(promise=>{
-                promise.then(resolve,reject)
+
+    static all(promises) {
+        let values = [];
+        return new MyPromise((resolve, reject) => {
+            function processData(val) {
+                values.push(val);
+                if (values.length === promises.length) {
+                    resolve(values)
+                }
+            }
+            promises.forEach(result => {
+                if (result instanceof MyPromise) {
+                    result.then(processData, reject)
+                } else {
+                    processData(result)
+                }
             })
         })
     }
-    private parse(resultFn,resolve,reject){
+    static race(promises){
+        return new MyPromise((resolve, reject) => {
+            promises.forEach(result => {
+                if(result instanceof MyPromise){
+                  result.then(resolve, reject)
+                }else{
+                  resolve(result)
+                }
+            })
+        })
+      }
+    private parse(resultFn, resolve, reject) {
         try {
-            let result =resultFn();
-            if(result instanceof MyPromise){
-                result.then(resolve,reject)
-            }else{
+            let result = resultFn();
+            if (result instanceof MyPromise) {
+                result.then(resolve, reject)
+            } else {
                 resolve(result)
             }
         } catch (error) {
@@ -124,30 +142,30 @@ class MyPromise {
 // test
 
 
-const p2=new Promise((resolve,reject)=>{
-    let num=Math.floor(Math.random()*10);
-    if(num>2){
+const p2 = new Promise((resolve, reject) => {
+    let num = Math.floor(Math.random() * 10);
+    if (num > 2) {
         resolve('ok')
-    }else{
+    } else {
         reject('error')
     }
 })
-const p1=Promise.reject('false');
+const p1 = Promise.reject('false');
 
 
-const mp=MyPromise.race([p1,p2]).then(console.log,console.error)
+const mp = MyPromise.race([1,p1, p2]).then(console.log, console.error)
 // const promise=Promise.race([p1,p2]).then(console.log,console.error)
 
 return
 
-MyPromise.resolve('ok').then(res=>{
+MyPromise.resolve('ok').then(res => {
     console.log(res);
 })
 
-Promise.resolve('ok').then(res=>{
+Promise.resolve('ok').then(res => {
     console.log(res);
-}).catch(reason=>{
-    console.log('err:',reason)
+}).catch(reason => {
+    console.log('err:', reason)
 })
 
 
