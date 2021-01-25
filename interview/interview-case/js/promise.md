@@ -590,3 +590,47 @@ class Queue{
 }
 ```
 
+
+# generator co库解析
+
+generator 语法
+```ts
+function* read(){
+  const a=yield 1;
+  const b=yield 2;
+  const c=yield 3;
+  console.log(a,b,c,'result');
+  return a+b+c;
+}
+const it=read();
+const firstResult=it.next();
+const secondResult=it.next(firstResult.value);
+const threeResult=it.next(secondResult.value);
+const {value}=it.next(threeResult.value);
+
+//value: 6
+```
+手动调用`next`方法过于繁琐，因此我们可以封装一个co方法进行内部迭代用法如下:
+
+```ts
+co(read()).then(result=>{
+  console.log(result,'co result')
+})
+```
+co方法实现:
+
+```ts
+function co(it){
+  return new Promise((resolve,reject)=>{
+    const next=(val)=>{
+      const {value,done}=it.next(val);
+      if(!done){
+        Promise.resolve(value).then(next,reject)
+      }else{
+        resolve(value)
+      }
+    }
+    next();
+  })
+}
+```
