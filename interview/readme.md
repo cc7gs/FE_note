@@ -2,6 +2,4 @@
 - 关于异步
   - [个人解读](./async/async-base.md)
   - [关于事件循环](./async/async-loop.md)
-- jsx
-   [jsxDemo](./jsxDemo)
 - [面试篇](./interview-case/README.md)

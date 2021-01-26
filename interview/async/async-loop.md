@@ -25,7 +25,9 @@
 ==**微任务包括:**== process.nextTick,promise,DOM发生变化、MutationObserver。
 ==**宏任务包括:**== 包括整体代码script,setTimeout,setInterval,setImmediate,I/O,UI rendering.
 
+**事件循环顺序:** js引擎  --> 清空微任务 --> UI渲染 --> 取出宏任务 --> js引擎执行
 
+*: js引擎即执行栈包含同步任务与异步任务。
 # nodejs的事件循环
 原文地址: https://github.com/SunShinewyf/issue-blog/issues/34#issuecomment-371106502
 
