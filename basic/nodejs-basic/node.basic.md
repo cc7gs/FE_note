@@ -10,6 +10,21 @@
 
 # nodejs 常用API
 
+## process
+
+- **argv**: 解析用户传递参数
+```ts
+// 前两个参数分别是 node执行命令路径与当前执行文件路径
+const  [nodeExePath,curFilePath,...args]=process.argv;
+```
+- **cwd()**:返回运行node命令所在的文件夹的绝对路径
+
+```ts
+// 
+const path=process.cwd();
+```
+
+- **nextTick**: 微任务
 ## modules
 `foo.js`
 ```js

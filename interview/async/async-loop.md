@@ -37,7 +37,7 @@
 - I/O callbacks 阶段: 执行除了 close事件的callbacks、被timers设定的callbacks、setImmediate()设定的callbacks这些之外的callbacks;
 - idle, prepare 阶段: 仅node内部使用;
 - poll 阶段: 
-  - 回到timeer阶段执行回调
+  - 回到timers阶段执行回调
   - 执行I/O回调
 - check 阶段: 执行setImmediate() 设定的callbacks;
 - close callbacks 阶段: 执行socket.on('close', ...)这些 callback
