@@ -1,11 +1,14 @@
 > 这是一个学习nodeJs 笔记仓库,通过书籍和实践总结出一个手册,如有错误可以击提issue 💪,如果觉得ok,请点个star 🙏, `送人玫瑰、手有余香`
 
 # 目录
-1. [nodeJs能做什么?](#nodejs能做什么?)
-2. [nodeJsAPI](#nodeJS基础API)
-3. [GraphQL](#GraphQL)
-4. [框架](#框架)
-5. [案例](#案例)
+- [目录](#目录)
+- [nodejs能做什么？](#nodejs能做什么)
+- [nodeJS基础API](#nodejs基础api)
+- [GraphQL](#graphql)
+- [深入源码分析](#深入源码分析)
+  - [GraphQL API 工具](#graphql-api-工具)
+- [框架](#框架)
+- [案例](#案例)
 
 # nodejs能做什么？
 - 构建工具(比如 自动化，webpack...)
@@ -46,6 +49,8 @@ V8：Google 推出的 Javascript VM，也是 Node.js 为什么使用的是 Javas
 
 [graphQL](./framework/graphql-photo-api/README.md)
 
+# 深入源码分析
+ - [require 加载分析](./source/require/require.md)
 ## GraphQL API 工具
 [graphQL playground](https://www.graphqlbin.com/)
 [graphiQL](https://github.com/graphql/graphiql)
