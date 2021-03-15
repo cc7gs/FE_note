@@ -160,6 +160,9 @@ const server=http.createServer((req,res)=>{
 server.listen(3000)
 ```
 ## streams
+
+流可以边读取边写入,而readFile则是先将文件读取完成然后才去写入。
+
 ```js
 var stream1; //readable
 var stream2; //writable
