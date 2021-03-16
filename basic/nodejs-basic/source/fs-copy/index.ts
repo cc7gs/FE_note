@@ -45,10 +45,26 @@ const copy=(source,target,callback)=>{
    })
 }
 
-copy(resolve(__dirname,'name.txt'),resolve(__dirname,'copy.txt'),(err)=>{
-  if(err){
-    console.log('copy err',err);
-    return
-  }
-  console.log('copy success')
+// copy(resolve(__dirname,'name.txt'),resolve(__dirname,'copy.txt'),(err)=>{
+//   if(err){
+//     console.log('copy err',err);
+//     return
+//   }
+//   console.log('copy success')
+// })
+
+
+
+// 方式二 创建可读流
+
+const rs=fs.createReadStream(resolve(__dirname,'copy.txt'),{
+});
+
+const chunkData=[];
+rs.on('data',(chunk)=>{
+  chunkData.push(chunk);
 })
+rs.on('close',()=>{
+  console.log(chunkData.join(),'read source')
+})
+rs.res
