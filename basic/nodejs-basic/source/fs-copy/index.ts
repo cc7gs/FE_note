@@ -67,4 +67,3 @@ rs.on('data',(chunk)=>{
 rs.on('close',()=>{
   console.log(chunkData.join(),'read source')
 })
-rs.res
