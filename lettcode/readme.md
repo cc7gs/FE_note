@@ -92,6 +92,7 @@
 |     | [实现单向链表](./src/linked/basic.ts)             |            |
 |     | [单链表快速排序](./src/linked/quick.sort.link.ts) |
 | 237 | [删除链表中的节点](./src/linked/)                 | Easy       |
+| 206 | [反转链表](./src/linked/reverse.list.ts)                 | Easy       |
 
 ## 队列
 

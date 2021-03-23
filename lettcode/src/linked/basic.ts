@@ -32,8 +32,8 @@ class ListNode {
 }
 
 class LinkedList<T>{
-  private head:Node<T>|null;
-  private tail:Node<T>|null;
+  public head:Node<T>|null;
+  public tail:Node<T>|null;
   public length:number;
   constructor(){
     this.head=this.tail=null;
