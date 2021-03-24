@@ -1,12 +1,11 @@
-import { Node, Tree, SearchTree,mergeTrees } from '../tree'
+import { Node, Tree, SearchTree,mergeTrees } from '../tree';
+import {BinarySearchTree} from '../tree/basic/index';
+
 describe('树', () => {
   it('合并二叉树',()=>{
     let tree1=new Tree([1,3,2,5]) as Node<number>;
     let tree2=new Tree([2,1,3,null,4,null,7])as Node<number>;
-    console.log(tree1,'tree1');
-    console.log(tree2,'tree2');
     let mergeTree=mergeTrees(tree1,tree2);
-    console.log(mergeTree);
     expect(mergeTree.val).toBe(3);
   })
   it('定义二叉树', () => {
@@ -30,5 +29,30 @@ describe('树', () => {
     let tree1 = new SearchTree(input) as Node<number>;
     expect(SearchTree.isvaildBST(tree)).toBe(true);
     expect(SearchTree.isvaildBST(tree1)).toBe(true);
-  })
+  });
+  it('二叉搜索树 basic tree traverse', () => {
+    let input = [10, 5, 15, 6, 20];
+    let tree = new BinarySearchTree();
+    input.forEach(num=>tree.insert(num));
+    expect(tree.max()?.value).toBe(20);
+    tree.levelTraverse((val:number)=>{
+      let curVal=input.shift();
+      expect(curVal).toEqual(val);
+    })
+  });
+  it('二叉搜索树:revert', () => {
+    let input = [10, 5, 15, 6, 20];
+    let tree = new BinarySearchTree();
+    input.forEach(num=>tree.insert(num));
+    const newTree=tree.invertTree();
+    const output=[10,15,5,20,6];
+    tree.levelTraverseNode(newTree,(val:number)=>{
+      let curVal=output.shift();
+      expect(curVal).toEqual(val);
+    })
+  });
+  
 })
+
+
+
