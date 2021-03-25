@@ -2,7 +2,6 @@ import  {resolve} from 'path';
 import * as fs from 'fs';
 
 
-
 /**
  * @description 边读取边写入copy问题
  * @param source 源文件
@@ -57,13 +56,14 @@ const copy=(source,target,callback)=>{
 
 // 方式二 创建可读流
 
-const rs=fs.createReadStream(resolve(__dirname,'copy.txt'),{
-});
+const rs=fs.createReadStream(resolve(__dirname,'./name.txt'));
 
-const chunkData=[];
-rs.on('data',(chunk)=>{
-  chunkData.push(chunk);
-})
-rs.on('close',()=>{
-  console.log(chunkData.join(),'read source')
-})
+// const chunkData=[];
+// rs.on('data',(chunk)=>{
+//   chunkData.push(chunk);
+// })
+// rs.on('close',()=>{
+//   console.log(chunkData.join(),'read source')
+// })
+
+rs.pipe(fs.createWriteStream(resolve(__dirname,'copy.txt')));
