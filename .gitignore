@@ -7,6 +7,9 @@ dist/
 .cache/
 .vscode/
 
+*.log
+*.lock
+
 # 
 # 数据库篇/demo1_CURD/node_modules
 # 数据库篇/demo2_course/node_modules
