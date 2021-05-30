@@ -1,17 +1,26 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
 # dependencies
-node_modules/
-image/
-test.*
+**/node_modules
 
-dist/
-.cache/
-.vscode/
 
-*.log
-*.lock
+/npm-debug.log*
 
-# 
-# 数据库篇/demo1_CURD/node_modules
-# 数据库篇/demo2_course/node_modules
-# 数据库篇/demo3_redis/node_modules
+yarn-error.log
 
+package-lock.json
+
+# production
+**/dist
+
+# misc
+.DS_Store
+
+# umi
+.umi
+.umi-production
+.env.local
+
+# ide
+.vscode
+/.idea

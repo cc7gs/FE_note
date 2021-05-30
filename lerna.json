@@ -1,0 +1,25 @@
+{
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+      "allowBranch": "master",
+      "includeMergedTags": true
+    },
+    "publish": {
+      "registry": "https://registry.npmjs.org/"
+    }
+  },
+  "ignoreChanges": [
+    "**/*.md",
+    "**/*.test.ts",
+    "**/*.e2e.ts",
+    "**/demos/**",
+    "**/fixtures/**",
+    "**/dist/**",
+    "**/lib/**",
+    "**/es/**",
+    "**/test/**"
+  ]
+}
