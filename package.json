@@ -7,6 +7,7 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
+    "add": "lerna add",
     "start": "dumi dev",
     "build": "dumi build",
     "docs:build": "dumi build",
@@ -22,15 +23,7 @@
   "module": "dist/index.esm.js",
   "typings": "dist/index.d.ts",
   "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write"
-    ]
+    "pre-commit": "pretty-quick --staged"
   },
   "devDependencies": {
     "@types/jest": "^26.0.23",
@@ -47,6 +40,7 @@
     "lerna": "^4.0.0",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "typescript": "^4.3.2",
