@@ -1,1 +1,0 @@
-var t=require('./test')
