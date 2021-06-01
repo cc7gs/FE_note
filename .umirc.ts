@@ -17,8 +17,8 @@ export default defineConfig({
   // logo:"",
 
   hash: true,
-  // base: isProduction ? '/frontEnd_note/' : '/',
-  publicPath: isProduction ? '/frontEnd_note/' : '/',
+  base: '/frontEnd_note/',
+  publicPath: '/frontEnd_note/',
   outputPath: 'docs-dist',
   exportStatic: {},
   dynamicImport: {},
