@@ -28,7 +28,6 @@ export default defineConfig({
   },
   webpack5: {},
   fastRefresh: {},
-  ssr: isProduction ? {} : undefined,
   navs: [
     {
       title: '基础篇',
