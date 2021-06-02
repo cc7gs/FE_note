@@ -1,6 +1,6 @@
 {
-  "umi.js": "/frontEnd_note/umi.2235a366.js",
-  "wrappers.js": "/frontEnd_note/wrappers.49d2ac61.async.js",
+  "umi.js": "/frontEnd_note/umi.f424563d.js",
+  "wrappers.js": "/frontEnd_note/wrappers.3512a65f.async.js",
   "dumi_demos.css": "/frontEnd_note/dumi_demos.cba3f130.chunk.css",
   "dumi_demos.js": "/frontEnd_note/dumi_demos.17797725.async.js",
   "docs__index.md.js": "/frontEnd_note/docs__index.md.97c978ba.async.js",
@@ -30,10 +30,10 @@
   "packages__interview__async__async-loop.md.js": "/frontEnd_note/packages__interview__async__async-loop.md.e78c3bb0.async.js",
   "packages__interview__html__center.auto.md.css": "/frontEnd_note/packages__interview__html__center.auto.md.09c026d5.chunk.css",
   "packages__interview__html__center.auto.md.js": "/frontEnd_note/packages__interview__html__center.auto.md.dc4f6e98.async.js",
-  "packages__interview__html__fixed.center.md.css": "/frontEnd_note/packages__interview__html__fixed.center.md.09c026d5.chunk.css",
-  "packages__interview__html__fixed.center.md.js": "/frontEnd_note/packages__interview__html__fixed.center.md.96a5796f.async.js",
-  "packages__interview__html__fixed.space.md.css": "/frontEnd_note/packages__interview__html__fixed.space.md.09c026d5.chunk.css",
-  "packages__interview__html__fixed.space.md.js": "/frontEnd_note/packages__interview__html__fixed.space.md.08bd6da4.async.js",
+  "packages__interview__html__fixedCenter.md.css": "/frontEnd_note/packages__interview__html__fixedCenter.md.09c026d5.chunk.css",
+  "packages__interview__html__fixedCenter.md.js": "/frontEnd_note/packages__interview__html__fixedCenter.md.e91f6ed7.async.js",
+  "packages__interview__html__fixedSpace.md.css": "/frontEnd_note/packages__interview__html__fixedSpace.md.09c026d5.chunk.css",
+  "packages__interview__html__fixedSpace.md.js": "/frontEnd_note/packages__interview__html__fixedSpace.md.cbb3e49a.async.js",
   "packages__interview__html__layout.two.md.css": "/frontEnd_note/packages__interview__html__layout.two.md.09c026d5.chunk.css",
   "packages__interview__html__layout.two.md.js": "/frontEnd_note/packages__interview__html__layout.two.md.4dd1a8f9.async.js",
   "packages__interview__js__constructor.new.md.css": "/frontEnd_note/packages__interview__js__constructor.new.md.09c026d5.chunk.css",
@@ -81,7 +81,7 @@
   "packages__node-source__fs-copy__readStream.md.css": "/frontEnd_note/packages__node-source__fs-copy__readStream.md.09c026d5.chunk.css",
   "packages__node-source__fs-copy__readStream.md.js": "/frontEnd_note/packages__node-source__fs-copy__readStream.md.a6564622.async.js",
   "packages__node-source__http-server__README.md.css": "/frontEnd_note/packages__node-source__http-server__README.md.09c026d5.chunk.css",
-  "packages__node-source__http-server__README.md.js": "/frontEnd_note/packages__node-source__http-server__README.md.a85a2a14.async.js",
+  "packages__node-source__http-server__README.md.js": "/frontEnd_note/packages__node-source__http-server__README.md.57a827e2.async.js",
   "packages__node-source__require__require.md.css": "/frontEnd_note/packages__node-source__require__require.md.09c026d5.chunk.css",
   "packages__node-source__require__require.md.js": "/frontEnd_note/packages__node-source__require__require.md.26d66df4.async.js",
   "packages__sql__README.md.css": "/frontEnd_note/packages__sql__README.md.09c026d5.chunk.css",
@@ -115,5 +115,7 @@
   "8780.f5e62490.chunk.css": "/frontEnd_note/8780.f5e62490.chunk.css",
   "static/demo1.png": "/frontEnd_note/static/demo1.dd48f962.png",
   "static/render.png": "/frontEnd_note/static/render.6ff05241.png",
-  "static/content.png": "/frontEnd_note/static/content.8910d619.png"
+  "static/content.png": "/frontEnd_note/static/content.8910d619.png",
+  "favicon.ico": "/frontEnd_note/favicon.ico",
+  "logo.svg": "/frontEnd_note/logo.svg"
 }
