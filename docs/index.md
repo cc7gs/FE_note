@@ -1,10 +1,12 @@
 ---
+title: FE-Note
+sidebar: false
+
 hero:
   title: Chen前端笔记
   desc: 这里将记录自己学习前端生态一些笔记、和练习demo的一个仓库
-  sidebar: false
   actions:
-    - text: Getting Started
+    - text: ✌️ 开始之旅 →
       link: /basic
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
@@ -16,6 +18,5 @@ features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/d1ee0c6f-5aed-4a45-a507-339a4bfe076c/k7bjsocq_w144_h144.png
     title: 夯实算法
     desc: 这里汇总学习算法过程中痛点与解法,并记录刷[Lettcode](https://leetcode.com/)真题
-footer: Open-source MIT Licensed | Copyright © 2020<br />
+footer: Open-source MIT Licensed | Copyright © 2021<br />
 ---
-

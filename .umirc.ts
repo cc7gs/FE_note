@@ -14,8 +14,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 export default defineConfig({
   title: 'FE-note',
   mode: 'site',
-  // logo:"",
-
+  logo: '/logo.svg',
   hash: true,
   base: '/frontEnd_note/',
   publicPath: '/frontEnd_note/',
@@ -40,7 +39,6 @@ export default defineConfig({
     },
     {
       title: '高级篇',
-      // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
       children: [
         { title: 'node源码分析', path: '/node-source' },
         { title: 'RxJS', path: '/rx-js' },
@@ -73,5 +71,25 @@ export default defineConfig({
   ],
   locales: [['zh-CN', '中文']],
   ignoreMomentLocale: true,
+  styles: [
+    `
+    .__dumi-default-layout-hero {
+      background-color: #1890ff !important;
+      transition: 0.3s all;
+     }
+     .__dumi-default-layout-hero:hover {
+        background-position-y: -20px;
+      }
+    
+      .__dumi-default-layout-hero h1 {
+        color: #fff !important;
+      }
+    
+      .__dumi-default-layout-hero div > p {
+        color: #fff;
+      }
+    }
+    `,
+  ],
   // more config: https://d.umijs.org/config
 });
