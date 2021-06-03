@@ -17,7 +17,7 @@ export default defineConfig({
   logo: '/logo.svg',
   hash: true,
   base: '/FE_note/',
-  publicPath: '//FE_note/',
+  publicPath: '/FE_note/',
   outputPath: 'docs-dist',
   exportStatic: {},
   dynamicImport: {},
