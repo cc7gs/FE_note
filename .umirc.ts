@@ -16,8 +16,8 @@ export default defineConfig({
   mode: 'site',
   logo: '/logo.svg',
   hash: true,
-  base: '/frontEnd_note/',
-  publicPath: '/frontEnd_note/',
+  base: '/FE_note/',
+  publicPath: '//FE_note/',
   outputPath: 'docs-dist',
   exportStatic: {},
   dynamicImport: {},
@@ -29,7 +29,7 @@ export default defineConfig({
   fastRefresh: {},
   navs: [
     {
-      title: '基础篇',
+      title: '夯实基础',
       path: '/basic',
       // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
       children: [
@@ -38,7 +38,7 @@ export default defineConfig({
       ],
     },
     {
-      title: '高级篇',
+      title: '提升篇',
       children: [
         { title: 'node源码分析', path: '/node-source' },
         { title: 'RxJS', path: '/rx-js' },
@@ -66,7 +66,7 @@ export default defineConfig({
     },
     {
       name: 'description',
-      content: '在这里记录前端进阶提升过程点滴',
+      content: '在这里记录学习前端过程过程点滴',
     },
   ],
   locales: [['zh-CN', '中文']],

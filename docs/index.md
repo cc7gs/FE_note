@@ -3,8 +3,8 @@ title: FE-Note
 sidebar: false
 
 hero:
-  title: Chen前端笔记
-  desc: 这里将记录自己学习前端生态一些笔记、和练习demo的一个仓库
+  title: Chen 空间
+  desc: 持续学习,突破自我，Talking is cheap，show me a code
   actions:
     - text: ✌️ 开始之旅 →
       link: /basic
