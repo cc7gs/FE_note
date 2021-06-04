@@ -2,6 +2,8 @@ import { defineConfig } from 'dumi';
 import { join } from 'path';
 import { readdirSync } from 'fs';
 
+const SITE_BASIC_PATH = '/FE_note';
+
 const headPkgList = [];
 
 const pkgList = readdirSync(join(__dirname, 'packages'))
@@ -14,17 +16,23 @@ const isProduction = process.env.NODE_ENV === 'production';
 export default defineConfig({
   title: 'FE-note',
   mode: 'site',
-  logo: '/logo.svg',
+  logo: `${SITE_BASIC_PATH}/logo.svg`,
+  favicon: `${SITE_BASIC_PATH}/favicon.ico`,
   hash: true,
-  base: '/FE_note/',
-  publicPath: '/FE_note/',
+  base: `${SITE_BASIC_PATH}/`,
+  publicPath: `${SITE_BASIC_PATH}/`,
   outputPath: 'docs-dist',
   exportStatic: {},
-  dynamicImport: {},
   manifest: {},
+  ssr: isProduction ? {} : undefined,
   resolve: {
     includes: ['docs', ...pkgList],
   },
+  analytics: isProduction
+    ? {
+        ga: 'UA-198796576-1',
+      }
+    : false,
   webpack5: {},
   fastRefresh: {},
   navs: [
