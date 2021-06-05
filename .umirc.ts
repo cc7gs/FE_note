@@ -14,7 +14,7 @@ const pkgList = readdirSync(join(__dirname, 'packages'))
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
-  title: 'FE-note',
+  title: 'FE-Note ｜晨风笔记',
   mode: 'site',
   logo: `${SITE_BASIC_PATH}/logo.svg`,
   favicon: `${SITE_BASIC_PATH}/favicon.ico`,
