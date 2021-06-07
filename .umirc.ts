@@ -2,10 +2,11 @@ import { defineConfig } from 'dumi';
 import { join } from 'path';
 import { readdirSync } from 'fs';
 
-const { NODE_ENV, DEL_PUBLIC_PATH } = process.env;
+const { NODE_ENV, PUBLISH_APP_ENV } = process.env;
 
 const isProduction = NODE_ENV === 'production';
-const SITE_BASIC_PATH = DEL_PUBLIC_PATH ? '' : '/FE_note';
+
+let SITE_BASIC_PATH = PUBLISH_APP_ENV === 'github' ? '/FE_note' : '';
 
 const headPkgList = [];
 
