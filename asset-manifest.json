@@ -1,10 +1,10 @@
 {
-  "umi.css": "/FE_note/umi.6823038a.css",
-  "umi.js": "/FE_note/umi.96af35ec.js",
-  "umi.png": "/FE_note/static/demo1.dd48f962.png",
-  "static/demo1.png": "/FE_note/static/demo1.dd48f962.png",
-  "static/render.png": "/FE_note/static/render.6ff05241.png",
-  "static/content.png": "/FE_note/static/content.8910d619.png",
-  "favicon.ico": "/FE_note/favicon.ico",
-  "logo.svg": "/FE_note/logo.svg"
+  "umi.css": "/umi.6823038a.css",
+  "umi.js": "/umi.58910148.js",
+  "umi.png": "/static/demo1.dd48f962.png",
+  "static/demo1.png": "/static/demo1.dd48f962.png",
+  "static/render.png": "/static/render.6ff05241.png",
+  "static/content.png": "/static/content.8910d619.png",
+  "favicon.ico": "/favicon.ico",
+  "logo.svg": "/logo.svg"
 }
