@@ -2,7 +2,10 @@ import { defineConfig } from 'dumi';
 import { join } from 'path';
 import { readdirSync } from 'fs';
 
-const SITE_BASIC_PATH = '/FE_note';
+const { NODE_ENV, DEL_PUBLIC_PATH } = process.env;
+
+const isProduction = NODE_ENV === 'production';
+const SITE_BASIC_PATH = DEL_PUBLIC_PATH ? '' : '/FE_note';
 
 const headPkgList = [];
 
@@ -10,8 +13,6 @@ const pkgList = readdirSync(join(__dirname, 'packages'))
   .filter((pkg) => pkg.charAt(0) !== '.' && !headPkgList.includes(pkg))
   .map((path) => [join('packages', path)])
   .reduce((acc, val) => acc.concat(val), []);
-
-const isProduction = process.env.NODE_ENV === 'production';
 
 export default defineConfig({
   title: 'FE-Note ｜晨风笔记',
