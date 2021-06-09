@@ -1,0 +1,18 @@
+.light {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+:global {
+  .flash:local {
+    animation: flashAnimation 0.6s infinite;
+  }
+}
+@keyframes flashAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+} ;

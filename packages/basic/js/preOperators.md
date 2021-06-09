@@ -1,10 +1,21 @@
+---
+nav:
+  title: 基础篇
+  path: /basic
+group:
+  title: Js巩固篇
+  path: /js
+---
+
 > 本文主要是学习掌握 5 个常用函数的实现与场景应用文章来源于[learnrx](http://reactivex.io/learnrx/)
 
-# forEach
+# Js 常用函数使用与实现
+
+## forEach
 
 🌰: 打印 [names](#names)
 
-## names
+### names
 
 ```js
 const names = ['cc', 'chen', 'wu'];
@@ -25,7 +36,7 @@ for (counter = 0; counter < names.length; counter++) {
 names.forEach((name) => console.log(name));
 ```
 
-# map
+## map
 
 ```js
 Array.prototype.map = function (fn) {
@@ -49,7 +60,7 @@ JSON.stringify(
 // newReleases.map(function(video) { return { id: video.id, title: video.title }; });
 ```
 
-# filter
+## filter
 
 🌰: 现在返回 [newReleases](#newRelease)中评分为 5.0 的数据
 
@@ -76,9 +87,9 @@ Array.prototype.filter = function (predicateFunction) {
 };
 ```
 
-# concatAll
+## concatAll
 
-## 实现 concatAll
+### 实现 concatAll
 
 现在我们通过实现`concatAll`来进行二维数组扁平化
 
@@ -93,7 +104,7 @@ Array.prototype.concatAll = function () {
 };
 ```
 
-### 案例一
+#### 案例一
 
 🌰: 返回[movieLists](#movielists)中 所有 videos 的 id
 
@@ -122,7 +133,7 @@ allVideoIdsInMovieLists = movieLists
 var itemInArray = movieLists[0];
 ```
 
-## result
+### result
 
 ```js
 [
@@ -193,7 +204,7 @@ movieLists.concatMap((movieList) =>
 );
 ```
 
-# reduce
+## reduce
 
 🌰: 在[boxarts](#boxarts)数组中返回最大的 art
 
@@ -211,7 +222,7 @@ boxarts.forEach(function (boxart) {
 });
 ```
 
-## 实现 reduce
+### 实现 reduce
 
 ```js
 Array.prototype.reduce = function (combiner, initialValue) {
@@ -248,7 +259,7 @@ boxarts.reduce((acc, cur) =>
 );
 ```
 
-# zip
+## zip
 
 🌰: 按引合并[videos 与 bookmarks](#z-use-data)
 
@@ -267,7 +278,7 @@ for (
 }
 ```
 
-## 实现 zip
+### 实现 zip
 
 ```js
 Array.zip = function (left, right, combinerFunction) {
@@ -293,7 +304,7 @@ videoIdAndBookmarkIdPairs = Array.zip(videos, bookmarks, (video, bookmark) => ({
 
 到目前为止我们已经对上面的函数已经有了基本认识与使用,是否有一种醍醐灌顶或者意犹未尽，可以用上面所有知识来挑战下面习题
 
-# 综合题目
+## 综合题目
 
 现在我们有四个数组[ lists, videos, boxarts, and bookmarks ](#tree-deep-data),根据数组中对象 id 关联整合出如下结构:
 
@@ -362,9 +373,9 @@ lists.map((list) => ({
 }));
 ```
 
-# 测试数据
+## 测试数据
 
-## newRelease
+### newRelease
 
 ```js
 var newReleases = [
@@ -403,7 +414,7 @@ var newReleases = [
 ];
 ```
 
-## movieLists
+### movieLists
 
 ```js
 var movieLists = [
@@ -501,7 +512,7 @@ var movieLists = [
 ];
 ```
 
-## boxarts
+### boxarts
 
 ```js
 boxarts = [
@@ -528,7 +539,7 @@ boxarts = [
 ];
 ```
 
-## z-use-data
+### z-use-data
 
 ```js
 var videos = [
@@ -568,7 +579,7 @@ var videos = [
   ];
 ```
 
-## tree-deep-data
+### tree-deep-data
 
 ```js
 var lists = [

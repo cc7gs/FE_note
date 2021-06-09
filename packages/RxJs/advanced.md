@@ -1,3 +1,12 @@
+---
+nav:
+  title: RxJS
+  path: /rx-js
+group:
+  title: 高级
+  path: /advance
+---
+
 > 本片文章主要通过实现`RxJs`一些简单操作符，来进一步了解`RxJs` **本篇文章可以学到什么?**
 
 1. 深入了解`Observable`

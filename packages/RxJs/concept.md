@@ -1,3 +1,13 @@
+---
+nav:
+  title: RxJS
+  path: /rx-js
+group:
+  title: 基础
+  path: /basic
+  order: 1
+---
+
 # 介绍
 
 ## 什么是 Rx?

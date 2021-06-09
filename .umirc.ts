@@ -44,6 +44,7 @@ export default defineConfig({
       // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
       children: [
         { title: '前端基础篇', path: '/basic' },
+        { title: 'React基础篇', path: '/react' },
         { title: 'node基础篇', path: '/node-basic' },
       ],
     },
@@ -51,6 +52,7 @@ export default defineConfig({
       title: '提升篇',
       children: [
         { title: 'node源码分析', path: '/node-source' },
+        { title: 'react源码分析', path: '/react/depth' },
         { title: 'RxJS', path: '/rx-js' },
         { title: 'Typescript', path: '/typescript' },
       ],

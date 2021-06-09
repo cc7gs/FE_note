@@ -1,3 +1,12 @@
+---
+nav:
+  title: RxJS
+  path: /rx-js
+group:
+  title: 基础
+  path: /basic
+---
+
 # 操作符
 
 操作符就是在 `subscribe`接上一个`Observer`之前的一系列数据处理。并且每一个操作都是返回一个全新的 Observable 对象的函数。
