@@ -286,6 +286,32 @@ type T2 = ReturnType<<T>() => T>;
 //    ^ = type T2 = unknown
 ```
 
+### Parameters<type>
+
+取出函数参数作为类型。
+
+```ts
+type T1 = Parameters<(a: string) => void>;
+// [a:string]
+type T2 = Parameters<() => {}>;
+// []
+
+declare function f1(arg: { a: number; b: string }): void;
+type T3 = Parameters<typeof f1>;
+// [arg:{a:number,b:string}]
+```
+
+### NonNullable<Type>
+
+去除 null、undefined
+
+```ts
+type T0 = NonNullable<string | null | undefined | number>;
+// type T0=string| number
+```
+
+###
+
 ## Unknown vs Any 区别
 
 > [详情查看原文](https://wanago.io/2020/01/27/understanding-any-and-unknown-in-typescript-difference-between-never-and-void/)

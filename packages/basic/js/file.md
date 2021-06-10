@@ -1,5 +1,4 @@
 ---
-title: File
 nav:
   title: 基础篇
   path: /basic
