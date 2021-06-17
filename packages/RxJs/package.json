@@ -17,7 +17,7 @@
     "rxjs": "^6.5.3"
   },
   "devDependencies": {
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^4.5.2",
     "ts-loader": "^6.2.1",
     "ts-node": "^8.5.0",
     "ts-node-dev": "^1.0.0-pre.44",
