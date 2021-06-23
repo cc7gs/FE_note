@@ -1,5 +1,5 @@
 ---
-title: 总览
+title: 
 nav:
   title: lettcode
   path: /lettcode
@@ -10,38 +10,10 @@ group:
   order: 2
 ---
 
-# 介绍仓库
 
-该仓库主要是学习数据结构的一些总结,习题来自[LettCode](https://leetcode-cn.com)
+# 习题总览
 
-# 内容
-
-## 基础篇
-
-| # | title | 备注 |
-| --- | --- | --- |
-| Stack | [实现栈结构](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/stack/basic.ts) |  |
-|  | [进制转化问题](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/basic/converter.ts) | stack 习题 |
-| Queue | [实现队列结构](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/queue/basic.ts) |  |
-|  | [回文检查器](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/basic/palindromeChecker.ts) | queue 习题 |
-| Linked | [实现单向链表](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/linked/basic.ts) |  |
-| Set | [构建数据集合](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/basic/set.ts) |  |
-|  | [交集、并集、差运算](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/basic/set.basic.ts) | set 习题 |
-| Dict | [构建字典类](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/basic/dictionary.ts) |  |
-| HashTable | [构建散列表] |  |
-|  | [] | HashTable 习题 |
-| Sort | [基本排序算法](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/sort/basic.ts) |  |
-| Tree | [二叉搜索树](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/tree/basic/index.ts) |  |
-|  | [AVL 树]() | Tree 习题 |
-|  | [红黑树]() | Tree 习题 |
-| Graph | [构建图类] |
-|  | [] | Graph 习题 |
-
-@TODO:
-
-- [ ] HashTable
-- [ ] AVL 树、红黑树
-- [ ] Graph
+> 该仓库主要是学习数据结构的一些总结,习题来自[LettCode](https://leetcode-cn.com)
 
 ## string
 
