@@ -13,9 +13,39 @@
 - 聚合前端应用
   
 ## 实施方式
+架构目标           | 描述
+------------------|---------------
+a. 独立开发        | 独立开发，而不受影响
+b. 独立部署        | 能作为一个服务来单独部署
+c. 支持不同框架     | 可以同时使用不同的框架，如 Angular、Vue、React
+d. 摇树优化        | 能消除未使用的代码
+e. 环境隔离        | 应用间的上下文不受干扰
+f. 多个应用同时运行 | 不同应用可以同时运行
+g. 共用依赖        | 不同应用是否共用底层依赖库
+h. 依赖冲突        | 依赖的不同版本是否导致冲突
+i. 集成编译        | 应用最后被编译成一个整体，而不是分开构建
+
+
+方式        | a | b | c | d | e | f | g | h | i
+-----------|---|---|---|---|---|---|---|---|---
+路由分发    | O | O | O | O | O | O |   |   |   
+iFrame     | O | O | O | O | O | O |   |   |   
+应用微服务化 | O | O | O |   |   | O |   |   |
+微件化      | O | O |   |   | - | - | O | - |   
+微应用化    | O | O |   | O | - | - | O | - | O 
+纯 Web Components      | O | O |   | O | O | O | - | - | O 
+结合 Web Components    | O | O | O | O | O | O |   |   | O 
+
+图中的 O 表示支持，空白表示不支持，- 表示不受影响。
 
 # 框架应用
-
+|   | Monorepo | NPM包 | 动态加载模块 
+-----|---|---|---|---
+搭建难度|简单|中等|困难
+代码是否独立|||✅|
+分开构建||✅|✅|
+分别部署||✅|✅|
+例子| <li><a href="https://github.com/joeldenning/simple-single-spa-webpack-example">simple-webpack-example</a></li><li><a href="https://github.com/single-spa/single-spa-examples">single-spa-examples</a></li>|<a href="https://github.com/jualoppaz/single-spa-login-example-with-npm-packages">single-spa-login-example-with-npm-packages</a>|[SystemJS example](https://gitlab.com/TheMcMurder/single-spa-portal-example)|
 ## singleSPA
 
 > Single-spa 是一个将多个单页面应用聚合为一个整体应用的 JavaScript 微前端框架。
@@ -25,8 +55,7 @@
  - 独立部署每一个单页面应用
  - 渐进式迁移
 
-
-### 类型
+### 拆分应用
 
 ## qiankun
 
