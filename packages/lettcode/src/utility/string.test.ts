@@ -4,6 +4,7 @@ import {
   reverseString,
   numUniqueEmail,
   addStrings,
+  lengthOfLongestSubstring,
 } from '../string'
 
 describe('string', () => {
@@ -21,5 +22,15 @@ describe('string', () => {
   });
   it('reverseString', () => {
     expect(reverseString(["h", "e", "l", "l", "o"])).toEqual(["o", "l", "l", "e", "h"]);
+  });
+
+  it('lengthOfLongestSubstring', () => {
+    expect(lengthOfLongestSubstring("abcabcbb")).toEqual(3);
+  });
+  it('lengthOfLongestSubstring: empty', () => {
+    expect(lengthOfLongestSubstring("")).toEqual(0);
+  });
+  it('lengthOfLongestSubstring: same number', () => {
+    expect(lengthOfLongestSubstring("bbbbb")).toEqual(1);
   });
 })
