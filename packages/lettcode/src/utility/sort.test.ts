@@ -2,6 +2,7 @@ import {
   bubbleSort,
   selectSort,
   quickSort2,
+  insertSort,
   mergeSort,
   quickSort,
   MaximumGap,
@@ -38,6 +39,9 @@ describe('排序基础', () => {
   test('冒泡排序:[3,9,4,6]', () => {
     expect(bubbleSort([3, 9, 4, 6])).toEqual([3, 4, 6, 9]);
   });
+  test('插入排序:[3,9,4,6]', () => {
+    expect(insertSort([3, 9, 4, 6])).toEqual([3, 4, 6, 9]);
+  });
   test('选择排序:[3,9,4,6]', () => {
     expect(selectSort([3, 9, 4, 6])).toEqual([3, 4, 6, 9]);
   });
@@ -48,8 +52,8 @@ describe('排序基础', () => {
     expect(quickSort2([3, 9, 4, 6,4,3])).toEqual([3,3,4,4,6,9]);
   })
   it('merge sort', () => {
-    var nums = [10,5,3,8,2,6,4,7,9,1];
-    var ans = mergeSort(nums);
+    let nums = [10,5,3,8,2,6,4,7,9,1];
+    let ans = mergeSort(nums);
     expect(ans).toEqual([1,2,3,4,5,6,7,8,9,10]);
   });
 });

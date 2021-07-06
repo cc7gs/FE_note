@@ -5,6 +5,7 @@ module.exports = {
   rules: {
     ...base.rules,
     'arrow-parens': 0,
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     'react/no-array-index-key': 0,
     'react/sort-comp': 0,
     '@typescript-eslint/no-explicit-any': 1,
