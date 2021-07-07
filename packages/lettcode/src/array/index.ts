@@ -5,7 +5,9 @@ import interSection from './intersection'
 import majorityElement from './majorityElement'
 import majorityElementTwo from './majorityElement-two'
 import arrayPairSum from './arrayPairSum'
-import findDuplicates from './findDuplicates'
+import findDuplicates from './findDuplicates';
+
+export * from './mergeSortedArray'
 export * from './spiralOrder'
 export * from './containsDuplicate'
 export * from './rotate.image'

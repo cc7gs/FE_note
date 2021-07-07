@@ -50,6 +50,7 @@ group:
 | 860 | [柠檬水找零](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/array/lemonade.ts) | Easy |
 | 62 | [不同路径](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/array/unique.paths.ts) | medium |
 | 63 | [不同路径 2](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/array/unique.paths.ts) | medium |
+| 88 | [合并两个有序数组](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/array/mergeSortedArray.ts) | medium |
 
 ## sort
 
