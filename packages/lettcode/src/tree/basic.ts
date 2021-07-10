@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable @typescript-eslint/no-parameter-properties */
+/* eslint-disable no-multi-assign */
+/* eslint-disable no-restricted-properties */
+/* eslint-disable max-classes-per-file */
 
 /**
  * 构建二叉树
@@ -16,22 +21,22 @@ class Node<T> {
  */
 class Tree<T>{
   constructor(data: T[]) {
-    //定义根节点
+    // 定义根节点
     let root: Node<T>;
-    //临时存放节点信息
+    // 临时存放节点信息
     let nodeList = [];
 
     for (let i = 0, len = data.length; i < len; i++) {
-      let curNode = new Node(data[i]);
+      const curNode = new Node(data[i]);
       nodeList.push(curNode);
       if (i > 0) {
-        //当前元素所在行
-        let curLine = Math.floor(Math.sqrt(i + 1));
-        //存放当前元素上一行首
-        let curLineIndex = Math.pow(2, curLine) - 1;
-        //存放当前元素所在行首
-        let preLineIndex = Math.pow(2, curLine - 1) - 1;
-        let parent = nodeList[preLineIndex + Math.floor((i - curLineIndex) / 2)];
+        // 当前元素所在行
+        const curLine = Math.floor(Math.sqrt(i + 1));
+        // 存放当前元素上一行首
+        const curLineIndex = Math.pow(2, curLine) - 1;
+        // 存放当前元素所在行首
+        const preLineIndex = Math.pow(2, curLine - 1) - 1;
+        const parent = nodeList[preLineIndex + Math.floor((i - curLineIndex) / 2)];
         if (parent.left) {
           parent.right = curNode;
         } else {
@@ -45,11 +50,11 @@ class Tree<T>{
   }
 
   static isSymmetric(root: Node<Number>) {
-    const walk = (left: Node<Number>, right: Node<Number>): boolean => {
+    const walk = (left: Node<Number>, right: Node<number>): boolean => {
       if (!root) {
         return true;
       }
-      //成为叶子节点时
+      // 成为叶子节点时
       if (!left && !right) {
         return true;
       }
@@ -82,7 +87,7 @@ class SearchTree {
    * @param val 传入的值
    */
   private static insert(node: Node<any>, val: number) {
-    //左子树
+    // 左子树
     if (val < node.val) {
       if (!node.left) {
         node.left = new Node(val);
@@ -90,7 +95,7 @@ class SearchTree {
         this.insert(node.left, val);
       }
     }
-      //右子树
+      // 右子树
     if (val > node.val) {
       if (!node.right) {
         node.right = new Node(val);
@@ -121,6 +126,7 @@ class SearchTree {
     return isValidBSTFlag;
   }
 }
+
 export {
   Node,
   SearchTree,

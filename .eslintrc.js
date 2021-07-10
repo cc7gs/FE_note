@@ -5,11 +5,13 @@ module.exports = {
   rules: {
     ...base.rules,
     'arrow-parens': 0,
+    "no-multi-assign":0,
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     'react/no-array-index-key': 0,
     'react/sort-comp': 0,
     '@typescript-eslint/no-explicit-any': 1,
     '@typescript-eslint/no-empty-interface': 1,
+    "@typescript-eslint/no-parameter-properties":0,
     '@typescript-eslint/no-inferrable-types': 0,
     'react/no-find-dom-node': 1,
     'react/require-default-props': 0,
