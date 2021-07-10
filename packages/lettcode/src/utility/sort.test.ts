@@ -52,8 +52,8 @@ describe('排序基础', () => {
     expect(quickSort2([3, 9, 4, 6,4,3])).toEqual([3,3,4,4,6,9]);
   })
   it('merge sort', () => {
-    let nums = [10,5,3,8,2,6,4,7,9,1];
+    let nums = [5,3,8,2,6,4,7,9,1];
     let ans = mergeSort(nums);
-    expect(ans).toEqual([1,2,3,4,5,6,7,8,9,10]);
+    expect(ans).toEqual([1,2,3,4,5,6,7,8,9]);
   });
 });

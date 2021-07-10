@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable no-param-reassign */
 type SortType<T> = (arr: T) => T
 
@@ -124,8 +125,27 @@ export const mergeSort: SortType<number[]> = (arr) => {
   const middle = Math.floor(l / 2);
   const left = arr.slice(0, middle);
   const right = arr.slice(middle);
-  return merge(mergeSort(right), mergeSort(left))
+  return merge(mergeSort(left), mergeSort(right))
 }
 
+const merge2 = (arr: number[], l: number, q: number, r: number) => {
+  const left = arr.slice(l, q);
+  const right = arr.slice(q, r);
+  left.push(Number.MAX_SAFE_INTEGER);
+  right.push(Number.MAX_SAFE_INTEGER)
+  for (let k = l, i = 0, j = 0; k < r; k++) {
+    arr[k] = left[i] > right[j] ? right[j++] : left[i++]
+  }
+}
 
-
+export const mergeSort2: SortType<number[]> = arr => {
+  function innerSort(A: number[], l: number, r: number) {
+    if (r - l < 2) return;
+    const q = Math.floor((l + r) / 2);
+    innerSort(A, l, q);
+    innerSort(A, q, r);
+    merge2(A, l, q, r);
+  }
+  innerSort(arr, 0, arr.length)
+  return arr;
+}
