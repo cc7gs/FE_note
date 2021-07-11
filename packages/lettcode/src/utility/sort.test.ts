@@ -11,6 +11,7 @@ import {
   findKthLargest,
   firstMissingPositive,
   sortArray,
+  quickSort3,
 } from '../sort'
 
 
@@ -50,6 +51,11 @@ describe('排序基础', () => {
   })
   it('快速排序2',()=>{
     expect(quickSort2([3, 9, 4, 6,4,3])).toEqual([3,3,4,4,6,9]);
+  })
+  it('快速排序3',()=>{
+    const arr=[3, 9, 4, 6,4,3];
+    quickSort3(arr);
+    expect(arr).toEqual([3,3,4,4,6,9]);
   })
   it('merge sort', () => {
     let nums = [5,3,8,2,6,4,7,9,1];

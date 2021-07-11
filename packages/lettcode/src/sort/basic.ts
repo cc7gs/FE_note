@@ -101,6 +101,29 @@ export const quickSort2: SortType<number[]> = (arr) => {
   return [...quickSort2(left), pivot, ...quickSort2(right)]
 }
 
+function swap(A: number[], i: number, j: number) {
+  [A[i], A[j]] = [A[j], A[i]]
+}
+function partition(A: number[], low: number, high: number) {
+  const pivot = A[high - 1];
+  let i = low;
+  let j = high - 1;
+  while (i !== j) {
+    if (A[i] <= pivot) {
+      i++
+    } else {
+      swap(A, i, --j)
+    }
+  }
+  swap(A, j, high - 1);
+  return j
+}
+export const quickSort3 = (arr: number[], low = 0, high = arr.length) => {
+  if (high - low < 2) return
+  const j = partition(arr, low, high);
+  quickSort3(arr, low, j);
+  quickSort3(arr, j, high)
+}
 
 const merge = (left: number[], right: number[]) => {
   const result = [];
