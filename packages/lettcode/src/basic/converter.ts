@@ -3,7 +3,7 @@
  * @param originNumber 原输入数据
  * @param base 进制数
  */
-function converter(originNumber: number, base: number) {
+export function converter(originNumber: number, base: number) {
     let baseString = '';
     const digits = '0123456789ABCDEFGHIGKLMNOPQRSTUVWXYZ';
     let number = originNumber;

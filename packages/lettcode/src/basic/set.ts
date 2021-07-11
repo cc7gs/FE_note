@@ -1,45 +1,45 @@
 export class Set<T>{
-    private item:any;
-    constructor(){
-        this.item={}
+    private item: any;
+    constructor() {
+        this.item = {}
     }
-    add(element:T){
-        if(!this.has(element)){
-            this.item[element]=element;
+    add(element: T) {
+        if (!this.has(element)) {
+            this.item[element] = element;
             return true;
         }
         return false
     }
-    delete(element:T){
-        if(this.has(element)){
+    delete(element: T) {
+        if (this.has(element)) {
             delete this.item[element]
             return true
         }
         return false
     }
-    has(element:T){
+    has(element: T) {
         return this.item.hasOwnProperty(element)
     }
-    isEmpty(){
-        return this.size()==0
+    isEmpty() {
+        return this.size() === 0
     }
-    clear(){
-        this.item={}
+    clear() {
+        this.item = {}
     }
-    size(){
+    size() {
         return Object.keys(this.item).length
     }
-    values(){
+    values() {
         return Object.values(this.item)
     }
-    toString(){
-        if(this.isEmpty()){
+    toString() {
+        if (this.isEmpty()) {
             return ''
         }
-        const values=this.values() as T[];
-        let str=`${values[0]}`;
-        for(let i=1;i<values.length;i++){
-            str=`${str},${values[i]}`
+        const values = this.values() as T[];
+        let str = `${values[0]}`;
+        for (let i = 1; i < values.length; i++) {
+            str = `${str},${values[i]}`
         }
         return str
     }

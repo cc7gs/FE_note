@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 class ValuePair<K, V>{
     constructor(public key: K, public value: V) {
         this.key = key;
@@ -21,7 +22,7 @@ function defaultToString(item: any) {
 }
 
 export class Dictionary<K, V>{
-    private table: { [key: string]: ValuePair<K, V> };
+    private table: Record<string, ValuePair<K, V>>;
     constructor(public toStrFn = defaultToString) {
         this.toStrFn = toStrFn;
         this.table = {}
@@ -47,14 +48,14 @@ export class Dictionary<K, V>{
         }
         return false
     }
-    //所有键名(key)
+    // 所有键名(key)
     keys() {
         return this.keyValues().map((valuePair: ValuePair<K, V>) => valuePair.key)
     }
     values() {
         return this.keyValues().map((valuePair: ValuePair<K, V>) => valuePair.value)
     }
-    //返回[key,value]
+    // 返回[key,value]
     keyValues() {
         return Object.values(this.table)
     }
@@ -70,7 +71,7 @@ export class Dictionary<K, V>{
     }
 
     isEmpty() {
-        return this.size() == 0
+        return this.size() === 0
     }
 
     size() {
