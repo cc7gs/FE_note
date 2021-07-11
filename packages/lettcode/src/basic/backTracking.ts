@@ -1,5 +1,5 @@
 /**
- * 
+ * 迷宫寻路问题
  * @param{number[][]} maze 迷宫数据
  * @param pos 当前坐标 
  * @param path 行走路径
@@ -9,7 +9,7 @@ export const mazeTrack = (
   maze: number[][],
   pos = [0, 0],
   path = [[...pos]],
-  transverse = []
+  transverse: number[]=[]
 ): number[][] => {
   const [x, y] = pos;
   if (maze[x][y] === 2 || !maze.length) {
