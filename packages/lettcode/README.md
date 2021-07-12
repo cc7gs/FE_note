@@ -24,7 +24,7 @@ group:
 | 557 | [反转字符串的单词](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/string/reverseWords.ts) | Easy |
 | 415 | [字符串相加](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/string/addString.ts) | Easy |
 | 929 | [独特的电子邮件地址](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/string/numUniqueEmails.ts) | Easy |
-| 3 | [无重复字符的最长子串](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/string/lengthOfLongestString.ts) | Medium |
+| 3 | [无重复字符的最长子串](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/string/lengthOfLongestSubstring.ts) | Medium |
 
 ## array
 
