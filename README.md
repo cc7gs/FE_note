@@ -27,17 +27,17 @@
    4. test
 
 # 目录导航
-
+https://cc7gs.wccmw.xyz/FE_note/
 - 夯实基础
-  - [前端篇](https://cc7gs.github.io/frontEnd_note/basic)
-  - [后台篇(node)](https://cc7gs.github.io/frontEnd_note/node_basic)
+  - [前端篇](https://cc7gs.github.io/FE_note/basic)
+  - [后台篇(node)](https://cc7gs.github.io/FE_note/node_basic)
 - 高级提升
-  - [node 相关源码分析](https://cc7gs.github.io/frontEnd_note/node_source)
-  - [typescript](https://cc7gs.github.io/frontEnd_note/typescript)
-  - [RxJs](https://cc7gs.github.io/frontEnd_note/RxJs)
-- [工程篇](https://cc7gs.github.io/frontEnd_note/ngineering)
-- [面试篇](https://cc7gs.github.io/frontEnd_note/interview/)
-- [数据结构篇](https://cc7gs.github.io/frontEnd_note/lettcode/)
+  - [node 相关源码分析](https://cc7gs.github.io/FE_note/node_source)
+  - [typescript](https://cc7gs.github.io/FE_note/typescript)
+  - [RxJs](https://cc7gs.github.io/FE_note/RxJs)
+- [工程篇](https://cc7gs.github.io/FE_note/ngineering)
+- [面试篇](https://cc7gs.github.io/FE_note/interview/)
+- [数据结构篇](https://cc7gs.github.io/FE_note/lettcode/)
 - [学习书籍整理](./packages/books/)
 
 # 关于我
