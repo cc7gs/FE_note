@@ -95,8 +95,8 @@ group:
 |  | [定义搜索树](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/tree/basic.ts) |  |
 | 98 | [搜素二叉树](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/tree/basic.ts) | Medium |
 | 101 | [对称二叉树](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/tree/basic.ts) | Easy |
-| 129 | [求根节点到叶节点数字之和](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/tree/mergeTree.ts) | Medium |
-| 617 | [合并二叉树](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/tree/mergeTree.ts) | Easy |
+| 129 | [求根节点到叶节点数字之和](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/tree/sumNumbers.ts) | Medium |
+| 617 | [合并二叉树](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/tree/mergeTrees.ts) | Easy |
 
 
 # 堆
