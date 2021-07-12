@@ -1,4 +1,7 @@
-import { LinkedList, Node } from './basic'
+import type { Node } from './basic';
+import { LinkedList } from './basic'
+
+
 /**
  * 206. 反转链表
  * 输入: 1->2->3->4->5->NULL
@@ -11,14 +14,14 @@ import { LinkedList, Node } from './basic'
  * @returns 反转列表
  * @description 通过递归形式实现反转
  */
-function reverseListByRecursion<T>(list: LinkedList<T>) {
+export function reverseListByRecursion<T>(list: LinkedList<T>) {
   function reverse(head: Node<T> | null) {
     if (!head || !head.next) {
       return head
     }
     const newHead: Node<T> = reverse(head.next)!;
     head.next!.next = head;
-    head.next = null;
+    head.next = null; 
     return newHead
   }
   return reverse(list.head);
@@ -28,7 +31,7 @@ function reverseListByRecursion<T>(list: LinkedList<T>) {
  * @description 通过构建新队列来完成
  */
 function reverseList<T>(oldList: LinkedList<T>) {
-  let head = oldList.head;
+  let {head} = oldList;
   let newHead = null;
   if (!head || !head.next) return head;
   while (head) {
@@ -40,8 +43,8 @@ function reverseList<T>(oldList: LinkedList<T>) {
   return newHead
 }
 
-const list = new LinkedList<number>();
-Array.from({ length: 5 }, (i, idx) => idx + 1).map(i => list.push(i));
-const convertList = reverseList(list)
-console.log(list);
-console.log(convertList, 'convert')
+// const list = new LinkedList<number>();
+// Array.from({ length: 5 }, (i, idx) => idx + 1).map(i => list.push(i));
+// const convertList = reverseList(list)
+// console.log(list);
+// console.log(convertList, 'convert')

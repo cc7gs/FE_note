@@ -1,4 +1,4 @@
-import { ListNode, Node } from './basic';
+import type { Node } from './basic';
 
 /**
  * 请编写一个函数，使其可以删除某个链表中给定的（非末尾）节点，
@@ -8,8 +8,8 @@ import { ListNode, Node } from './basic';
  * @param {ListNode} node
  * @return {ListNode}
  */
-const deleteNode = (node: Node) => {
-  //非末尾节点
+export const deleteNode = (node: Node) => {
+  // 非末尾节点
   if (node.next) {
     node.val = node.next.val;
     node.next = node.next.next;

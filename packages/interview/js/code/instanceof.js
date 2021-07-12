@@ -1,8 +1,10 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-proto */
 /**
  *用来判断 left对象是不是right对象的实例 
  */
-function _instanceof(left,right){
-    let prototype=right.prototype;
+function selfInstanceof(left,right){
+    const {prototype} = right;
     left=left.__proto__;
     while(true){
         if(left===null || left===undefined){
@@ -10,10 +12,11 @@ function _instanceof(left,right){
         }
         if(prototype===left){
             return true;
-        }else{
-            left=left.__proto__;
         }
+            left=left.__proto__;
+        
     }
 }
+
 function Foo(){}
-console.log(_instanceof(Object,Foo));
+console.log(selfInstanceof(Object,Foo));

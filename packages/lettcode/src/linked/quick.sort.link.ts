@@ -1,5 +1,7 @@
-import { Node } from './basic'
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import type { Node as INode } from './basic'
 
+type Node=INode<number>;
 /**
  * 单链表的快速排序
  * 1. 首先以第一个节点为基准元素
@@ -18,14 +20,14 @@ export const sort: ISort = (begin, end) => {
   }
 }
 const partition: IPartition = (begin, end) => {
-  //基准元素
-  const  val = begin.val;
+   // 基准元素
+  const  {val} = begin;
   
   let p = begin;
   let q = begin.next;
   while (q && q !== end) {
     if (q && q.val < val) {
-      let next = p.next;
+      const {next} = p;
       if (next) {
         swap(next, q);
         p = next;
@@ -33,7 +35,7 @@ const partition: IPartition = (begin, end) => {
     }
     q = q.next;
   }
-  //交换基准元素
+  // 交换基准元素
   swap(p, begin);
   return p;
 }
