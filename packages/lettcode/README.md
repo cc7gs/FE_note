@@ -20,8 +20,8 @@ group:
 | # | title | difficulty |
 | --- | --- | --- |
 | 696 | [计数二进制字串](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/string/countBinarySubstr.ts) | Easy |
-| 344 | [反正字符串](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/string/reverseString.ts) | Easy |
-| 557 | [反正字符串的单词](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/string/reverseWords.ts) | Easy |
+| 344 | [反转字符串](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/string/reverseString.ts) | Easy |
+| 557 | [反转字符串的单词](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/string/reverseWords.ts) | Easy |
 | 415 | [字符串相加](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/string/addString.ts) | Easy |
 | 929 | [独特的电子邮件地址](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/string/numUniqueEmails.ts) | Easy |
 | 3 | [无重复字符的最长子串](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/string/lengthOfLongestString.ts) | Medium |
@@ -37,7 +37,7 @@ group:
 | 349 | [两个数组的交集](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/array/intersection.ts) | Easy |
 | 169 | [求众数](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/array/majorityElement.ts) | Easy |
 | 229 | [求众数](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/array/majorityElement-two.ts) | Medium |
-| 561 | [数组拆分 \| ](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/array/arrayPairSum.ts) | Easy |
+| 561 | [数组拆分](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/array/arrayPairSum.ts) | Easy |
 | 442 | [数组中重复数字](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/array/findDuplicates.ts) | Medium |
 | 54 | [螺旋矩阵](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/array/spiralOrder.ts) | Medium |
 | 217 | [存在重复元素](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/array/containsDuplicate.ts) | Easy |
