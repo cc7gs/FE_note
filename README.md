@@ -27,7 +27,7 @@
    4. test
 
 # 目录导航
-https://cc7gs.wccmw.xyz/FE_note/
+
 - 夯实基础
   - [前端篇](https://cc7gs.github.io/FE_note/basic)
   - [后台篇(node)](https://cc7gs.github.io/FE_note/node_basic)
