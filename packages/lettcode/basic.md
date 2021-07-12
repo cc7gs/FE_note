@@ -25,7 +25,8 @@ group:
 | Sort | [基本排序算法](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/sort/basic.ts) |  |
 |  | [字符组合](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/basic/combination.ts) |  |
 | Tree | [二叉搜索树](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/tree/basic/index.ts) |  |
-| 回溯法 | [迷宫寻路](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/basic/backTracking.ts) |  |
+| 搜索问题 | [迷宫寻路](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/basic/backTracking.ts) |  |
+|  | [N皇后问题](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/basic/queen.ts) | |
 | Fibonacci | [实现与优化](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/basic/fibonacci.ts) |  |
 |  | [AVL 树]() | Tree 习题 |
 |  | [红黑树]() | Tree 习题 |
