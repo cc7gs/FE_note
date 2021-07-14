@@ -20,7 +20,7 @@ import {
   uniquePathsWithObstacles,
   ArrayList,
   mergeSortedArray
-} from '../array'
+} from '../../array'
 
 
 describe('mergeSortedArray', () => {
