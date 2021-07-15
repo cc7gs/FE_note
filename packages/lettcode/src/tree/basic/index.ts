@@ -1,4 +1,10 @@
-import { defaultCompare, ICompareFunction, Compare } from "./util";
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-cond-assign */
+/* eslint-disable no-lonely-if */
+
+import type { ICompareFunction } from "./util";
+import { defaultCompare, Compare } from "./util";
 
 class Node<T>{
     left: Node<T> | null;
@@ -14,7 +20,9 @@ class Node<T>{
 
 export class BinarySearchTree<T> {
     protected root: Node<T> | null;
-    constructor(protected compareFn: ICompareFunction<T> = defaultCompare) {
+    protected compareFn: ICompareFunction<T>;
+    constructor(compareFn?: ICompareFunction<T>) {
+        this.compareFn = compareFn?? defaultCompare;
         this.root = null
     }
     /**
@@ -58,7 +66,8 @@ export class BinarySearchTree<T> {
 
         if (this.compareFn(key, node.value) === Compare.LESS_THAN) {
             return this.searchNode(node.left, key)
-        } else if (this.compareFn(key, node.value) === Compare.BIGGER_THAN) {
+        }
+        if (this.compareFn(key, node.value) === Compare.BIGGER_THAN) {
             return this.searchNode(node.right, key)
         }
         return true
@@ -85,10 +94,10 @@ export class BinarySearchTree<T> {
      * @name 中序遍历
      * @param callback (val)=>void
      */
-    inOrderTraverse(callback: Function) {
+    inOrderTraverse(callback: (val: T) => void) {
         this.inOrderTraverseNode(this.root, callback)
     }
-    private inOrderTraverseNode(node: Node<T> | null, callback: Function) {
+    private inOrderTraverseNode(node: Node<T> | null, callback: (val: T) => void) {
         if (node !== null) {
             this.inOrderTraverseNode(node.left, callback);
             callback(node.value);
@@ -100,10 +109,10 @@ export class BinarySearchTree<T> {
      * @name 先序遍历
      * @param callback (val)=>void
      */
-    preOrderTraverse(callback: Function) {
+    preOrderTraverse(callback: (val: T) => void) {
         this.preOrderTraverseNode(this.root, callback)
     }
-    private preOrderTraverseNode(node: Node<T> | null, callback: Function) {
+    private preOrderTraverseNode(node: Node<T> | null, callback: (val: T) => void) {
         if (node !== null) {
             callback(node.value);
             this.preOrderTraverseNode(node.left, callback);
@@ -115,10 +124,10 @@ export class BinarySearchTree<T> {
     * @name 后序遍历
     * @param callback (val)=>void
     */
-    postOrderTraverse(callback: Function) {
+    postOrderTraverse(callback: (val: T) => void) {
         this.postOrderTraverseNode(this.root, callback)
     }
-    private postOrderTraverseNode(node: Node<T> | null, callback: Function) {
+    private postOrderTraverseNode(node: Node<T> | null, callback: (val: T) => void) {
         if (node !== null) {
             this.postOrderTraverseNode(node.left, callback);
             this.postOrderTraverseNode(node.right, callback)
@@ -130,10 +139,10 @@ export class BinarySearchTree<T> {
      * @name 广度优先遍历(层级遍历)
      * @param callback （val)=>void
      */
-    levelTraverse(callback: Function) {
+    levelTraverse(callback: (val: T) => void) {
         this.levelTraverseNode(this.root, callback);
     }
-    levelTraverseNode(node: Node<T> | null, callback: Function) {
+    levelTraverseNode(node: Node<T> | null, callback: (val: T) => void) {
         const stack = [node];
         let curIndex = 0;
         let curNode = null;
@@ -190,36 +199,36 @@ export class BinarySearchTree<T> {
         if (this.compareFn(key, node.value) === Compare.LESS_THAN) {
             node.left = this.removeNode(node.left, key);
             return node;
-        } else if (this.compareFn(key, node.value) === Compare.BIGGER_THAN) {
+        } if (this.compareFn(key, node.value) === Compare.BIGGER_THAN) {
             node.right = this.removeNode(node.right, key);
             return node;
-        } else {
-            //equal case
+        }
+        // equal case
 
-            //叶子节点
-            if (node.left === null && node.right === null) {
-                node = null;
-                return node;
-            }
-
-            //只有一个孩子节点
-            if (node.left === null) {
-                node = node.right;
-                return node;
-            } else if (node.right === null) {
-                node = node.left
-                return node
-            }
-
-            /**
-             * 有两个孩子节点
-             * 1. 找到右侧树最小节点，并替换该节点
-             * 2. 删除右侧最小节点
-             */
-            const minNode = this.minNode(node.right);
-            node.value = minNode?.value!;
-            node.right = this.removeNode(node.right, minNode?.value!)
+        // 叶子节点
+        if (node.left === null && node.right === null) {
+            node = null;
             return node;
         }
+
+        // 只有一个孩子节点
+        if (node.left === null) {
+            node = node.right;
+            return node;
+        } if (node.right === null) {
+            node = node.left
+            return node
+        }
+
+        /**
+         * 有两个孩子节点
+         * 1. 找到右侧树最小节点，并替换该节点
+         * 2. 删除右侧最小节点
+         */
+        const minNode = this.minNode(node.right);
+        node.value = minNode?.value!;
+        node.right = this.removeNode(node.right, minNode?.value!)
+        return node;
+
     }
 }

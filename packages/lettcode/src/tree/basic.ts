@@ -1,8 +1,26 @@
+/* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable @typescript-eslint/no-parameter-properties */
 /* eslint-disable no-multi-assign */
 /* eslint-disable no-restricted-properties */
 /* eslint-disable max-classes-per-file */
+
+/**
+ * 用于 lettcode 解题
+ */
+export class TreeNode<T = number> {
+  public val: T | number;
+  public left: TreeNode<T> | null;
+  public right: TreeNode<T> | null;
+
+  constructor(val?: T, left?: TreeNode<T> | null, right?: TreeNode<T> | null) {
+    this.val = (val === undefined ? 0 : val);
+    this.left = (left === undefined ? null : left);
+    this.right = (right === undefined ? null : right)
+  }
+}
+
+
 
 /**
  * 构建二叉树
@@ -22,9 +40,9 @@ class Node<T> {
 class Tree<T>{
   constructor(data: T[]) {
     // 定义根节点
-    let root: Node<T>;
+    let root: Node<T> | undefined;
     // 临时存放节点信息
-    let nodeList = [];
+    const nodeList = [];
 
     for (let i = 0, len = data.length; i < len; i++) {
       const curNode = new Node(data[i]);
@@ -49,8 +67,8 @@ class Tree<T>{
     return root;
   }
 
-  static isSymmetric(root: Node<Number>) {
-    const walk = (left: Node<Number>, right: Node<number>): boolean => {
+  static isSymmetric(root: Node<number>) {
+    const walk = (left: Node<number>, right: Node<number>): boolean => {
       if (!root) {
         return true;
       }
@@ -95,7 +113,7 @@ class SearchTree {
         this.insert(node.left, val);
       }
     }
-      // 右子树
+    // 右子树
     if (val > node.val) {
       if (!node.right) {
         node.right = new Node(val);

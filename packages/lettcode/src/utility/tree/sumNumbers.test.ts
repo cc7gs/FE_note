@@ -1,4 +1,5 @@
-import { TreeNode, sumNumbers } from '../../tree/sumNumbers'
+import { TreeNode } from '../../tree/basic'
+import { sumNumbers } from '../../tree/sumNumbers'
 
 describe('tree:sumNumbers', () => {
   it('three node', () => {

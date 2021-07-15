@@ -1,17 +1,7 @@
 /* eslint-disable no-multi-assign */
 
+import type { TreeNode } from "./basic";
 
-export class TreeNode<T = number> {
-  public val: T | number;
-  public left: TreeNode<T> | null;
-  public right: TreeNode<T> | null;
-
-  constructor(val?: T, left?: TreeNode<T> | null, right?: TreeNode<T> | null) {
-    this.val = (val === undefined ? 0 : val);
-    this.left = (left === undefined ? null : left);
-    this.right = (right === undefined ? null : right)
-  }
-}
 
 function dfs(root: TreeNode<number> | null, prevSum: number): number {
   if (root === null) {

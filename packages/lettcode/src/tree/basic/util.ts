@@ -5,13 +5,13 @@ export enum Compare {
     EQUALS = 0
 }
 
-//小于等于
+// 小于等于
 export function lesserEquals<T>(a: T, b: T, compareFn: ICompareFunction<T>) {
     const comp = compareFn(a, b);
     return comp === Compare.LESS_THAN || comp === Compare.BIGGER_THAN
 }
 
-//大于等于
+// 大于等于
 export function biggerEquals<T>(a: T, b: T, compareFn: ICompareFunction<T>) {
     const comp = compareFn(a, b);
     return comp === Compare.BIGGER_THAN || comp === Compare.EQUALS

@@ -1,4 +1,4 @@
-import { Tree, Node } from './basic'
+import type { Node } from './basic';
 /**
  * 617. 合并二叉树
  * 你需要将他们合并为一个新的二叉树。合并的规则是如果两个节点重叠，
