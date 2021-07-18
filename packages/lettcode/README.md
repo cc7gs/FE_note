@@ -97,7 +97,7 @@ group:
 | 101 | [对称二叉树](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/tree/basic.ts) | Easy |
 | 129 | [求根节点到叶节点数字之和](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/tree/sumNumbers.ts) | Medium |
 | 617 | [合并二叉树](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/tree/mergeTrees.ts) | Easy |
-
+| 112 | [路径总和](https://github.com/cc7gs/FE_note/tree/master/packages/lettcode/src/tree/hasPathSum.ts) | Easy |
 
 # 堆
 
