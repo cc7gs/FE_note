@@ -80,6 +80,10 @@ http 1.1 版本后,当使用 Keep-Alive 模式(持久连接)时,使客户端到�
 
 http2 优势 1. 信道复用 2. 分贞传输 3. server push
 
-## 输入 url 后 http 请求完整过程？
 
-首先 redirect(跳转) --> DNS(DNS 解析） --> TCP(创建 TCP 链接)-->Request(发送请求) --> Response(接受相应)--> 浏览器解析
+@TODO: 字节面试总结
+
+## https 连接过程?
+## https vs http 区别？
+
+## https 用于解决什么问题？

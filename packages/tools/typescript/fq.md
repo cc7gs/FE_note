@@ -301,7 +301,7 @@ type T3 = Parameters<typeof f1>;
 // [arg:{a:number,b:string}]
 ```
 
-### NonNullable<Type>
+### `NonNullable<Type>`
 
 去除 null、undefined
 
@@ -309,8 +309,6 @@ type T3 = Parameters<typeof f1>;
 type T0 = NonNullable<string | null | undefined | number>;
 // type T0=string| number
 ```
-
-###
 
 ## Unknown vs Any 区别
 
