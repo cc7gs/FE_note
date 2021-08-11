@@ -11,20 +11,19 @@
  * 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。 
  */
 export function lengthOfLongestSubstring(s: string) {
-  const n = s.length;
-  const acc = new Set();
-  let rk = -1;
-  let aws = 0;
-  for (let i = 0; i < n; i++) {
-    if (i !== 0) {
-      acc.delete(s[i-1])
+  let winStart = 0;
+  let maxLength = 0;
+  const acc = new Map<string,number>();
+
+  for (let winEnd = 0; winEnd < s.length; winEnd++) {
+    const rightChar = s[winEnd];
+    const rightCharIndex = acc.get(rightChar);
+    if (rightCharIndex !== undefined) {
+      winStart = Math.max(winStart, rightCharIndex + 1)
     }
-    while (rk+1 < n && !acc.has(s[rk+1])) {
-      acc.add(s[rk+1]);
-      rk += 1;
-    }
-    aws = Math.max(aws, rk - i + 1)
+    acc.set(rightChar, winEnd);
+    maxLength = Math.max(maxLength, winEnd - winStart + 1);
   }
-  return aws;
+  return maxLength
 }
 
