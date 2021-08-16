@@ -295,16 +295,11 @@ const promise = store => next => action => {
 ```
 `思考如下函数打印结果:`
 ```ts
-const a = (next) => (x) => {
-  return next(`${x}a`)
-}
+const a = (next) => (x) => next(`${x}a`)
+
 const b = (next) => (x) => next(`${x}b`)
-const c = (next) => {
-  return (x) => next(`${x}c`)
-}
-const final = (x) => {
- return x
-}
+const c = (next) =>  (x) => next(`${x}c`)
+const final = (x) => x
 
 function compose(...funcs) {
   if (!funcs.length) return (arg) =>arg
