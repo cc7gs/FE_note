@@ -11614,10 +11614,10 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
-father-build@1.19.6, father-build@^1.19.6:
-  version "1.19.6"
-  resolved "https://registry.yarnpkg.com/father-build/-/father-build-1.19.6.tgz#d84b5f8d17e719ffab6b378e8100657fea22a9d3"
-  integrity sha512-InxKSw8hQi1BAiKUyK/bgDuY3O8CoRqN2k4u3Aa16sDrk05iCHwyLSk/aVN/MkuS4fEPPwECwgisVDhUpXxJvA==
+father-build@1.19.8, father-build@^1.19.6:
+  version "1.19.8"
+  resolved "https://registry.yarnpkg.com/father-build/-/father-build-1.19.8.tgz#ec196c3d8daefccfb28f59265bb7e3e7610bf111"
+  integrity sha512-OF5Y8OTXi+dSitMGXuWqB2gBjir/84vlFXyL4qe0zhDO9pdpmE5hVIT7ZXYmxdzSmMBw5hYaBz6Q4XKRYT8y9Q==
   dependencies:
     "@babel/core" "7.12.3"
     "@babel/plugin-proposal-class-properties" "7.12.1"
@@ -11673,9 +11673,9 @@ father-build@1.19.6, father-build@^1.19.6:
     yargs-parser "13.1.2"
 
 father@^2.30.6:
-  version "2.30.6"
-  resolved "https://registry.yarnpkg.com/father/-/father-2.30.6.tgz#8681034a78c2d39475906e717905ac0d60f244a6"
-  integrity sha512-0jZq/v9bt0gum7tiUr0xseA6OhLAsAySQ8G/dP7TZHpUAKZcZjFef23XLXsRi/m8xF0LDnqXrlrcLX+KyjPApw==
+  version "2.30.8"
+  resolved "https://registry.yarnpkg.com/father/-/father-2.30.8.tgz#d2b99722cf53e151cac9d9bb3be0d274e15fa086"
+  integrity sha512-ek8xwYfJN//K54movGBXrozJMmhxMDBsySimgRYdxGE9vWqdi3ey3e7akcVjQEUWe1ljlUSfPdb3+T+UBkKQtg==
   dependencies:
     "@babel/plugin-proposal-decorators" "7.4.4"
     "@storybook/addon-a11y" "^5.2.6"
@@ -11696,7 +11696,7 @@ father@^2.30.6:
     docz-core "1.2.0"
     docz-plugin-umi-css "^0.14.1"
     docz-theme-umi "^2.0.0"
-    father-build "1.19.6"
+    father-build "1.19.8"
     fs-extra "^8.0.1"
     gh-pages "2.0.1"
     lodash "^4.17.20"
@@ -18002,7 +18002,6 @@ minipass-fetch@^1.3.0, minipass-fetch@^1.3.2:
   resolved "https://registry.yarnpkg.com/minipass-fetch/-/minipass-fetch-1.3.3.tgz#34c7cea038c817a8658461bf35174551dce17a0a"
   integrity sha512-akCrLDWfbdAWkMLBxJEeWTdNsjML+dt5YgOI4gJ53vuO0vrmYQkUPxa6j6V65s9CcePIr2SSWqjT2EcrNseryQ==
   dependencies:
-    encoding "^0.1.12"
     minipass "^3.1.0"
     minipass-sized "^1.0.3"
     minizlib "^2.0.0"
