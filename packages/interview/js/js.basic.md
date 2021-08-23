@@ -115,6 +115,27 @@ let obj =
 obj + 200; //hint:default ==> 'hint'+200 ==>'hint200'
 ```
 
+## 创建对象几种方法
+
+- 对象字面量
+- 构函数
+- Object.create()
+
+```javascript
+var o1 = { name: 'cc' };
+
+//构造函数
+function person(name) {
+  this.name = name;
+}
+var p = new Person('cc');
+
+//create方法
+var p2 = { name: 'cc' };
+var p3 = Object.create(p2);
+```
+
+> [具体请参照原文](https://blog.csdn.net/qq_37674616/article/details/82220732)
 ## 实现一个深拷贝
 
 ```js
