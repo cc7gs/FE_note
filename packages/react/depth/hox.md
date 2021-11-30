@@ -1,7 +1,10 @@
 ---
 nav:
-  title: hox源码分析
-  path: /react/depth
+  title: react及周边生态源码分析
+  path: /react_depth
+group:
+  title: 周边生态解析
+  path: /stack
 ---
 
 > 对于 react 状态管理已经是老生畅谈的话题，官方没有给出最佳实践因此市面上关于状态管理的探索从未停止过。

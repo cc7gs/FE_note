@@ -52,7 +52,7 @@ export default defineConfig({
       title: '提升篇',
       children: [
         { title: 'node源码分析', path: '/node-source' },
-        { title: 'react', path: '/react/depth' },
+        { title: 'react', path: '/react_depth' },
         { title: 'RxJS', path: '/rx-js' },
         { title: 'Typescript', path: '/typescript' },
       ],

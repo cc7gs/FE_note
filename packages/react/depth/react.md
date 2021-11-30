@@ -1,7 +1,11 @@
 ---
+order: 1
 nav:
-  title: react源码分析
-  path: /react/depth
+  title: react及周边生态源码分析
+  path: /react_depth
+group:
+  title: react系列
+  path: /series
 ---
 
 # react
