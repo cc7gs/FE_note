@@ -27,7 +27,7 @@
     "pre-commit": "pretty-quick --staged"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.23",
+    "@types/jest": "^27.4.0",
     "@types/react": "^17.0.8",
     "@types/react-dom": "^17.0.5",
     "@umijs/fabric": "^2.5.13",
