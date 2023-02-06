@@ -32,7 +32,7 @@
     "@types/react-dom": "^17.0.5",
     "@umijs/fabric": "^2.5.13",
     "@umijs/test": "^3.4.23",
-    "dumi": "^1.0.13",
+    "dumi": "^2.1.7",
     "eslint": "^7.27.0",
     "father": "^2.30.6",
     "father-build": "^1.19.6",
